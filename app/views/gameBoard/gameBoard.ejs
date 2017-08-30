@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Tabuleiro</p>
+</body>
+<script type="text/javascript">
+
+/*faz o request para o servidor e recebe um json como resposta
+tratar erros*
+
+pode ser usado com get para o tabuleiro
+
+
+*/
+	var dados = new XMLHttpRequest();
+
+	var url = "http://localhost:3000/game_board";
+
+	dados.open("POST" , url);
+
+	dados.setRequestHeader("Content-Type", "application/json");
+
+	teste = {
+		nome: "carlos",
+		id: "22"
+	};
+
+	//console.log(teste);
+
+	//aguarda uma respota enviada pelo servidor e executa a funcao
+	dados.onreadystatechange = function (){
+		if (this.readyState == 4 && this.status == 200) {
+			console.log(this.responseText);
+		}
+	}
+
+	dados.send(JSON.stringify(teste));
+
+
+
+</script>
+</html>

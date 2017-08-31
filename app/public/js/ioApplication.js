@@ -1,21 +1,36 @@
 
-var IO = {
+var IO = io.connect(); //criando conexao socket no jogador
 
-	init: function(){
-		
-		IO.socket = io.connect(); //criando conexao socket no jogador
+function init(){
 
-		IO.socket.on('connection', function (data) {
-			console.log(data);
-		});		
-	},
+	IO.on('connected', function (data) {
+		console.log(data);
+	});
 
-	bindEvents : function () {
-		
-	}
+	IO.on('joinDone', function(data){
+		console.log(data);
+	});
 }
 
-IO.init();
+
+		
+
+function joinRoom () {
+
+	var player = {
+		PlayerID: 1,
+		Name: 'Carlos',
+		Progress: 20,
+		Points: 10000,
+		RoomID:'15',
+		Avatar: 'Batman'
+	};
+
+	IO.emit('joinRoom', player);
+}
+
+init();
+joinRoom();
 
 
 

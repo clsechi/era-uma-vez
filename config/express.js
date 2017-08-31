@@ -14,7 +14,7 @@ module.exports = function (){
 	app.use(bodyParser.urlencoded({extended: true})); //pq do true msm?
 	app.use(bodyParser.json());
 
-	load('routes', {cwd: 'app'})
+	load('routes',{cwd: 'app'})
 		.then('infra')
 		.into(app);
 

@@ -1,5 +1,7 @@
 //Carlos Sechi
 
+//p5.play
+
 var wallTop, wallBottom, wallLeft, wallRight, player;
 var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;

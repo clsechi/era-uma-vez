@@ -3,39 +3,29 @@ function PlayerDAO(connection){
 }
 
 //funcao ok
-PlayerDAO.prototype.updatedGameBoard = function(roomId, callback) {
-	this._connection.query('SELECT PlayerID, Name, Progress, Points FROM Players WHERE RoomId = ?', roomId, callback);
+PlayerDAO.prototype.updatedGameBoard = function(roomID, callback) {
+	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar FROM Players WHERE RoomID = ? ORDER BY PlayerID', roomID, callback);
 }
 
 PlayerDAO.prototype.updatePlayerRoomAndAvatar = function(player, callback){
-	this._connection.query('UPDATE Players SET RoomId = ?, Avatar = ?', [player.RoomId, player.Avatar]);
+	this._connection.query('UPDATE Players SET RoomID = ?, Avatar = ? WHERE PlayerID = ?', [player.RoomID, player.Avatar, player.PlayerID], callback);
 }
 
 //funcao ok
 //usar [colchetes] nos parametros
-PlayerDAO.prototype.updatePlayerProgessAndPoints = function(player, callback){
-	this._connection.query('UPDATE Players SET Progress = ?, Points = ? WHERE PlayerID = ?', [player.Progress, player.Points, player.PlayerID]);
+PlayerDAO.prototype.updatePlayerProgessPointsTime = function(player, callback){
+	this._connection.query('UPDATE Players SET Progress = ?, Points = ?, TotalElapsedTime = ? WHERE PlayerID = ?', [player.Progress, player.Points, player.ElapsedTime, player.PlayerID], callback);
+}
+
+//usada para somar a pontuação total com a do ultimo desafio
+PlayerDAO.prototype.SelectTotalElapsedTime = function (playerID, callback) {
+	this._connection.query('SELECT TotalElapsedTime FROM Players WHERE PlayerID = ?', [playerID], callback);		
 }
 
 //funcao ok
 PlayerDAO.prototype.listAllPlayers = function(callback){
 	this._connection.query('SELECT * FROM Players', callback);
 }
-
-/*
-
-ProdutosDAO.prototype.lista = function(callback) {
-	this._connection.query('select * from produtos', callback);
-}
-
-ProdutosDAO.prototype.salva = function(produto, callback){
-	this._connection.query('INSERT INTO produtos SET ?', produto, callback);
-}
-//nao implementado
-ProdutosDAO.prototype.delete = function(id, callback){
-	this._connection.query('DELETE FROM produtos WHERE id=?', id, callback);
-
-*/
 
 module.exports = function(){
 	return PlayerDAO;

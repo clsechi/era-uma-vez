@@ -1,5 +1,5 @@
 CREATE TABLE Players (
-	PlayerID TINYINT NOT NULL AUTO_INCREMENT,
+	PlayerID INT NOT NULL AUTO_INCREMENT,
 	Name varchar(30) NOT NULL,
 	RA varchar(15),
 	Avatar varchar(20),
@@ -12,14 +12,14 @@ CREATE TABLE Players (
 );
 
 CREATE TABLE ChallengesLOG (
-	LogID TINYINT NOT NULL AUTO_INCREMENT,
-	PlayerID TINYINT NOT NULL,
+	LogID INT NOT NULL AUTO_INCREMENT,
+	FK_PlayerID INT NOT NULL,
 	EarnedPoints TINYINT,
 	GameBoardArea TINYINT,
 	ElapsedTime FLOAT,
 	WrongAnswers TINYINT,
 	PRIMARY KEY (LogID),
-	FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID)
+	FOREIGN KEY (FK_PlayerID) REFERENCES Players(PlayerID)
 );
 
 INSERT INTO Players (Name, RA, Avatar, School) VALUES ('Esdras', '20478859', 'dog', 'Anhembi');

@@ -75,6 +75,8 @@ function movePlayer(movimento) {
 
 
 
+
+
 /*
 
 function player(){

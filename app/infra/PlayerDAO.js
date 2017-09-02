@@ -7,7 +7,7 @@ PlayerDAO.prototype.updatedGameBoard = function(roomID, callback) {
 	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar FROM Players WHERE RoomID = ? ORDER BY PlayerID', roomID, callback);
 }
 
-PlayerDAO.prototype.updatePlayerRoomAndAvatar = function(player, callback){
+PlayerDAO.prototype.updatePlayerRoomIDAndAvatar = function(player, callback){
 	this._connection.query('UPDATE Players SET RoomID = ?, Avatar = ? WHERE PlayerID = ?', [player.RoomID, player.Avatar, player.PlayerID], callback);
 }
 

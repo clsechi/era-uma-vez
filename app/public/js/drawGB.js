@@ -141,22 +141,20 @@ function drawAvatar(finalPosition) {
 	//batmanIcon.onload = function () {		
 
 		if(finalPosition[0].avatar != null){
-		ctx.drawImage(eval(finalPosition[0].avatar), finalPosition[0].avatarX, finalPosition[0].avatarY);
+			ctx.drawImage(eval(finalPosition[0].avatar), finalPosition[0].avatarX, finalPosition[0].avatarY);
 		}
 		if(finalPosition[1].avatar != null){
-		ctx.drawImage(eval(finalPosition[1].avatar), finalPosition[1].avatarX, finalPosition[1].avatarY);
+			ctx.drawImage(eval(finalPosition[1].avatar), finalPosition[1].avatarX, finalPosition[1].avatarY);
 		}
 		if(finalPosition[2].avatar != null){
-		ctx.drawImage(eval(finalPosition[2].avatar), finalPosition[2].avatarX, finalPosition[2].avatarY);
+			ctx.drawImage(eval(finalPosition[2].avatar), finalPosition[2].avatarX, finalPosition[2].avatarY);
 		}
 		if(finalPosition[3].avatar != null){
-		ctx.drawImage(eval(finalPosition[3].avatar), finalPosition[3].avatarX, finalPosition[3].avatarY);
+			ctx.drawImage(eval(finalPosition[3].avatar), finalPosition[3].avatarX, finalPosition[3].avatarY);
 		}
 
 		console.log("desenhei td");
 	//}
-
-	console.log("nao desenhei td");	
 
 	firstChallenge = false;
 
@@ -164,16 +162,16 @@ function drawAvatar(finalPosition) {
 		clearCanvas();
 
 		if(finalPosition[0].avatar != null){
-		ctx.drawImage(eval(finalPosition[0].avatar), finalPosition[0].avatarX, finalPosition[0].avatarY);
+			ctx.drawImage(eval(finalPosition[0].avatar), finalPosition[0].avatarX, finalPosition[0].avatarY);
 		}
 		if(finalPosition[1].avatar != null){
-		ctx.drawImage(eval(finalPosition[1].avatar), finalPosition[1].avatarX, finalPosition[1].avatarY);
+			ctx.drawImage(eval(finalPosition[1].avatar), finalPosition[1].avatarX, finalPosition[1].avatarY);
 		}
 		if(finalPosition[2].avatar != null){
-		ctx.drawImage(eval(finalPosition[2].avatar), finalPosition[2].avatarX, finalPosition[2].avatarY);
+			ctx.drawImage(eval(finalPosition[2].avatar), finalPosition[2].avatarX, finalPosition[2].avatarY);
 		}
 		if(finalPosition[3].avatar != null){
-		ctx.drawImage(eval(finalPosition[3].avatar), finalPosition[3].avatarX, finalPosition[3].avatarY);
+			ctx.drawImage(eval(finalPosition[3].avatar), finalPosition[3].avatarX, finalPosition[3].avatarY);
 		}
 	}
 

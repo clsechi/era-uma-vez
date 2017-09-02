@@ -1,7 +1,4 @@
-
-
-
-var playerInfo = {	PlayerID: null,
+/*var playerInfo = {	PlayerID: null,
 					Name: null,
 					RA: null,
 					Avatar: null,
@@ -10,6 +7,8 @@ var playerInfo = {	PlayerID: null,
 					Points: 0,
 					RoomID: 1,
 					TotalElapsedTime: 0};
+					*/
+
 
 
 var button = document.querySelector("#atualiza-tabuleiro");

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> EUV - Criação de Usuário</title>
+</head>
+<body>
+
+	<p>Teste</p>
+
+	<select size = <%= allPlayers.length %> required>
+		<% for(var i=0; i < allPlayers.length; i++) {%>		
+			<option value=<%= allPlayers[i].PlayerID %> ><%= allPlayers[i].Name %></option>			
+		<% } %>
+	</select>
+
+	<button id="save-player" class="botao bto-principal">Iniciar Jogo</button>
+
+	<script type="text/javascript">
+		
+		console.log(<%-JSON.stringify(allPlayers)%>);
+
+	</script>
+
+</body>
+</html>

@@ -1,5 +1,15 @@
 module.exports = function (app){
 
+	var playerInfo = { PlayerID: 1,
+					Name: "Carlos",
+					RA: "20422328",
+					Avatar: "batmanIcon",
+					School: "Anhembi",
+					Progress: 0,
+					Points: 0,
+					RoomID: 0,
+					TotalElapsedTime: 0};
+
 	app.get("/", function (req, res) {
 
 		//var socketConnection = new SocketConnection();
@@ -47,7 +57,7 @@ module.exports = function (app){
 
 		connectSocket();
 
-		res.render("challenges/challenge");
+		res.render("challenges/challenge", {playerInfo: playerInfo});
 
 	});
 
@@ -55,6 +65,21 @@ module.exports = function (app){
 
 	app.get("/playerCreation", function (req, res){
 		//renderiza ejs
+
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+	
+		playerDAO.listAllPlayers(function(err, results){
+
+			if(err){
+				return next(err);
+			}
+			res.render("player/playerCreation", {allPlayers: results});
+		});		
+
+		connection.end();
+
+		
 
 	});
 
@@ -72,19 +97,38 @@ module.exports = function (app){
 
 	//requisicao de tabuleiro atualizado
 	app.post("/nextChallenge", function (req, res){
-		var player = req.body;
+		var playerInfo = req.body;
 
 		//console.log(player);
 
-		updatedGameBoard(player.RoomID);
+		updatedGameBoard(playerInfo.RoomID);
 
 		res.sendStatus(200);
+
+		//es.render("challenges/challenge" + (player.progress));
 
 		//res.redirect("challenges/challenge");
 
 		//recebe a pontuação a adicionar e renderiza o proximo desafio
 		//com tabuleiro e pontuação atualizados
 		
+	});
+
+	app.post("/savePlayerInfo", function (req, res) {
+		var playerInfo = req.body;
+
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+	
+		playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+
+			if(err){
+				return next(err);
+			}
+			res.render("challenges/challenge/1", {playerInfo: playerInfo});
+		});		
+
+		connection.end();
 	});
 
 
@@ -125,7 +169,6 @@ module.exports = function (app){
 			if(err){
 				return next(err);
 			}
-
 			app.io.to(roomID).emit('updatedGameBoard', results);
 		});
 
@@ -141,7 +184,7 @@ module.exports = function (app){
 		gameSocket.join(RoomID);
 		
 		//envia para sala
-		//mudar pra somente o cliente q faz o request
+		//mudar pra somente o cliente q faz o request DONE
 		gameSocket.emit('joinDone', {status: "join ok"});
 	
 

@@ -4,8 +4,6 @@ function updateScoreBoard(players){
 
 	var avatar, name, points;
 
-	console.log(players);
-
 	for (var i = 0; i < players.length; i++) {
 		avatar = players[i].Avatar;
 		name = players[i].Name

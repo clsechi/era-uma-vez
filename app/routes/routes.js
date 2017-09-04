@@ -22,7 +22,7 @@ module.exports = function (app){
 	});
 	
 
-	app.get("/game_board", function (req, res) {
+	app.get("/gameBoard", function (req, res) {
 
 
 		res.render("gameBoard/gameBoard");
@@ -53,10 +53,9 @@ module.exports = function (app){
 
 	});
 
+	//15 challenges no maximo!
 	//mostra o primeiro desafio
 	app.get("/challenge/1", function (req, res){
-
-		console.log("entrei no GET");
 		//renderiza ejs
 
 		connectSocket();
@@ -66,8 +65,6 @@ module.exports = function (app){
 	});
 
 	app.get("/challenge/2", function (req, res){
-
-		console.log("entrei no GET 2");
 		//renderiza ejs
 
 		//connectSocket();
@@ -75,8 +72,6 @@ module.exports = function (app){
 		res.render("challenges/2", {playerInfo: playerInfo});
 
 	});
-
-	//15 challenges no maximo!
 
 	app.get("/playerCreation", function (req, res){
 		//renderiza ejs
@@ -100,6 +95,10 @@ module.exports = function (app){
 
 	});
 
+	app.get("/deviceNotSupported", function (req, res) {
+		res.render("err/deviceNotSupported");
+	});
+
 
 	/* *******************************
    *                             *
@@ -111,23 +110,26 @@ module.exports = function (app){
 	app.post("/nextChallenge", function (req, res){
 		var playerInfo = req.body;
 
-		//console.log(player);
-
-		updatedGameBoard(playerInfo.RoomID);
-
-		//get URL do app e adiciona o redirecionamento
-		//adiciona o proximo desafio conforme progresso do jogador
-		var redirectURL = (req.get('host') + "/challenge/" + (playerInfo.Progress + 1));
-
-		res.send(redirectURL);
-
-		//es.render("challenges/challenge" + (player.progress));
-
-		//res.redirect("challenges/challenge");
-
 		//recebe a pontuação a adicionar e renderiza o proximo desafio
 		//com tabuleiro e pontuação atualizados
-		
+		updatedGameBoard(playerInfo.RoomID);
+
+		//mudar conforme numero total de casas do tabuleiro
+		if(playerInfo.Progress <= 15){
+			var redirectURL = (req.get('host') + "/challenge/" + (playerInfo.Progress + 1));
+
+			console.log(redirectURL);
+
+
+			res.send(redirectURL);
+
+
+
+		} else {
+			var redirectURL = (req.get('host') + "/waitingRoom");
+
+			res.send(redirectURL);
+		}
 	});
 
 	app.post("/savePlayerInfo", function (req, res) {
@@ -144,11 +146,12 @@ module.exports = function (app){
 			
 			//get URL do app e adiciona o redirecionamento
 			//envia esse var para o cliente q faz o redirect
-			var redirectURL = (req.get('host') + "/challenge/1");
+			var redirectURL = "http://" + (req.get('host') + "/challenge/1");
 
-			console.log(req.url);
+			console.log(redirectURL);
+			console.log(redirectURL.toString());
 
-			res.send(redirectURL);
+			res.send(redirectURL.toString());
 		});		
 
 		connection.end();
@@ -206,7 +209,9 @@ module.exports = function (app){
 
 		gameSocket.join(playerInfoClient.RoomID);
 
-		//envia para todos os jogadores na sala
+		gameSocket.nickname = playerInfoClient.Name;
+
+		//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
 		gameSocket.emit('joinDone', {enterRoom: playerInfoClient.Name});
 
 		console.log((new Date).toLocaleTimeString() + " " + playerInfoClient.Name + " entrou na sala " + playerInfoClient.RoomID);

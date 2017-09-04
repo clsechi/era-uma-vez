@@ -9,6 +9,8 @@ var playerInfo = {	PlayerID: null,
 
 var button = document.querySelector("#save-player");
 
+var mainURL = readCookie("url");
+
 //Armazena as opcoes do jogador no JSON e envia para o server
 button.addEventListener("click", function (event){
 
@@ -16,7 +18,8 @@ button.addEventListener("click", function (event){
 	var playerIDDOM = document.querySelector("#player-name");
 	var playerRoomDOM = document.querySelector("#player-room");
 
-	if(playerRoomDOM != undefined && playerIDDOM != undefined){
+	//valida se informou os dados
+	if(playerRoomDOM.value && playerIDDOM.value){
 
 		playerInfo.Avatar = playerAvatarDOM.options[playerAvatarDOM.selectedIndex].value;
 		playerInfo.PlayerID = playerIDDOM.options[playerIDDOM.selectedIndex].value;
@@ -30,6 +33,10 @@ button.addEventListener("click", function (event){
 
 		console.log(playerInfo);
 
+		setCookie();
+
+		console.log(readCookie("PlayerID"));
+
 		postPlayerInfo();
 	} else {
 		//tratar erros <<<<
@@ -42,7 +49,9 @@ function postPlayerInfo() {
 
 	var dados = new XMLHttpRequest();
 
-	var url = "http://192.168.0.50:3000/savePlayerInfo";
+	if(mainURL){// adicioanar tratamento de erros
+		var url = mainURL + "savePlayerInfo";
+	}
 
 	dados.open("POST" , url, true);
 
@@ -50,7 +59,8 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			//window.location.assing(dados.responseText);
+			var redirectURL = dados.responseText;
+			window.location.assign(redirectURL);
 			console.log(dados.responseText);
 		}
 	}
@@ -58,8 +68,23 @@ function postPlayerInfo() {
 	dados.send(JSON.stringify(playerInfo));
 }
 
+function setCookie() {
+	document.cookie = ("PlayerID =" + playerInfo.PlayerID);	
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
 /*
 $("select").imagepicker({
-          hide_select : true,
-          show_label  : false
-        })*/
+		  hide_select : true,
+		  show_label  : false
+		})*/

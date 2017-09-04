@@ -11,7 +11,7 @@
 		<option>Anhembi</option>
 	</select>
 
-	<select size = <%= allPlayers.length %> required id ="player-name">
+	<select size = <%= allPlayers.length %> class="required" id ="player-name">
 		<% for(var i=0; i < allPlayers.length; i++) {%>		
 			<option value=<%= allPlayers[i].PlayerID %> ><%= allPlayers[i].Name %></option>			
 		<% } %>
@@ -28,7 +28,7 @@
 		<option data-img-src = "/assets/supermanIcon128.png" value = "supermanIcon">SuperMan</option>
 	</select>
 
-	<select size=5 id="player-room">
+	<select size=5 id="player-room" class="required">
 		<option value = 1>Sala 1</option>
 		<option value = 2>Sala 2</option>
 		<option value = 3>Sala 3</option>

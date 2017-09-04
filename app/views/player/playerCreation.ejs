@@ -7,19 +7,49 @@
 
 	<p>Teste</p>
 
-	<select size = <%= allPlayers.length %> required>
+	<select size=2 id ="player-school">
+		<option>Anhembi</option>
+	</select>
+
+	<select size = <%= allPlayers.length %> required id ="player-name">
 		<% for(var i=0; i < allPlayers.length; i++) {%>		
 			<option value=<%= allPlayers[i].PlayerID %> ><%= allPlayers[i].Name %></option>			
 		<% } %>
+	</select>	
+
+	<select id ="player-avatar">
+		<option data-img-src = "/assets/batmanIcon128.png" value = "batmanIcon">Batman</option>
+		<option data-img-src = "/assets/catIcon128.png" value = "catIcon">Cat</option>
+		<option data-img-src = "/assets/hulkIcon128.png" value = "hulkIcon">Hulk</option>
+		<option data-img-src = "/assets/jokerIcon128.png" value = "jokerIcon">Joker</option>
+		<option data-img-src = "/assets/lionIcon128.png" value = "lionIcon">Lion</option>
+		<option data-img-src = "/assets/loganIcon128.png" value = "loganIcon">Logan</option>
+		<option data-img-src = "/assets/spiderIcon128.png" value = "spiderIcon">SpiderMan</option>
+		<option data-img-src = "/assets/supermanIcon128.png" value = "supermanIcon">SuperMan</option>
 	</select>
+
+	<select size=5 id="player-room">
+		<option value = 1>Sala 1</option>
+		<option value = 2>Sala 2</option>
+		<option value = 3>Sala 3</option>
+		<option value = 4>Sala 4</option>
+		<option value = 5>Sala 5</option>
+	</select>
+
+	<br>
+	<br>
 
 	<button id="save-player" class="botao bto-principal">Iniciar Jogo</button>
 
 	<script type="text/javascript">
 		
-		console.log(<%-JSON.stringify(allPlayers)%>);
+	var allPlayers = <%-JSON.stringify(allPlayers)%>;
+
+	//console.log(allPlayers);
 
 	</script>
+
+	<script src="/js/player/playerCreation.js"></script>
 
 </body>
 </html>

@@ -1,15 +1,3 @@
-/*var playerInfo = {	PlayerID: null,
-					Name: null,
-					RA: null,
-					Avatar: null,
-					School: null,
-					Progress: 0,
-					Points: 0,
-					RoomID: 1,
-					TotalElapsedTime: 0};
-					*/
-
-
 
 var button = document.querySelector("#atualiza-tabuleiro");
 
@@ -18,6 +6,8 @@ button.addEventListener("click", function (event){
 postPlayerInfo();	
 
 });
+
+console.log(playerInfo)
 
 function postPlayerInfo() {
 
@@ -31,7 +21,8 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			console.log("POST OK!");
+			//window.location.replace("http://192.168.0.50:3000/challenge/1")
+			console.log(dados.responseText);
 		}
 	}
 
@@ -51,7 +42,6 @@ function init(){
 
 	IO.on('connected', function (data) {
 		console.log(data);
-		postPlayerInfo();
 	});
 
 	IO.on('updatedGameBoard', function(players){
@@ -70,7 +60,7 @@ function init(){
 
 function joinRoom () {
 
-	IO.emit('joinRoom', playerInfo.RoomID);	
+	IO.emit('joinRoom', playerInfo);	
 }
 
 init();

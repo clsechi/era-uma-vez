@@ -1,6 +1,6 @@
 module.exports = function (app){
 
-	var playerInfo = { PlayerID: 1,
+	/*var playerInfo = { PlayerID: 1,
 					Name: "Carlos",
 					RA: "20422328",
 					Avatar: "batmanIcon",
@@ -8,74 +8,55 @@ module.exports = function (app){
 					Progress: 0,
 					Points: 0,
 					RoomID: 1,
-					TotalElapsedTime: 0};
+					TotalElapsedTime: 0};*/
 
+	var playerInfo = {	PlayerID: null,
+					Name: null,
+					Avatar: null,
+					Progress: 0,
+					Points: 0,
+					RoomID: 0,
+					UsedTime: 0 };
+
+	//home
 	app.get("/", function (req, res) {
-
-		//var socketConnection = new SocketConnection();
-
 		
-
-		
-		res.render('home/index');
+		res.render("home/index");
 
 	});
 	
-
-	app.get("/gameBoard", function (req, res) {
-
-
-		res.render("gameBoard/gameBoard");
-
-		//verifica no banco a posição de todos o jogadores da sala
-
-		
-
-		res.send();
-	});
-
-	//mostra tabuleiro com todos os desafios	
-	app.get("/allChallenges", function (req, res){
-
-		var connection = app.infra.connectionFactory();
-		var playerDAO = new app.infra.PlayerDAO(connection);
-
-		playerDAO.listAllPlayers(function(err, results){
-			if(err){
-				return next(err);
-			}
-
-			console.log({lista: results});
-		});
-
-		connection.end();
-
-
-	});
-
-	//15 challenges no maximo!
-	//mostra o primeiro desafio
-	app.get("/challenge/1", function (req, res){
-		//renderiza ejs
+	//carrega video com o explicação do jogo	
+	app.get("/gameExplanation", function (req, res){
 
 		connectSocket();
 
-		res.render("challenges/1", {playerInfo: playerInfo});
+		res.render("player/gameExplanation");
 
 	});
 
-	app.get("/challenge/2", function (req, res){
-		//renderiza ejs
+	app.get("/about", function (req, res){
 
+		res.render("admin/about");
+
+	});
+
+	//painel mostsrando o progresso de todos os alunos
+	app.get("/teacherPanel", function(req, res){
 		//connectSocket();
 
-		res.render("challenges/2", {playerInfo: playerInfo});
+		res.render("teacher/teacherPanel");
+	})
 
-	});
+	app.get("/help", function(req, res){
+		//connectSocket();
 
+		res.render("player/help");
+	})
+
+
+	//jogador seleciona escola, nome, avatar e sala
 	app.get("/playerCreation", function (req, res){
 		//renderiza ejs
-
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 	
@@ -92,12 +73,60 @@ module.exports = function (app){
 
 	app.get("/waitingRoom", function (req, res){
 		//renderiza ejs
+		res.render("player/waitingRoom");
 
 	});
 
 	app.get("/deviceNotSupported", function (req, res) {
+		//caso site aberto em celular
 		res.render("err/deviceNotSupported");
 	});
+
+	//15 challenges no maximo!
+	//mostra o primeiro desafio
+	app.get("/challenge/1", function (req, res){
+		//renderiza ejs
+
+		res.render("challenges/1", {playerInfo: playerInfo});
+
+	});
+
+	app.get("/challenge/2", function (req, res){
+		//renderiza ejs
+
+		//connectSocket();
+
+		res.render("challenges/2", {playerInfo: playerInfo});
+
+	});
+
+	app.get("/challenge/3", function (req, res){
+		//renderiza ejs
+
+		//connectSocket();
+
+		res.render("challenges/3", {playerInfo: playerInfo});
+
+	});
+
+	app.get("/challenge/4", function (req, res){
+		//renderiza ejs
+
+		//connectSocket();
+
+		res.render("challenges/4", {playerInfo: playerInfo});
+
+	});
+
+	app.get("/challenge/5", function (req, res){
+		//renderiza ejs
+
+		//connectSocket();
+
+		res.render("challenges/5", {playerInfo: playerInfo});
+
+	});
+
 
 
 	/* *******************************
@@ -108,52 +137,51 @@ module.exports = function (app){
 
 	//requisicao de tabuleiro atualizado
 	app.post("/nextChallenge", function (req, res){
-		var playerInfo = req.body;
+		playerInfo = req.body;
 
 		//recebe a pontuação a adicionar e renderiza o proximo desafio
 		//com tabuleiro e pontuação atualizados
-		updatedGameBoard(playerInfo.RoomID);
 
-		//mudar conforme numero total de casas do tabuleiro
-		if(playerInfo.Progress <= 15){
-			var redirectURL = (req.get('host') + "/challenge/" + (playerInfo.Progress + 1));
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
 
-			console.log(redirectURL);
+		playerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){
+			if(err){
+				return next(err);
+			}		
 
+			updatedGameBoard(playerInfo.RoomID);
+			//mudar conforme numero total de casas do tabuleiro
+			if(playerInfo.Progress <= 15){
+				var redirectURL = "http://" + (req.get('host') + "/challenge/" + (playerInfo.Progress));
 
-			res.send(redirectURL);
+				res.send(redirectURL);
+			} else {
+				var redirectURL = "http://" + (req.get('host') + "/waitingRoom");
 
+				res.send(redirectURL);
+			}
 
-
-		} else {
-			var redirectURL = (req.get('host') + "/waitingRoom");
-
-			res.send(redirectURL);
-		}
+		});		
+		connection.end();
 	});
 
 	app.post("/savePlayerInfo", function (req, res) {
-		var playerInfo = req.body;
+		playerInfo = req.body;
 
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 	
 		playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
-
 			if(err){
 				return next(err);
-			}
-			
+			}			
 			//get URL do app e adiciona o redirecionamento
 			//envia esse var para o cliente q faz o redirect
-			var redirectURL = "http://" + (req.get('host') + "/challenge/1");
-
-			console.log(redirectURL);
-			console.log(redirectURL.toString());
+			var redirectURL = "http://" + (req.get('host') + "/gameExplanation");
 
 			res.send(redirectURL.toString());
-		});		
-
+		});
 		connection.end();
 	});
 

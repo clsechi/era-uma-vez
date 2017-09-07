@@ -21,7 +21,7 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			//window.location.replace("http://192.168.0.50:3000/challenge/1")
+			//window.location.assign(dados.responseText);
 			console.log(dados.responseText);
 		}
 	}
@@ -38,6 +38,10 @@ function readCookie(name) {
 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
 	}
 	return null;
+}
+
+function updatePlayerInfo() {
+	
 }
 
 console.log(readCookie("PlayerID"));

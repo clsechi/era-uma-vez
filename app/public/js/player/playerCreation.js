@@ -35,8 +35,6 @@ button.addEventListener("click", function (event){
 
 		setCookie();
 
-		console.log(readCookie("PlayerID"));
-
 		postPlayerInfo();
 	} else {
 		//tratar erros <<<<
@@ -59,9 +57,8 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			var redirectURL = dados.responseText;
-			window.location.assign(redirectURL);
-			console.log(dados.responseText);
+			//var redirectURL = dados.responseText;
+			window.location.assign(dados.responseText);
 		}
 	}
 
@@ -69,7 +66,8 @@ function postPlayerInfo() {
 }
 
 function setCookie() {
-	document.cookie = ("PlayerID =" + playerInfo.PlayerID);	
+	document.cookie = ("PlayerID =" + playerInfo.PlayerID);
+	document.cookie = ("RoomID =" + playerInfo.RoomID);	
 }
 
 function readCookie(name) {

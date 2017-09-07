@@ -64,4 +64,6 @@ typings/
 #add 'node_modules'
 node_modules
 
+.vscode/
+
 # End of https://www.gitignore.io/api/node

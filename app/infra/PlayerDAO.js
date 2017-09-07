@@ -27,6 +27,16 @@ PlayerDAO.prototype.listAllPlayers = function(callback){
 	this._connection.query('SELECT * FROM Players', callback);
 }
 
+PlayerDAO.prototype.updateLOG = function(infoLOG, callback){
+	this._connection.query('INSERT INTO ChallengesLOG SET ? ', infoLOG, callback);
+}
+
 module.exports = function(){
 	return PlayerDAO;
 }
+
+var infoLOG = {FK_PlayerID: null,
+			EarnedPoints: null,
+			GBProgess: null,
+			ElapsedTime: null,
+			WrongAnswers: null}

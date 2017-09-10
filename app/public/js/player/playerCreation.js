@@ -5,7 +5,7 @@ var playerInfo = {	PlayerID: null,
 					Progress: 0,
 					Points: 0,
 					RoomID: 0,
-					UsedTime: 0 };
+					ElapsedTime: 0 };
 
 var button = document.querySelector("#save-player");
 
@@ -65,6 +65,8 @@ function postPlayerInfo() {
 	dados.send(JSON.stringify(playerInfo));
 }
 
+
+//cookies
 function setCookie() {
 	document.cookie = ("PlayerID =" + playerInfo.PlayerID);
 	document.cookie = ("RoomID =" + playerInfo.RoomID);	

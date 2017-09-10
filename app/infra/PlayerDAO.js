@@ -14,11 +14,11 @@ PlayerDAO.prototype.updatePlayerRoomIDAndAvatar = function(player, callback){
 //funcao ok
 //usar [colchetes] nos parametros
 PlayerDAO.prototype.updatePlayerProgessPointsTime = function(player, callback){
-	this._connection.query('UPDATE Players SET Progress = ?, Points = ?, TotalElapsedTime = ? WHERE PlayerID = ?', [player.Progress, player.Points, player.ElapsedTime, player.PlayerID], callback);
+	this._connection.query('UPDATE Players SET Progress = ?, Points = ?, TotalElapsedTime = ? WHERE PlayerID = ?', [player.Progress, player.Points, player.TotalElapsedTime, player.PlayerID], callback);
 }
 
 //usada para somar a pontuação total com a do ultimo desafio
-PlayerDAO.prototype.SelectTotalElapsedTime = function (playerID, callback) {
+PlayerDAO.prototype.selectTotalElapsedTime = function (playerID, callback) {
 	this._connection.query('SELECT TotalElapsedTime FROM Players WHERE PlayerID = ?', [playerID], callback);		
 }
 
@@ -34,9 +34,3 @@ PlayerDAO.prototype.updateLOG = function(infoLOG, callback){
 module.exports = function(){
 	return PlayerDAO;
 }
-
-var infoLOG = {FK_PlayerID: null,
-			EarnedPoints: null,
-			GBProgess: null,
-			ElapsedTime: null,
-			WrongAnswers: null}

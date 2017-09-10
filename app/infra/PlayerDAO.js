@@ -22,6 +22,14 @@ PlayerDAO.prototype.selectTotalElapsedTime = function (playerID, callback) {
 	this._connection.query('SELECT TotalElapsedTime FROM Players WHERE PlayerID = ?', [playerID], callback);		
 }
 
+PlayerDAO.prototype.selectPlayerInfo = function (playerID, callback) {
+	this._connection.query('SELECT * FROM Players WHERE PlayerID = ?', [playerID], callback);
+}
+//implementar
+PlayerDAO.prototype.selectPlayerProgress = function (playerID, callback) {
+	this._connection.query('SELECT Progress FROM Players WHERE PlayerID = ?', [playerID], callback);
+}
+
 //funcao ok
 PlayerDAO.prototype.listAllPlayers = function(callback){
 	this._connection.query('SELECT * FROM Players', callback);

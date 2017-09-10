@@ -57,7 +57,7 @@ module.exports = function (app){
 
 
 	//jogador seleciona escola, nome, avatar e sala
-	app.get("/playerCreation", function (req, res){
+	app.get("/playerCreation", function (req, res, next){
 		//renderiza ejs
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
@@ -88,6 +88,8 @@ module.exports = function (app){
 	//mostra o primeiro desafio
 	app.get("/challenge/1", function (req, res){
 		//renderiza ejs
+
+		//connectSocket(); // remover
 
 		res.render("challenges/1", {playerInfo: player});
 
@@ -185,8 +187,8 @@ module.exports = function (app){
 	});
 
 	//salva informações do usuário
-	app.post("/savePlayerInfo", function (req, res) {
-		playerInfo = req.body;
+	app.post("/savePlayerInfo", function (req, res, next) {
+		var playerInfo = req.body;
 
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
@@ -246,6 +248,7 @@ module.exports = function (app){
 		app.io.on('connection', function(socket){
 			initConnection(socket);
 		});
+		console.log("Engines On!!!");
    } 
 	
 	function initConnection(socket){
@@ -260,14 +263,13 @@ module.exports = function (app){
 
 	}
 
-	function updatedGameBoard (roomID){
+	function updatedGameBoard (roomID, next){
 
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 
 		// solicita json com localização dos players da sala no tabuleiro	
 		playerDAO.updatedGameBoard(roomID, function(err, results){
-
 			if(err){
 				return next(err);
 			}
@@ -278,17 +280,33 @@ module.exports = function (app){
 	
 	}
 
-	function joinRoom(playerInfoClient) {
+	function joinRoom(playerID, next) {
+
+		var playerInfo = {};
 	
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 
-		gameSocket.join(playerInfoClient.RoomID);
+		//solicita a informacoes sobre o jogador que foram gravadas no banco
+		playerDAO.selectPlayerInfo(playerID, function(err, results){
+			if(err){
+				return next(err);
+			}
 
-		gameSocket.nickname = playerInfoClient.Name;
+			playerInfo = results;
+		});
+
+		connection.end();
+
+		//insere o jogador na sala
+		gameSocket.join(playerInfo.RoomID);
+
+		gameSocket.nickname = playerInfo.Name;
 
 		//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
-		gameSocket.emit('joinDone', {enterRoom: playerInfoClient.Name});
+		gameSocket.emit('joinDone', playerInfo);
+
+		//this.emit('error',{message: "This room does not exist."} );
 
 		console.log((new Date).toLocaleTimeString() + " " + playerInfoClient.Name + " entrou na sala " + playerInfoClient.RoomID);
 

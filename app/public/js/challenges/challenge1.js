@@ -1,19 +1,22 @@
 
 var button = document.querySelector("#atualiza-tabuleiro");
 
+var playerInfo = {};
+
+var mainURL = readCookie("url");
+
+
 button.addEventListener("click", function (event){
 
 postPlayerInfo();	
 
 });
 
-console.log(playerInfo)
-
 function postPlayerInfo() {
 
 	var dados = new XMLHttpRequest();
 
-	var url = "http://192.168.0.50:3000/nextChallenge";
+	var url = mainURL + "nextChallenge";
 
 	dados.open("POST" , url);
 
@@ -40,12 +43,6 @@ function readCookie(name) {
 	return null;
 }
 
-function updatePlayerInfo() {
-	
-}
-
-console.log(readCookie("PlayerID"));
-
 /* *******************************
    *                             *
    *       SOCKET FUNCTIONS      *
@@ -70,13 +67,13 @@ function init(){
 	});
 
 	IO.on('joinDone', function(data){
-		console.log(data);
+		playerInfo = data;
 	});
 }		
 
 function joinRoom () {
 
-	IO.emit('joinRoom', playerInfo);	
+	IO.emit('joinRoom', readCookie("PlayerID"));	
 }
 
 init();

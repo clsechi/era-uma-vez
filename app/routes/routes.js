@@ -298,7 +298,8 @@ module.exports = function (app){
 				return next(err);
 			}
 			console.log(results);//correto
-			app.io.emit('updatedGameBoard', results);// não ta funcionando
+			console.log(roomID);
+			app.io.to(roomID).emit('updatedGameBoard', results);// não ta funcionando
 		});
 
 		connection.end();
@@ -319,9 +320,9 @@ module.exports = function (app){
 			player = results;
 
 			//insere o jogador na sala
-			gameSocket.join(player.RoomID);
+			gameSocket.join(player[0].RoomID);
 
-			gameSocket.nickname = player.Name;
+			gameSocket.nickname = player[0].Name;
 
 			//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
 			gameSocket.emit('joinDone', player);

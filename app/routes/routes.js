@@ -1,6 +1,6 @@
 module.exports = function (app){
 
-	var player = { PlayerID: 3,
+	/*var player = { PlayerID: 3,
 					Name: "Carlos",
 					RA: "20422328",
 					Avatar: "batmanIcon",
@@ -9,16 +9,16 @@ module.exports = function (app){
 					Points: 200,
 					RoomID: 1,
 					ElapsedTime: 200,
-					WrongAnswers: 0};
+					WrongAnswers: 0};*/
 
-	/*var playerInfo = {	PlayerID: null,
+	var player = {	PlayerID: null,
 					Name: null,
 					Avatar: null,
 					Progress: 0,
 					Points: 0,
 					RoomID: 0,
 					ElapsedTime: 0,
-					WrongAnswers: 0 };*/
+					WrongAnswers: 0 };
 
 	//home
 	app.get("/", function (req, res) {
@@ -89,9 +89,9 @@ module.exports = function (app){
 	app.get("/challenge/1", function (req, res){
 		//renderiza ejs
 
-		//connectSocket(); // remover
+		connectSocket(); // remover
 
-		res.render("challenges/1", {playerInfo: player});
+		res.render("challenges/1");
 
 	});
 
@@ -139,9 +139,10 @@ module.exports = function (app){
    *                             *
    ******************************* */
 
-	//requisicao de tabuleiro atualizado
 	app.post("/nextChallenge", function (req, res, next){
 		var playerInfo = req.body;
+
+		console.log(playerInfo);
 
 		//recebe a pontuação a adicionar e renderiza o proximo desafio
 		//com tabuleiro e pontuação atualizados
@@ -155,7 +156,11 @@ module.exports = function (app){
 				return next(err);
 			}
 			//soma o tempo do banco ao usado no desafio atual
+			console.log(results);
+
 			playerInfo.TotalElapsedTime = (results[0].TotalElapsedTime + playerInfo.ElapsedTime);
+
+			console.log(playerInfo.TotalElapsedTime);
 
 			//grava os dadso da pontuação e tempo no banco
 			playerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){
@@ -204,6 +209,25 @@ module.exports = function (app){
 			res.send(redirectURL.toString());
 		});
 		connection.end();
+	});
+
+	//envia o desafio correto para o usuario após a tela de explicação
+	app.post("/firstChallenge", function (req, res, next) {
+		var playerInfo = req.body;
+
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+
+		playerDAO.selectPlayerProgress(playerInfo.PlayerID, function (err, results) {
+			if(err){
+				return next(err);
+			}
+
+			var redirectURL = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);
+
+			res.send(redirectURL);
+		});
+
 	});
 
 	/* *******************************
@@ -273,7 +297,8 @@ module.exports = function (app){
 			if(err){
 				return next(err);
 			}
-			app.io.to(roomID).emit('updatedGameBoard', results);
+			console.log(results);//correto
+			app.io.emit('updatedGameBoard', results);// não ta funcionando
 		});
 
 		connection.end();
@@ -281,9 +306,7 @@ module.exports = function (app){
 	}
 
 	function joinRoom(playerID, next) {
-
-		var playerInfo = {};
-	
+		
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 
@@ -293,27 +316,29 @@ module.exports = function (app){
 				return next(err);
 			}
 
-			playerInfo = results;
+			player = results;
+
+			//insere o jogador na sala
+			gameSocket.join(player.RoomID);
+
+			gameSocket.nickname = player.Name;
+
+			//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
+			gameSocket.emit('joinDone', player);
+
+			//this.emit('error',{message: "This room does not exist."} );
+
+			console.log((new Date).toLocaleTimeString() + " " + player[0].Name + " entrou na sala " + player[0].RoomID);
+
+			console.log(gameSocket.adapter.rooms);
+
+			updatedGameBoard(player[0].RoomID);
 		});
 
 		connection.end();
 
-		//insere o jogador na sala
-		gameSocket.join(playerInfo.RoomID);
 
-		gameSocket.nickname = playerInfo.Name;
-
-		//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
-		gameSocket.emit('joinDone', playerInfo);
-
-		//this.emit('error',{message: "This room does not exist."} );
-
-		console.log((new Date).toLocaleTimeString() + " " + playerInfoClient.Name + " entrou na sala " + playerInfoClient.RoomID);
-
-		console.log(gameSocket.adapter.rooms);
 	}
-
-
 }
 
 /*

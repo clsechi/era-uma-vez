@@ -5,16 +5,22 @@ var playerInfo = {};
 
 var mainURL = readCookie("url");
 
-
+//botao
 button.addEventListener("click", function (event){
 
 postPlayerInfo();	
 
 });
 
+function setElapsedTime(time) {
+	playerInfo.ElapsedTime = time;
+}
+
 function postPlayerInfo() {
 
 	var dados = new XMLHttpRequest();
+
+	playerInfo.ElapsedTime = 0;
 
 	var url = mainURL + "nextChallenge";
 
@@ -67,7 +73,8 @@ function init(){
 	});
 
 	IO.on('joinDone', function(data){
-		playerInfo = data;
+		playerInfo = data[0];
+		
 	});
 }		
 

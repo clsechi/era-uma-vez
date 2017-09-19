@@ -127,7 +127,7 @@ function setPositionAvatar(avatar, progress, position) {
 	}	
 
 	if (progress != 1){
-		avatarX += (60 * (progress-1));
+		avatarX += (60 * (progress-1)); //pq do menos 1??
 	}
 
 	return {avatarX: avatarX, avatarY: avatarY, avatar: avatar};

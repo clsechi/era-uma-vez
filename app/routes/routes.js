@@ -1,4 +1,5 @@
-module.exports = function (app){
+module.exports = function (app){	
+		
 
 	/*var player = { PlayerID: 3,
 					Name: "Carlos",
@@ -30,7 +31,7 @@ module.exports = function (app){
 	//carrega video com o explicação do jogo	
 	app.get("/gameExplanation", function (req, res){
 
-		connectSocket();
+		//connectSocket();
 
 		res.render("player/gameExplanation");
 
@@ -89,7 +90,7 @@ module.exports = function (app){
 	app.get("/challenge/1", function (req, res){
 		//renderiza ejs
 
-		connectSocket(); // remover
+		 // remover
 
 		res.render("challenges/1");
 
@@ -127,7 +128,7 @@ module.exports = function (app){
 
 		//connectSocket();
 
-		res.render("challenges/5", {playerInfo: playerInfo});
+		res.render("challenges/5");
 
 	});
 
@@ -184,7 +185,6 @@ module.exports = function (app){
 				}
 
 				connection.end();
-
 				//grava LOG
 				updateLOG(playerInfo, next);
 			});
@@ -271,8 +271,9 @@ module.exports = function (app){
    function connectSocket() {
 		app.io.on('connection', function(socket){
 			initConnection(socket);
+			console.log("Engines On!!!");
 		});
-		console.log("Engines On!!!");
+		
    } 
 	
 	function initConnection(socket){
@@ -335,10 +336,7 @@ module.exports = function (app){
 
 			updatedGameBoard(player[0].RoomID);
 		});
-
 		connection.end();
-
-
 	}
 }
 

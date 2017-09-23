@@ -516,47 +516,44 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/player/playerCreation.ejs",
-			"settings":
-			{
-				"buffer_size": 1693,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/public/js/player/playerCreation.js",
-			"settings":
-			{
-				"buffer_size": 2216,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/public/js/player/gameExplanation.js",
-			"settings":
-			{
-				"buffer_size": 1084,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/views/challenges/1.ejs",
 			"settings":
 			{
-				"buffer_size": 1672,
+				"buffer_size": 3206,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/challenges/2.ejs",
+			"file": "app/public/js/blockly/testBlockly.js",
 			"settings":
 			{
-				"buffer_size": 1770,
+				"buffer_size": 1082,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/carlos/Downloads/workspace.xml",
+			"settings":
+			{
+				"buffer_size": 117,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/carlos/Downloads/toolbox.xml",
+			"settings":
+			{
+				"buffer_size": 199,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/carlos/Downloads/workspace.js",
+			"settings":
+			{
+				"buffer_size": 981,
 				"line_ending": "Unix"
 			}
 		},
@@ -570,21 +567,10 @@
 			}
 		},
 		{
-			"file": "app/public/js/challenges/challenge2.js",
-			"settings":
-			{
-				"buffer_size": 1206,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "module.exports = function (app){\n\n\t/*var player = { PlayerID: 3,\n\t\t\t\t\tName: \"Carlos\",\n\t\t\t\t\tRA: \"20422328\",\n\t\t\t\t\tAvatar: \"batmanIcon\",\n\t\t\t\t\tSchool: \"Anhembi\",\n\t\t\t\t\tProgress: 0,\n\t\t\t\t\tPoints: 200,\n\t\t\t\t\tRoomID: 1,\n\t\t\t\t\tElapsedTime: 200,\n\t\t\t\t\tWrongAnswers: 0};*/\n\n\tvar player = {\tPlayerID: null,\n\t\t\t\t\tName: null,\n\t\t\t\t\tAvatar: null,\n\t\t\t\t\tProgress: 0,\n\t\t\t\t\tPoints: 0,\n\t\t\t\t\tRoomID: 0,\n\t\t\t\t\tElapsedTime: 0,\n\t\t\t\t\tWrongAnswers: 0 };\n\n\t//home\n\tapp.get(\"/\", function (req, res) {\n\t\t\n\t\tres.render(\"home/index\");\n\n\t});\n\t\n\t//carrega video com o explicação do jogo\t\n\tapp.get(\"/gameExplanation\", function (req, res){\n\n\t\tconnectSocket();\n\n\t\tres.render(\"player/gameExplanation\");\n\n\t});\n\n\tapp.get(\"/about\", function (req, res){\n\n\t\tres.render(\"admin/about\");\n\n\t});\n\n\t//painel mostsrando o progresso de todos os alunos\n\tapp.get(\"/teacherPanel\", function(req, res){\n\t\t//connectSocket();\n\n\t\tres.render(\"teacher/teacherPanel\");\n\t})\n\n\tapp.get(\"/help\", function(req, res){\n\t\t//connectSocket();\n\n\t\tres.render(\"player/help\");\n\t})\n\n\n\t//jogador seleciona escola, nome, avatar e sala\n\tapp.get(\"/playerCreation\", function (req, res, next){\n\t\t//renderiza ejs\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\t\n\t\tplayerDAO.listAllPlayers(function(err, results){\n\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\t\t\tres.render(\"player/playerCreation\", {allPlayers: results});\n\t\t});\t\t\n\n\t\tconnection.end();\n\t});\n\n\tapp.get(\"/waitingRoom\", function (req, res){\n\t\t//renderiza ejs\n\t\tres.render(\"player/waitingRoom\");\n\n\t});\n\n\tapp.get(\"/deviceNotSupported\", function (req, res) {\n\t\t//caso site aberto em celular\n\t\tres.render(\"err/deviceNotSupported\");\n\t});\n\n\t//15 challenges no maximo!\n\t//mostra o primeiro desafio\n\tapp.get(\"/challenge/1\", function (req, res){\n\t\t//renderiza ejs\n\n\t\tconnectSocket(); // remover\n\n\t\tres.render(\"challenges/1\");\n\n\t});\n\n\tapp.get(\"/challenge/2\", function (req, res){\n\t\t//renderiza ejs\n\n\t\t//connectSocket();\n\n\t\tres.render(\"challenges/2\", {playerInfo: playerInfo});\n\n\t});\n\n\tapp.get(\"/challenge/3\", function (req, res){\n\t\t//renderiza ejs\n\n\t\t//connectSocket();\n\n\t\tres.render(\"challenges/3\", {playerInfo: playerInfo});\n\n\t});\n\n\tapp.get(\"/challenge/4\", function (req, res){\n\t\t//renderiza ejs\n\n\t\t//connectSocket();\n\n\t\tres.render(\"challenges/4\", {playerInfo: playerInfo});\n\n\t});\n\n\tapp.get(\"/challenge/5\", function (req, res){\n\t\t//renderiza ejs\n\n\t\t//connectSocket();\n\n\t\tres.render(\"challenges/5\", {playerInfo: playerInfo});\n\n\t});\n\n\n\n\t/* *******************************\n   *                             *\n   *       POST FUNCTIONS        *\n   *                             *\n   ******************************* */\n\n\tapp.post(\"/nextChallenge\", function (req, res, next){\n\t\tvar playerInfo = req.body;\n\n\t\tconsole.log(playerInfo);\n\n\t\t//recebe a pontuação a adicionar e renderiza o proximo desafio\n\t\t//com tabuleiro e pontuação atualizados\n\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\n\t\t//solicita o tempo ja gravado no banco\t\t\n\t\tplayerDAO.selectTotalElapsedTime(playerInfo.PlayerID, function(err, results){\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\t\t\t//soma o tempo do banco ao usado no desafio atual\n\t\t\tconsole.log(results);\n\n\t\t\tplayerInfo.TotalElapsedTime = (results[0].TotalElapsedTime + playerInfo.ElapsedTime);\n\n\t\t\tconsole.log(playerInfo.TotalElapsedTime);\n\n\t\t\t//grava os dadso da pontuação e tempo no banco\n\t\t\tplayerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){\n\t\t\t\tif(err){\n\t\t\t\t\treturn next(err);\n\t\t\t\t}\n\n\t\t\t\t//envia tabuleiro atualizado para os outros jogadores\n\t\t\t\tupdatedGameBoard(playerInfo.RoomID);\n\n\t\t\t\t//mudar conforme numero total de casas do tabuleiro\n\t\t\t\t//redireciona para a view correta conforme o progresso do jogador\n\t\t\t\tif(playerInfo.Progress <= 15){\n\t\t\t\t\tvar redirectURL = \"http://\" + (req.get('host') + \"/challenge/\" + (playerInfo.Progress));\n\n\t\t\t\t\tres.send(redirectURL);\n\t\t\t\t} else {\n\t\t\t\t\tvar redirectURL = \"http://\" + (req.get('host') + \"/waitingRoom\");\n\n\t\t\t\t\tres.send(redirectURL);\n\t\t\t\t}\n\n\t\t\t\tconnection.end();\n\n\t\t\t\t//grava LOG\n\t\t\t\tupdateLOG(playerInfo, next);\n\t\t\t});\n\t\t});\n\t});\n\n\t//salva informações do usuário\n\tapp.post(\"/savePlayerInfo\", function (req, res, next) {\n\t\tvar playerInfo = req.body;\n\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\t\n\t\tplayerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\t\t\t\n\t\t\t//get URL do app e adiciona o redirecionamento\n\t\t\t//envia esse var para o cliente q faz o redirect\n\t\t\tvar redirectURL = \"http://\" + (req.get('host') + \"/gameExplanation\");\n\n\t\t\tres.send(redirectURL.toString());\n\t\t});\n\t\tconnection.end();\n\t});\n\n\t//envia o desafio correto para o usuario após a tela de explicação\n\tapp.post(\"/firstChallenge\", function (req, res, next) {\n\t\tvar playerInfo = req.body;\n\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\n\t\tplayerDAO.selectPlayerProgress(playerInfo.PlayerID, function (err, results) {\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\n\t\t\tvar redirectURL = \"http://\" + (req.get('host')) + \"/challenge/\" + (results[0].Progress);\n\n\t\t\tres.send(redirectURL);\n\t\t});\n\n\t});\n\n\t/* *******************************\n   *                             *\n   *        FUNCTIONS            *\n   *                             *\n   ******************************* */\n\n   //recebe informacoes do desafio atual e grava na tabela ChallengesLOG\n   function updateLOG(playerInfo, next) {\n\n   \t\tvar infoLOG = {FK_PlayerID: playerInfo.PlayerID,\n\t\t\tEarnedPoints: playerInfo.Points,\n\t\t\tGBProgess: (playerInfo.Progress - 1),\n\t\t\tElapsedTime: playerInfo.TotalElapsedTime,\n\t\t\tWrongAnswers: playerInfo.WrongAnswers}\n\t\t\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\t\t\n\n\t\tplayerDAO.updateLOG(infoLOG, function(err, results){\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\t\t\tconsole.log(\"LOG atualizado\");\n\t\t});\n\t\tconnection.end();\n   }\n\n\n\n\n\t/* *******************************\n   *                             *\n   *       SOCKET FUNCTIONS      *\n   *                             *\n   ******************************* */\n\n   var gameSocket;\n\n   function connectSocket() {\n\t\tapp.io.on('connection', function(socket){\n\t\t\tinitConnection(socket);\n\t\t});\n\t\tconsole.log(\"Engines On!!!\");\n   } \n\t\n\tfunction initConnection(socket){\n\n\t\tgameSocket = socket;\n\n\t\tgameSocket.emit('connected', {message: \"You are connected!\"});\n\n\t\tgameSocket.on('updatedGameBoard', updatedGameBoard);\n\n\t\tgameSocket.on('joinRoom', joinRoom);\n\n\t}\n\n\tfunction updatedGameBoard (roomID, next){\n\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\n\t\t// solicita json com localização dos players da sala no tabuleiro\t\n\t\tplayerDAO.updatedGameBoard(roomID, function(err, results){\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\t\t\tconsole.log(results);//correto\n\t\t\tapp.io.to(roomID).emit('updatedGameBoard', results);// não ta funcionando\n\t\t});\n\n\t\tconnection.end();\n\t\n\t}\n\n\tfunction joinRoom(playerID, next) {\n\t\t\n\t\tvar connection = app.infra.connectionFactory();\n\t\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\n\t\t//solicita a informacoes sobre o jogador que foram gravadas no banco\n\t\tplayerDAO.selectPlayerInfo(playerID, function(err, results){\n\t\t\tif(err){\n\t\t\t\treturn next(err);\n\t\t\t}\n\n\t\t\tplayer = results;\n\n\t\t\t//insere o jogador na sala\n\t\t\tgameSocket.join(player.RoomID);\n\n\t\t\tgameSocket.nickname = player.Name;\n\n\t\t\t//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU\n\t\t\tgameSocket.emit('joinDone', player);\n\n\t\t\t//this.emit('error',{message: \"This room does not exist.\"} );\n\n\t\t\tconsole.log((new Date).toLocaleTimeString() + \" \" + player[0].Name + \" entrou na sala \" + player[0].RoomID);\n\n\t\t\tconsole.log(gameSocket.adapter.rooms);\n\n\t\t\tupdatedGameBoard(player[0].RoomID);\n\t\t});\n\n\t\tconnection.end();\n\n\n\t}\n}\n\n/*\nmuiti salas:\npedir o ip ou o numero do jogador ou realmente a sala sempre q receber um recebe\num request\n\nidentificar qual o jogador e qual a sala do jogador e rotornar a informação\ncorreta para ele\n\n\n*/\n\n\n\n\t/*\n\tvar connection = app.infra.connectionFactory();\n\tvar playerDAO = new app.infra.PlayerDAO(connection);\n\n<!--> <script src=\"js/sketch.js\"></script> <!-->\n\n\t<!--> <script src=\"addons/p5.play.js\"></script> <!-->\n\n\t<!--> {padding: 0; margin: 0;} <!-->\n\n\t nsp.Namespace.adapter\n\n\tSocket {\n  nsp: \n   Namespace {\n\t name: '/',\n\t server: \n\t  Server {\n\t\tnsps: [Object],\n\t\t_path: '/socket.io',\n\t\t_serveClient: true,\n\t\tparser: [Object],\n\t\tencoder: Encoder {},\n\t\t_adapter: [Function: Adapter],\n\t\t_origins: '*:*',\n\t\tsockets: [Circular],\n\t\teio: [Object],\n\t\thttpServer: [Object],\n\t\tengine: [Object] },\n\t sockets: { 'xNN8zHSHk-xQY2ukAAAC': [Circular] },\n\t connected: { 'xNN8zHSHk-xQY2ukAAAC': [Circular] },\n\t fns: [],\n\t ids: 0,\n\t rooms: [],\n\t flags: {},\n\t adapter: \n\t  Adapter {\n\t\tnsp: [Circular],\n\t\trooms: [Object],\n\t\tsids: [Object],\n\t\tencoder: Encoder {} },\n\t _events: { connection: [Function] },\n\t _eventsCount: 1 },\n  server: \n   Server {\n\t nsps: { '/': [Object] },\n\t _path: '/socket.io',\n\t _serveClient: true,\n\t parser: \n\t  { protocol: 4,\n\t\ttypes: [Object],\n\t\tCONNECT: 0,\n\t\tDISCONNECT: 1,\n\t\tEVENT: 2,\n\t\tACK: 3,\n\t\tERROR: 4,\n\t\tBINARY_EVENT: 5,\n\t\tBINARY_ACK: 6,\n\t\tEncoder: [Function: Encoder],\n\t\tDecoder: [Function: Decoder] },\n\t encoder: Encoder {},\n\t _adapter: [Function: Adapter],\n\t _origins: '*:*',\n\t sockets: \n\t  Namespace {\n\t\tname: '/',\n\t\tserver: [Circular],\n\t\tsockets: [Object],\n\t\tconnected: [Object],\n\t\tfns: [],\n\t\tids: 0,\n\t\trooms: [],\n\t\tflags: {},\n\t\tadapter: [Object],\n\t\t_events: [Object],\n\t\t_eventsCount: 1 },\n\t eio: \n\t  Server {\n\t\tclients: [Object],\n\t\tclientsCount: 1,\n\t\twsEngine: 'uws',\n\t\tpingTimeout: 60000,\n\t\tpingInterval: 25000,\n\t\tupgradeTimeout: 10000,\n\t\tmaxHttpBufferSize: 100000000,\n\t\ttransports: [Object],\n\t\tallowUpgrades: true,\n\t\tallowRequest: [Function: bound ],\n\t\tcookie: 'io',\n\t\tcookiePath: '/',\n\t\tcookieHttpOnly: true,\n\t\tperMessageDeflate: [Object],\n\t\thttpCompression: [Object],\n\t\tinitialPacket: [Object],\n\t\tws: [Object],\n\t\t_events: [Object],\n\t\t_eventsCount: 1 },\n\t httpServer: \n\t  Server {\n\t\tdomain: null,\n\t\t_events: [Object],\n\t\t_eventsCount: 5,\n\t\t_maxListeners: undefined,\n\t\t_connections: 6,\n\t\t_handle: [Object],\n\t\t_usingSlaves: false,\n\t\t_slaves: [],\n\t\t_unref: false,\n\t\tallowHalfOpen: true,\n\t\tpauseOnConnect: false,\n\t\thttpAllowHalfOpen: false,\n\t\ttimeout: 120000,\n\t\t_pendingResponseData: 0,\n\t\t_connectionKey: '6::::3000' },\n\t engine: \n\t  Server {\n\t\tclients: [Object],\n\t\tclientsCount: 1,\n\t\twsEngine: 'uws',\n\t\tpingTimeout: 60000,\n\t\tpingInterval: 25000,\n\t\tupgradeTimeout: 10000,\n\t\tmaxHttpBufferSize: 100000000,\n\t\ttransports: [Object],\n\t\tallowUpgrades: true,\n\t\tallowRequest: [Function: bound ],\n\t\tcookie: 'io',\n\t\tcookiePath: '/',\n\t\tcookieHttpOnly: true,\n\t\tperMessageDeflate: [Object],\n\t\thttpCompression: [Object],\n\t\tinitialPacket: [Object],\n\t\tws: [Object],\n\t\t_events: [Object],\n\t\t_eventsCount: 1 } },\n  adapter: \n   Adapter {\n\t nsp: \n\t  Namespace {\n\t\tname: '/',\n\t\tserver: [Object],\n\t\tsockets: [Object],\n\t\tconnected: [Object],\n\t\tfns: [],\n\t\tids: 0,\n\t\trooms: [],\n\t\tflags: {},\n\t\tadapter: [Circular],\n\t\t_events: [Object],\n\t\t_eventsCount: 1 },\n\t rooms: { '1': [Object], 'xNN8zHSHk-xQY2ukAAAC': [Object] },\n\t sids: { 'xNN8zHSHk-xQY2ukAAAC': [Object] },\n\t encoder: Encoder {} },\n  id: 'xNN8zHSHk-xQY2ukAAAC',\n  client: \n   Client {\n\t server: \n\t  Server {\n\t\tnsps: [Object],\n\t\t_path: '/socket.io',\n\t\t_serveClient: true,\n\t\tparser: [Object],\n\t\tencoder: Encoder {},\n\t\t_adapter: [Function: Adapter],\n\t\t_origins: '*:*',\n\t\tsockets: [Object],\n\t\teio: [Object],\n\t\thttpServer: [Object],\n\t\tengine: [Object] },\n\t conn: \n\t  Socket {\n\t\tid: 'xNN8zHSHk-xQY2ukAAAC',\n\t\tserver: [Object],\n\t\tupgrading: true,\n\t\tupgraded: false,\n\t\treadyState: 'open',\n\t\twriteBuffer: [Object],\n\t\tpacketsFn: [],\n\t\tsentCallbackFn: [],\n\t\tcleanupFn: [Object],\n\t\trequest: [Object],\n\t\tremoteAddress: '::ffff:192.168.0.50',\n\t\tcheckIntervalTimer: null,\n\t\tupgradeTimeoutTimer: [Object],\n\t\tpingTimeoutTimer: [Object],\n\t\ttransport: [Object],\n\t\t_events: [Object],\n\t\t_eventsCount: 3 },\n\t encoder: Encoder {},\n\t decoder: Decoder { reconstructor: null, _callbacks: [Object] },\n\t id: 'xNN8zHSHk-xQY2ukAAAC',\n\t request: \n\t  IncomingMessage {\n\t\t_readableState: [Object],\n\t\treadable: false,\n\t\tdomain: null,\n\t\t_events: {},\n\t\t_eventsCount: 0,\n\t\t_maxListeners: undefined,\n\t\tsocket: [Object],\n\t\tconnection: [Object],\n\t\thttpVersionMajor: 1,\n\t\thttpVersionMinor: 1,\n\t\thttpVersion: '1.1',\n\t\tcomplete: true,\n\t\theaders: [Object],\n\t\trawHeaders: [Object],\n\t\ttrailers: {},\n\t\trawTrailers: [],\n\t\tupgrade: false,\n\t\turl: '/socket.io/?EIO=3&transport=polling&t=Lv9nWi2',\n\t\tmethod: 'GET',\n\t\tstatusCode: null,\n\t\tstatusMessage: null,\n\t\tclient: [Object],\n\t\t_consuming: true,\n\t\t_dumped: true,\n\t\t_query: [Object],\n\t\tres: [Object],\n\t\tcleanup: [Function: cleanup],\n\t\tread: [Function] },\n\t onclose: [Function: bound ],\n\t ondata: [Function: bound ],\n\t onerror: [Function: bound ],\n\t ondecoded: [Function: bound ],\n\t sockets: { 'xNN8zHSHk-xQY2ukAAAC': [Circular] },\n\t nsps: { '/': [Circular] },\n\t connectBuffer: [] },\n  conn: \n   Socket {\n\t id: 'xNN8zHSHk-xQY2ukAAAC',\n\t server: \n\t  Server {\n\t\tclients: [Object],\n\t\tclientsCount: 1,\n\t\twsEngine: 'uws',\n\t\tpingTimeout: 60000,\n\t\tpingInterval: 25000,\n\t\tupgradeTimeout: 10000,\n\t\tmaxHttpBufferSize: 100000000,\n\t\ttransports: [Object],\n\t\tallowUpgrades: true,\n\t\tallowRequest: [Function: bound ],\n\t\tcookie: 'io',\n\t\tcookiePath: '/',\n\t\tcookieHttpOnly: true,\n\t\tperMessageDeflate: [Object],\n\t\thttpCompression: [Object],\n\t\tinitialPacket: [Object],\n\t\tws: [Object],\n\t\t_events: [Object],\n\t\t_eventsCount: 1 },\n\t upgrading: true,\n\t upgraded: false,\n\t readyState: 'open',\n\t writeBuffer: [ [Object], [Object] ],\n\t packetsFn: [],\n\t sentCallbackFn: [],\n\t cleanupFn: [ [Function], [Function] ],\n\t request: \n\t  IncomingMessage {\n\t\t_readableState: [Object],\n\t\treadable: false,\n\t\tdomain: null,\n\t\t_events: {},\n\t\t_eventsCount: 0,\n\t\t_maxListeners: undefined,\n\t\tsocket: [Object],\n\t\tconnection: [Object],\n\t\thttpVersionMajor: 1,\n\t\thttpVersionMinor: 1,\n\t\thttpVersion: '1.1',\n\t\tcomplete: true,\n\t\theaders: [Object],\n\t\trawHeaders: [Object],\n\t\ttrailers: {},\n\t\trawTrailers: [],\n\t\tupgrade: false,\n\t\turl: '/socket.io/?EIO=3&transport=polling&t=Lv9nWi2',\n\t\tmethod: 'GET',\n\t\tstatusCode: null,\n\t\tstatusMessage: null,\n\t\tclient: [Object],\n\t\t_consuming: true,\n\t\t_dumped: true,\n\t\t_query: [Object],\n\t\tres: [Object],\n\t\tcleanup: [Function: cleanup],\n\t\tread: [Function] },\n\t remoteAddress: '::ffff:192.168.0.50',\n\t checkIntervalTimer: null,\n\t upgradeTimeoutTimer: \n\t  Timeout {\n\t\t_called: false,\n\t\t_idleTimeout: 10000,\n\t\t_idlePrev: [Object],\n\t\t_idleNext: [Object],\n\t\t_idleStart: 15752,\n\t\t_onTimeout: [Function],\n\t\t_timerArgs: undefined,\n\t\t_repeat: null },\n\t pingTimeoutTimer: \n\t  Timeout {\n\t\t_called: false,\n\t\t_idleTimeout: 85000,\n\t\t_idlePrev: [Object],\n\t\t_idleNext: [Object],\n\t\t_idleStart: 15778,\n\t\t_onTimeout: [Function],\n\t\t_timerArgs: undefined,\n\t\t_repeat: null },\n\t transport: \n\t  XHR {\n\t\treadyState: 'open',\n\t\tdiscarded: false,\n\t\tcloseTimeout: 30000,\n\t\tmaxHttpBufferSize: 100000000,\n\t\thttpCompression: [Object],\n\t\tsupportsBinary: true,\n\t\t_events: [Object],\n\t\t_eventsCount: 5,\n\t\tsid: 'xNN8zHSHk-xQY2ukAAAC',\n\t\treq: null,\n\t\tres: null,\n\t\twritable: false,\n\t\tdataReq: null,\n\t\tdataRes: null },\n\t _events: \n\t  { close: [Object],\n\t\tdata: [Function: bound ],\n\t\terror: [Function: bound ] },\n\t _eventsCount: 3 },\n  rooms: { 'xNN8zHSHk-xQY2ukAAAC': 'xNN8zHSHk-xQY2ukAAAC' },\n  acks: {},\n  connected: true,\n  disconnected: false,\n  handshake: \n   { headers: \n\t  { host: '192.168.0.50:3000',\n\t\tconnection: 'keep-alive',\n\t\taccept: '/*',\n\t\t'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/60.0.3112.113 Chrome/60.0.3112.113 Safari/537.36',\n\t\treferer: 'http://192.168.0.50:3000/challenge/2',\n\t\t'accept-encoding': 'gzip, deflate',\n\t\t'accept-language': 'pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4',\n\t\tcookie: 'io=1LIAR0sf--54vXBhAAAB' },\n\t time: 'Sun Sep 03 2017 19:04:29 GMT-0300 (BRT)',\n\t address: '::ffff:192.168.0.50',\n\t xdomain: false,\n\t secure: false,\n\t issued: 1504476269354,\n\t url: '/socket.io/?EIO=3&transport=polling&t=Lv9nWi2',\n\t query: { EIO: '3', transport: 'polling', t: 'Lv9nWi2' } },\n  fns: [],\n  flags: {},\n  _rooms: [],\n  _events: \n   { updatedGameBoard: [Function: updatedGameBoard],\n\t joinRoom: [Function: joinRoom] },\n  _eventsCount: 2 }\n\n*/",
 			"file": "app/routes/routes.js",
-			"file_size": 16316,
-			"file_write_time": 131502767305924630,
 			"settings":
 			{
-				"buffer_size": 16308,
+				"buffer_size": 16302,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -612,6 +598,14 @@
 			"settings":
 			{
 				"buffer_size": 8775,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/carlos/workspace/anagrammatix/index.js",
+			"settings":
+			{
+				"buffer_size": 1065,
 				"line_ending": "Unix"
 			}
 		}
@@ -672,28 +666,34 @@
 	},
 	"expanded_folders":
 	[
-		"/home/carlos/workspace/anagrammatix",
+		"/home/carlos/workspace/anagrammatix/public",
 		"/home/carlos/workspace/era-uma-vez",
 		"/home/carlos/workspace/era-uma-vez/app",
-		"/home/carlos/workspace/era-uma-vez/app/infra",
 		"/home/carlos/workspace/era-uma-vez/app/public",
-		"/home/carlos/workspace/era-uma-vez/app/public/css",
 		"/home/carlos/workspace/era-uma-vez/app/public/js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/home",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player",
+		"/home/carlos/workspace/era-uma-vez/app/routes",
 		"/home/carlos/workspace/era-uma-vez/app/views",
-		"/home/carlos/workspace/era-uma-vez/app/views/home",
-		"/home/carlos/workspace/era-uma-vez/app/views/player",
-		"/home/carlos/workspace/era-uma-vez/app/views/teacher",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges",
 		"/home/carlos/workspace/era-uma-vez/config"
 	],
 	"file_history":
 	[
+		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/5.ejs",
+		"/home/carlos/workspace/era-uma-vez/app.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge2.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/2.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/playerCreation.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/player/playerCreation.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/player/gameExplanation.js",
+		"/home/carlos/workspace/era-uma-vez/script.sql",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/drawGB.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/player/gameExplanation.ejs",
 		"/home/carlos/workspace/ALURA/curso-git/index.html",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/player/gameExplanation.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/player/help.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/views/teacher/teacherPanel.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/views/admin/about.ejs",
@@ -708,7 +708,6 @@
 		"/home/carlos/Downloads/image-picker-master/image-picker/image-picker.css",
 		"/home/carlos/workspace/era-uma-vez/app/views/gameBoard/gameBoard.ejs",
 		"/media/carlos/Arquivos/Carlos/@ONEDRIVE/TI/FileServer Migration/PS1/ad_user.ps1",
-		"/home/carlos/workspace/era-uma-vez/script.sql",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/scoreBoard.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/produtos/lista.ejs",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/home/index.ejs",
@@ -717,11 +716,9 @@
 		"/home/carlos/workspace/era-uma-vez/app/public/assets/ball_001.png",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/css/style.css",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
 		"/home/carlos/workspace/era-uma-vez/app/infra/SocketConnection.js",
 		"/home/carlos/workspace/era-uma-vez/app/infra/connectionFactory.js",
 		"/home/carlos/workspace/era-uma-vez/config/express.js",
-		"/home/carlos/workspace/era-uma-vez/app.js",
 		"/home/carlos/workspace/era-uma-vez/app/routes/home.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/infra/ProdutosDAO.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/infra/connectionFactory.js",
@@ -812,12 +809,7 @@
 		"/home/carlos/workspace/ruby-de-baunilha-arrays1/lib/arrays.rb",
 		"/home/carlos/workspace/code_vita/Calculate Salary and PF/SalaryPF.rb",
 		"/home/carlos/workspace/code_vita/SetMembership.rb",
-		"/home/carlos/workspace/primeiros_testes/spec/customer_spec.rb",
-		"/home/carlos/workspace/html_3_saindo_do_preto_e_branco/challenge.html",
-		"/home/carlos/workspace/html_2_mais_tags/challenge.html",
-		"/home/carlos/workspace/html_1_primeira_pagina/challenge.html",
-		"/home/carlos/workspace/ruby-intermediario-parte3/spec/conta_spec.rb",
-		"/home/carlos/workspace/ruby-intermediario-parte3/spec/conta_poupanca_spec.rb"
+		"/home/carlos/workspace/primeiros_testes/spec/customer_spec.rb"
 	],
 	"find":
 	{
@@ -835,6 +827,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"js",
 			"implementar",
 			"TotalElapsedTime",
 			"\t\t\t\n",
@@ -879,63 +872,118 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/player/playerCreation.ejs",
+					"file": "app/views/challenges/1.ejs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1693,
+						"buffer_size": 3206,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1418,
-								1418
+								538,
+								538
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"open_with_edit": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 17.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/public/js/player/playerCreation.js",
+					"file": "app/public/js/blockly/testBlockly.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2216,
+						"buffer_size": 1082,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1840,
-								1840
+								192,
+								192
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"open_with_edit": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/carlos/Downloads/workspace.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/carlos/Downloads/toolbox.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 199,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -945,93 +993,32 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/public/js/player/gameExplanation.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1084,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1084,
-								1084
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/challenges/1.ejs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1602,
-								1602
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "app/views/challenges/2.ejs",
+					"file": "/home/carlos/Downloads/workspace.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1770,
+						"buffer_size": 981,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1740,
-								1740
+								981,
+								981
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1058,56 +1045,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 585.0,
+						"translation.y": 545.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "app/public/js/challenges/challenge2.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								983,
-								983
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 230.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "app/routes/routes.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16308,
+						"buffer_size": 16302,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6607,
-								6607
+								2374,
+								2374
 							]
 						],
 						"settings":
@@ -1117,14 +1075,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4185.0,
+						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "app/infra/PlayerDAO.js",
 					"semi_transient": false,
 					"settings":
@@ -1150,11 +1108,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
 					"semi_transient": false,
 					"settings":
@@ -1176,15 +1134,15 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 360.0,
+						"translation.x": 0.0,
+						"translation.y": 321.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "/home/carlos/workspace/anagrammatix/agxgame.js",
 					"semi_transient": false,
 					"settings":
@@ -1207,10 +1165,38 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1350.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/home/carlos/workspace/anagrammatix/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1036,
+								1036
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

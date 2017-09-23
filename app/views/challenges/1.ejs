@@ -4,17 +4,29 @@
 
 	<title>EUV - Desafio 1</title>
 
-	<script src="/addons/p5.js"></script>
+	<!-- p5 libraries -->
 
-	<script src="/addons/p5.dom.js"></script>
+	<script src="/addons/p5/p5.js"></script>
 
-	<script src="/addons/p5.sound.js"></script> 
+	<script src="/addons/p5/p5.dom.js"></script>
 
-	<script src="/addons/p5.play.js"></script>   
+	<script src="/addons/p5/p5.sound.js"></script> 
+
+	<script src="/addons/p5/p5.play.js"></script>	
+
+	<script src="/js/sketch.js"></script>
+
+	<!-- blockly libraries -->
+
+	<script src="/addons/blockly/blockly_compressed.js"></script>	
+
+	<script src="/addons/blockly/msg/js/en.js"></script>
+
+	<!-- socket libraries -->
 
 	<script src="/socket.io/socket.io.js"></script>
 
-	<!-- <script src="js/sketch.js"></script> --> 
+	<!-- CSS -->
 
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 
@@ -26,8 +38,10 @@
 
 	<p>teste</p>
 
+	<!-- creating gameboard on screen -->
 	<canvas id="myCanvas" width="1200" height="50"> </canvas>
 
+	<!-- creating scoreboard on screen -->
 	<table>
 		<thead>
 			<tr>
@@ -62,10 +76,26 @@
 
 	<button id="atualiza-tabuleiro" class="botao bto-principal">Atualizar Tabuleiro</button>
 
+	<!-- crating workspace of blockly -->
+
+	<div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+	<!-- XML com os blocos que estarao disponiveis -->
+
+	<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+		<block type="avancar"></block>
+		<block type="vire">
+			<field name="defineDirecao">direita</field>
+		</block>
+	</xml>
+
 	<script src="/js/scoreBoard.js"></script>
 
 	<script src="/js/drawGB.js"></script>
 
 	<script src="/js/challenges/challenge1.js"></script>
+
+	<script src="/js/blockly/blocksChallenge1.js"></script>
+
 </body>
 </html>

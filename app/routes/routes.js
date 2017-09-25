@@ -1,5 +1,4 @@
-module.exports = function (app){	
-		
+module.exports = function (app){		
 
 	/*var player = { PlayerID: 3,
 					Name: "Carlos",
@@ -31,7 +30,7 @@ module.exports = function (app){
 	//carrega video com o explicação do jogo	
 	app.get("/gameExplanation", function (req, res){
 
-		//connectSocket();
+		connectSocket();
 
 		res.render("player/gameExplanation");
 

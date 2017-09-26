@@ -20,7 +20,7 @@ function setup() {
 	createCanvas(400, 400);
 
 	//deixa o jogo mais devagar
-	frameRate(10);
+	frameRate(1);
 
 	//paredes  	
 	wallTop = createSprite(width/2, -WALL_THICKNESS/2, width+WALL_THICKNESS*2, WALL_THICKNESS);
@@ -108,6 +108,8 @@ function setDirection(direction) {
 	}
 }
 
+
+var test = "setNewPosition();\n setDirection(LEFT);\n setNewPosition();\n setDirection(RIGHT);\n setNewPosition();"
 
 
 

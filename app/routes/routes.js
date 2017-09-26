@@ -73,10 +73,18 @@ module.exports = function (app){
 		connection.end();
 	});
 
+	//sala de espera para os jogadores que ja concluiram o jogo
 	app.get("/waitingRoom", function (req, res){
 		//renderiza ejs
 		res.render("player/waitingRoom");
 
+	});
+
+	//mostra o jogadores em um podia conforme a pontuação do maior para o menor
+	app.get("/winnersPodium", function (req, res) {		
+
+		res.render("player/winnersPodium");		
+		
 	});
 
 	app.get("/deviceNotSupported", function (req, res) {
@@ -100,7 +108,7 @@ module.exports = function (app){
 
 		//connectSocket();
 
-		res.render("challenges/2", {playerInfo: playerInfo});
+		res.render("challenges/2");
 
 	});
 
@@ -109,7 +117,7 @@ module.exports = function (app){
 
 		//connectSocket();
 
-		res.render("challenges/3", {playerInfo: playerInfo});
+		res.render("challenges/3");
 
 	});
 
@@ -118,7 +126,7 @@ module.exports = function (app){
 
 		//connectSocket();
 
-		res.render("challenges/4", {playerInfo: playerInfo});
+		res.render("challenges/4");
 
 	});
 
@@ -227,6 +235,25 @@ module.exports = function (app){
 			res.send(redirectURL);
 		});
 
+	});
+
+	app.post("/winnersPodium", function (req, res, next) {
+
+		var sessionInfo = req.body;
+		
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+
+		playerDAO.selectWinners(sessionInfo.RoomID,function (err, results) {
+
+			if(err){
+				return next(err);
+			}
+
+			res.send(results);
+		});
+
+		connection.end();
 	});
 
 	/* *******************************
@@ -339,20 +366,13 @@ module.exports = function (app){
 	}
 }
 
+
+
+
+
 /*
-muiti salas:
-pedir o ip ou o numero do jogador ou realmente a sala sempre q receber um recebe
-um request
 
-identificar qual o jogador e qual a sala do jogador e rotornar a informação
-correta para ele
-
-
-*/
-
-
-
-	/*
+	
 	var connection = app.infra.connectionFactory();
 	var playerDAO = new app.infra.PlayerDAO(connection);
 

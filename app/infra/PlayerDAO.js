@@ -3,8 +3,8 @@ function PlayerDAO(connection){
 }
 
 //funcao ok
-PlayerDAO.prototype.updatedGameBoard = function(roomID, callback) {
-	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar FROM Players WHERE RoomID = ? ORDER BY PlayerID', roomID, callback);
+PlayerDAO.prototype.updatedGameBoard = function(RoomID, callback) {
+	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar FROM Players WHERE RoomID = ? ORDER BY PlayerID', RoomID, callback);
 }
 
 PlayerDAO.prototype.updatePlayerRoomIDAndAvatar = function(player, callback){
@@ -33,6 +33,10 @@ PlayerDAO.prototype.selectPlayerProgress = function (playerID, callback) {
 //funcao ok
 PlayerDAO.prototype.listAllPlayers = function(callback){
 	this._connection.query('SELECT * FROM Players', callback);
+}
+
+PlayerDAO.prototype.selectWinners = function (RoomID , callback) {
+	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar, TotalElapsedTime FROM Players WHERE RoomID = ? ORDER BY Points DESC', [RoomID], callback);
 }
 
 PlayerDAO.prototype.updateLOG = function(infoLOG, callback){

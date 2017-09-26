@@ -4,7 +4,7 @@ CREATE TABLE Players (
 	RA varchar(15),
 	Avatar varchar(20),
 	School varchar(30),
-	Progress TINYINT DEFAULT '0',
+	Progress TINYINT DEFAULT '1',
 	Points INT DEFAULT '0',
 	RoomID varchar(5),
 	TotalElapsedTime FLOAT(10,2) DEFAULT '0.00',
@@ -22,10 +22,6 @@ CREATE TABLE ChallengesLOG (
 	FOREIGN KEY (FK_PlayerID) REFERENCES Players(PlayerID)
 );
 
-UPDATE Players SET Progress = 10, Points = 100 WHERE PlayerID = 1;
-
-INSERT INTO ChallengesLOG (FK_PlayerID, EarnedPoints, GBProgress, ElapsedTime, WrongAnswers) VALUES ();
-
 INSERT INTO Players (Name, RA, School) VALUES ('Carlos', '20422328', 'Anhembi');
 
 INSERT INTO Players (Name, RA, School) VALUES ('Esdras', '20478859', 'Anhembi');
@@ -41,3 +37,9 @@ INSERT INTO Players (Name, RA, School) VALUES ('Bruno', '27858859', 'USP');
 INSERT INTO Players (Name, RA, School) VALUES ('Romario Viana', '20478859', 'ITA');
 
 INSERT INTO Players (Name, RA, School) VALUES ('Ana', '20778859', 'Anhembi');
+
+**********************************************************************************************************
+
+UPDATE Players SET Progress = 10, Points = 100 WHERE PlayerID = 1;
+
+INSERT INTO ChallengesLOG (FK_PlayerID, EarnedPoints, GBProgress, ElapsedTime, WrongAnswers) VALUES ();

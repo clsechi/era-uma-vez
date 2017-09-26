@@ -1,4 +1,4 @@
-
+		
 //propriedades dos blocos que serão utilizados na fase
 Blockly.Blocks['avancar'] = {
 	init: function() {

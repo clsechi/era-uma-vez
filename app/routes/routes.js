@@ -139,8 +139,6 @@ module.exports = function (app){
 
 	});
 
-
-
 	/* *******************************
    *                             *
    *       POST FUNCTIONS        *
@@ -283,9 +281,6 @@ module.exports = function (app){
 		connection.end();
    }
 
-
-
-
 	/* *******************************
    *                             *
    *       SOCKET FUNCTIONS      *
@@ -367,23 +362,14 @@ module.exports = function (app){
 }
 
 
-
+	/* *******************************
+   *                             *
+   *       GARBAGE               *
+   *                             *
+   ******************************* */
 
 
 /*
-
-	
-	var connection = app.infra.connectionFactory();
-	var playerDAO = new app.infra.PlayerDAO(connection);
-
-<!--> <script src="js/sketch.js"></script> <!-->
-
-	<!--> <script src="addons/p5.play.js"></script> <!-->
-
-	<!--> {padding: 0; margin: 0;} <!-->
-
-	 nsp.Namespace.adapter
-
 	Socket {
   nsp: 
    Namespace {

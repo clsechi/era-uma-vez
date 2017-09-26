@@ -3,7 +3,7 @@ var button = document.querySelector("#atualiza-tabuleiro");
 
 var playerInfo = {};
 
-var mainURL = readCookie("url");
+var mainURL = readCookie("url"); //change to location.origin ??
 
 //botao
 button.addEventListener("click", function (event){

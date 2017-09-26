@@ -528,7 +528,7 @@
 			"file": "app/public/js/sketch.js",
 			"settings":
 			{
-				"buffer_size": 3058,
+				"buffer_size": 3174,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -537,7 +537,7 @@
 			"file": "app/public/js/blockly/blocksChallenge1.js",
 			"settings":
 			{
-				"buffer_size": 2269,
+				"buffer_size": 2397,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -555,42 +555,8 @@
 			"file": "app/routes/routes.js",
 			"settings":
 			{
-				"buffer_size": 16298,
+				"buffer_size": 16514,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/infra/PlayerDAO.js",
-			"settings":
-			{
-				"buffer_size": 1777,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
-			"settings":
-			{
-				"buffer_size": 1764,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/carlos/workspace/anagrammatix/agxgame.js",
-			"settings":
-			{
-				"buffer_size": 8775,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/carlos/workspace/anagrammatix/index.js",
-			"settings":
-			{
-				"buffer_size": 1065,
 				"line_ending": "Unix"
 			}
 		}
@@ -654,20 +620,21 @@
 		"/home/carlos/workspace/era-uma-vez",
 		"/home/carlos/workspace/era-uma-vez/app",
 		"/home/carlos/workspace/era-uma-vez/app/public",
-		"/home/carlos/workspace/era-uma-vez/app/public/addons",
-		"/home/carlos/workspace/era-uma-vez/app/public/addons/p5",
 		"/home/carlos/workspace/era-uma-vez/app/public/js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/home",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player",
 		"/home/carlos/workspace/era-uma-vez/app/routes",
 		"/home/carlos/workspace/era-uma-vez/app/views",
 		"/home/carlos/workspace/era-uma-vez/app/views/challenges",
-		"/home/carlos/workspace/era-uma-vez/app/views/home",
 		"/home/carlos/workspace/era-uma-vez/config"
 	],
 	"file_history":
 	[
+		"/home/carlos/workspace/CODE SAGA/ruby-de-baunilha-arrays1/lib/arrays.rb",
+		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
+		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
+		"/home/carlos/workspace/anagrammatix/index.js",
+		"/home/carlos/workspace/anagrammatix/agxgame.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/addons/blockly/javascript_compressed.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/home/index.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/addons/blockly/build.py",
@@ -698,7 +665,6 @@
 		"/home/carlos/workspace/era-uma-vez/app/public/js/home/home.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/err/deviceNotSupported.ejs",
 		"/home/carlos/workspace/anagrammatix/public/app.js",
-		"/home/carlos/workspace/anagrammatix/agxgame.js",
 		"/home/carlos/Downloads/image-picker-master/image-picker/image-picker.js",
 		"/home/carlos/Downloads/image-picker-master/image-picker/image-picker.css",
 		"/home/carlos/workspace/era-uma-vez/app/views/gameBoard/gameBoard.ejs",
@@ -707,7 +673,6 @@
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/produtos/lista.ejs",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/home/index.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/drawGBTest.js",
-		"/home/carlos/workspace/anagrammatix/index.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/assets/ball_001.png",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/css/style.css",
@@ -719,7 +684,6 @@
 		"/home/carlos/workspace/ALURA/casadocodigo/app/infra/connectionFactory.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/config/express.js",
-		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
 		"/home/carlos/workspace/era-uma-vez/app/routes/SocketConnection.js",
 		"/home/carlos/workspace/socket.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/ioApplication.js",
@@ -732,7 +696,6 @@
 		"/home/carlos/workspace/ALURA/casadocodigo/script.sql",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/erros/404.ejs",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/erros/500.ejs",
-		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/promocoes.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/views/promocoes/form.ejs",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/home.js",
@@ -794,12 +757,11 @@
 		"/home/carlos/workspace/SPOJ/test.rb",
 		"/home/carlos/workspace/SPOJ/prime1.rb",
 		"/home/carlos/workspace/codechef/cielab.rb",
-		"/home/carlos/workspace/codechef/cleanup.rb",
-		"/media/carlos/Home/Dropbox/Eng. de Computação/8º Semestre/Princípios da Pesquisa Operacional/Rede Social/rede_social.java"
+		"/home/carlos/workspace/codechef/cleanup.rb"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -859,7 +821,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -889,7 +851,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -898,7 +860,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3058,
+						"buffer_size": 3174,
 						"regions":
 						{
 						},
@@ -920,7 +882,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -929,15 +891,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2269,
+						"buffer_size": 2397,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1894,
-								1894
+								1854,
+								1854
 							]
 						],
 						"settings":
@@ -948,10 +910,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 540.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -981,7 +943,7 @@
 						"translation.y": 545.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -990,15 +952,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16298,
+						"buffer_size": 16514,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								604,
-								604
+								159,
+								159
 							]
 						],
 						"settings":
@@ -1011,125 +973,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/infra/PlayerDAO.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1777,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1316,
-								1316
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1211,
-								1211
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 321.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/home/carlos/workspace/anagrammatix/agxgame.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8775,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3693,
-								3693
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/home/carlos/workspace/anagrammatix/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1065,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1036,
-								1036
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1137,7 +981,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1174,7 +1018,7 @@
 	"project": "eraumavez.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

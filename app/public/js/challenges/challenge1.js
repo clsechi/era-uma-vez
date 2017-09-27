@@ -1,9 +1,9 @@
 
 var button = document.querySelector("#atualiza-tabuleiro");
 
-var playerInfo = {};
+var btnRun = document.getElementById('executa-blocos');
 
-var mainURL = readCookie("url"); //change to location.origin ??
+var playerInfo = {};
 
 //botao
 button.addEventListener("click", function (event){
@@ -11,6 +11,11 @@ button.addEventListener("click", function (event){
 postPlayerInfo();	
 
 });
+
+btnRun.addEventListener("click", function (event) {
+	
+	console.log("clicado");
+})
 
 function setElapsedTime(time) {
 	playerInfo.ElapsedTime = time;
@@ -22,7 +27,7 @@ function postPlayerInfo() {
 
 	playerInfo.ElapsedTime = 0;
 
-	var url = mainURL + "nextChallenge";
+	var url = location.origin + "/nextChallenge";
 
 	dados.open("POST" , url);
 

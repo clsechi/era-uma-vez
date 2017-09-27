@@ -12,6 +12,12 @@ Blockly.Blocks['avancar'] = {
 	}
 };
 
+Blockly.JavaScript['avancar'] = function(block) {
+	// TODO: Assemble JavaScript into code variable.
+	var code = 'console.log("avançando");\n';
+	return code;
+};
+
 Blockly.Blocks['vire'] = {
 	init: function() {
 		this.appendDummyInput()
@@ -23,6 +29,13 @@ Blockly.Blocks['vire'] = {
  this.setTooltip("");
  this.setHelpUrl("");
 	}
+};
+
+Blockly.JavaScript['vire'] = function(block) {
+	var dropdown_definedirecao = block.getFieldValue('defineDirecao');
+	// TODO: Assemble JavaScript into code variable.
+	var code = 'console.log (' + dropdown_definedirecao + ');\n';
+	return code;
 };
 
 // cria a toolbox com o blocos definidos acima e no XML inserido no HTML
@@ -63,22 +76,12 @@ var workspace = Blockly.inject(blocklyDiv, options);
 //colocar esse codigo dentro de uma funcao
 //chamar ela pelo evento de click no botao de executar
 
+/*
 function runBlocks() {
-	
 
 
-Blockly.JavaScript['avancar'] = function(block) {
-	// TODO: Assemble JavaScript into code variable.
-	var code = 'console.log("avançando");\n';
-	return code;
-};
 
-Blockly.JavaScript['vire'] = function(block) {
-	var dropdown_definedirecao = block.getFieldValue('defineDirecao');
-	// TODO: Assemble JavaScript into code variable.
-	var code = 'console.log (' + dropdown_definedirecao + ');\n';
-	return code;
-};
+
 
 try {
   eval(code);
@@ -86,7 +89,7 @@ try {
   alert(e);
 }
 
-}
+}*/
 
 
 

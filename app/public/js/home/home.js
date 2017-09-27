@@ -1,8 +1,3 @@
-//define a url principal para ser usada no POSTs
-var url = window.location.href;
-document.cookie = ("url=" + url);
-
-console.log(document.cookie);
 
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -25,8 +20,8 @@ var btnStart = document.getElementById("start");
 
 btnStart.addEventListener("click", function (event){
 	if (window.mobileAndTabletcheck()){		
-		window.location.assign(url + "deviceNotSupported");
+		window.location.assign(location.origin + "/deviceNotSupported");
 	} else{    
-		window.location.assign(url + "playerCreation");
+		window.location.assign(location.origin + "/playerCreation");
 	}
 });

@@ -1,17 +1,12 @@
-
 //envia a sala para o servidor e recebe um json com todos os jogadores
 //com nome, pontos, tempo usado e avatar
 function getWinners() {
-
-	var mainURL = readCookie("url");
 	
-	var sessionInfo = {RoomID: "sala1"} //mudar para ler do cookie
+	var sessionInfo = {RoomID: readCookie("RoomID")};
 
 	var dados = new XMLHttpRequest();
 
-	if(mainURL){// adicioanar tratamento de erros
-		var url = mainURL + "winnersPodium";
-	}
+	var url = location.origin + "/winnersPodium";
 
 	dados.open("POST" , url, true);
 

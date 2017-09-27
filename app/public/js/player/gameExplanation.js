@@ -1,7 +1,5 @@
 var button = document.getElementById("avancar");
 
-var mainURL = readCookie("url");
-
 button.addEventListener("click", function (event){
 	//request pro banco para ver o proximo desafio correto
 	firstChallenge();
@@ -10,14 +8,12 @@ button.addEventListener("click", function (event){
 //redireciona para o desafio correto caso o jogador esteja continuando o jogo
 function firstChallenge() {
 
-	var playerInfo = { PlayerID: readCookie("PlayerID") };
+	var playerInfo = {PlayerID: readCookie("PlayerID")};
 
 	var dados = new XMLHttpRequest();
 
-	if(mainURL){// adicioanar tratamento de erros
-		var url = mainURL + "firstChallenge";
-	}
-
+	var url = location.origin + "/firstChallenge";
+	
 	dados.open("POST", url, true);
 
 	dados.setRequestHeader("Content-Type", "application/json");

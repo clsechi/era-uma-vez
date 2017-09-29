@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>EUV - Painel do Professor</title>
-</head>
-<body>
-<p>Painel do Professor</p>
+	<head>
+		<meta charset="UTF-8">
+		<title>EUV - Painel do Professor</title>
 
-</body>
+		<style type="text/css">
+			table{
+				width: 100%;
+				margin-bottom : .5em;
+			    table-layout: fixed;
+
+			}
+
+			td, th {
+				padding: .7em;
+				margin: 0;
+				border: 1px solid #ccc;
+				text-align: center;
+			}
+
+			th{
+				font-weight: bold;
+				background-color: #EEE;
+			}
+			label{
+				color: #555;
+				display: block;
+				margin-bottom: .2em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Painel do Professor</h1>
+		<h2>Sala 1</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Posição</th>
+					<th>Tempo Utilizado</th>
+					<th>Pontos</th>
+				</tr>
+			</thead>			
+			<tbody id="tabela-jogadores">
+				<tr class="jogadores">					
+					<td class="info-nome">NOME</td>
+					<td class="info-posicao">POSIÇÃO</td>
+					<td class="info-tempo">TEMPO</td>
+					<td class="info-pontos">Pontos</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>Sala 2</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Posição</th>
+					<th>Tempo Utilizado</th>
+					<th>Pontos</th>
+				</tr>
+			</thead>			
+			<tbody id="tabela-jogadores">
+				<tr class="jogadores">					
+					<td class="info-nome">NOME</td>
+					<td class="info-posicao">POSIÇÃO</td>
+					<td class="info-tempo">TEMPO</td>
+					<td class="info-pontos">Pontos</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="basicUsage">00:00:00</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- biblioteca que exibe o tempo na tela -->
+
+		<script src="/addons/easytimer.js"></script>
+
+		<script type="text/javascript">
+			//usar um array para cada sala
+			var timer = new Timer();
+			timer.start();
+			timer.addEventListener('secondsUpdated', function (e) {
+			    $('#basicUsage').html(timer.getTimeValues().toString());
+			});
+			
+		</script>
+
+	</body>
 </html>

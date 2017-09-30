@@ -4,16 +4,64 @@
 		"selected_items":
 		[
 			[
+				"bor",
+				"border-collapse"
+			],
+			[
+				"select",
+				"selectPlayerInfo"
+			],
+			[
+				"teac",
+				"teacherPanel.js"
+			],
+			[
+				"upda",
+				"updateSala2"
+			],
+			[
+				"pla",
+				"playersSala2"
+			],
+			[
+				"tiemr",
+				"timerSala5"
+			],
+			[
+				"timer",
+				"timerSala4"
+			],
+			[
+				"time",
+				"timerSala3"
+			],
+			[
+				"play",
+				"playersSala1"
+			],
+			[
+				"text",
+				"textContent"
+			],
+			[
+				"info",
+				"info-tempo"
+			],
+			[
+				"q",
+				"querySelector"
+			],
+			[
+				"que",
+				"querySelectorAll"
+			],
+			[
 				"in",
 				"info-tempo"
 			],
 			[
 				"get",
 				"getTimeValues"
-			],
-			[
-				"pla",
-				"playerX〔variable〕"
 			],
 			[
 				"pl",
@@ -46,10 +94,6 @@
 			[
 				"P",
 				"PlayerDAO"
-			],
-			[
-				"info",
-				"infoLOG"
 			],
 			[
 				"w",
@@ -154,10 +198,6 @@
 			[
 				"consol",
 				"console.log"
-			],
-			[
-				"upda",
-				"updateScoreBoard〔function〕"
 			],
 			[
 				"t",
@@ -396,10 +436,6 @@
 				"for\tfor (…) {…}"
 			],
 			[
-				"play",
-				"playerY"
-			],
-			[
 				"pre",
 				"precoProd"
 			],
@@ -478,65 +514,11 @@
 			[
 				"di",
 				"divisiveis"
-			],
-			[
-				"com",
-				"compara"
-			],
-			[
-				"ta",
-				"tabuada"
-			],
-			[
-				"ar",
-				"array2"
-			],
-			[
-				"mul",
-				"multiplo"
-			],
-			[
-				"multi",
-				"multiplos"
-			],
-			[
-				"Ar",
-				"ArrayUtils"
-			],
-			[
-				"mi",
-				"multiplo"
-			],
-			[
-				"ca",
-				"Calculadora"
-			],
-			[
-				"sub",
-				"subtracao"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "app/routes/routes.js",
-			"settings":
-			{
-				"buffer_size": 16514,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/teacher/teacherPanel.ejs",
-			"settings":
-			{
-				"buffer_size": 1869,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -596,28 +578,20 @@
 	[
 		"/home/carlos/workspace/era-uma-vez",
 		"/home/carlos/workspace/era-uma-vez/app",
-		"/home/carlos/workspace/era-uma-vez/app/public",
-		"/home/carlos/workspace/era-uma-vez/app/public/addons",
-		"/home/carlos/workspace/era-uma-vez/app/public/js",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/player",
-		"/home/carlos/workspace/era-uma-vez/app/routes",
-		"/home/carlos/workspace/era-uma-vez/app/views",
-		"/home/carlos/workspace/era-uma-vez/app/views/admin",
-		"/home/carlos/workspace/era-uma-vez/app/views/player",
-		"/home/carlos/workspace/era-uma-vez/app/views/teacher",
-		"/home/carlos/workspace/era-uma-vez/config",
-		"/home/carlos/workspace/ALURA/introducao-javascript",
-		"/home/carlos/workspace/ALURA/introducao-javascript/css",
-		"/home/carlos/workspace/ALURA/introducao-javascript/js"
+		"/home/carlos/workspace/era-uma-vez/app/routes"
 	],
 	"file_history":
 	[
 		"/home/carlos/workspace/era-uma-vez/app/views/player/gameExplanation.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/challenges/1.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/views/player/waitingRoom.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/routes/routes.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge1.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/teacher/teacherPanel.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/teacherPanel.css",
+		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/teacher/teacherPanel.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/waitingRoom.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly/blocksChallenge1.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player/winnersPodium.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player/playerCreation.js",
@@ -625,7 +599,6 @@
 		"/home/carlos/workspace/era-uma-vez/app/public/js/home/home.js",
 		"/home/carlos/workspace/CODE SAGA/ruby-de-baunilha-arrays1/lib/arrays.rb",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
-		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
 		"/home/carlos/workspace/anagrammatix/index.js",
 		"/home/carlos/workspace/anagrammatix/agxgame.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/addons/blockly/javascript_compressed.js",
@@ -647,7 +620,6 @@
 		"/home/carlos/workspace/era-uma-vez/app/public/js/drawGB.js",
 		"/home/carlos/workspace/ALURA/curso-git/index.html",
 		"/home/carlos/workspace/era-uma-vez/app/views/player/help.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/views/teacher/teacherPanel.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/views/admin/about.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenge2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenge1.js",
@@ -737,14 +709,11 @@
 		"/home/carlos/workspace/CAPPTA/ola.go",
 		"/home/carlos/NetBeansProjects/ServidorTabuleiro/src/servidortabuleiro/Resposta.java",
 		"/home/carlos/NetBeansProjects/SistemaDeArquivos/src/sistemadearquivos/Conexao.java",
-		"/home/carlos/NetBeansProjects/ServidorTabuleiro/src/servidortabuleiro/Requisicao.java",
-		"/home/carlos/android-studio/bin/studio.sh",
-		"/home/carlos/workspace/ruby-intermediario-parte3/lib/conta.rb",
-		"/home/carlos/workspace/code_vita/Set Membership/SetMembership.rb"
+		"/home/carlos/NetBeansProjects/ServidorTabuleiro/src/servidortabuleiro/Requisicao.java"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -758,6 +727,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"backg",
+			");\n",
+			"updatedGame",
+			"Sala4",
+			"Sala2",
+			"sala2",
+			"Sala1",
+			"sala",
+			"sala1",
+			"playersSala1",
 			">\n",
 			"test",
 			"js",
@@ -792,11 +771,20 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Sala5",
+			"Sala4",
+			"Sala3",
+			"sala3",
+			"Sala2",
+			"Sala",
+			"sala5",
+			"sala4",
+			"sala3",
 			"/assets",
 			"player",
 			"compras"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -805,68 +793,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/routes/routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16514,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1505,
-								1505
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/teacher/teacherPanel.ejs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1869,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1089,
-								1089
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -909,7 +837,7 @@
 	"project": "eraumavez.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 69.0
 	},
 	"save_all_on_build": true,
 	"select_file":

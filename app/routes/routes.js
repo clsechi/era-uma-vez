@@ -179,14 +179,23 @@ module.exports = function (app){
 
 				//mudar conforme numero total de casas do tabuleiro
 				//redireciona para a view correta conforme o progresso do jogador
-				if(playerInfo.Progress <= 15){
+				if(playerInfo.Progress <= 5){
 					var redirectURL = "http://" + (req.get('host') + "/challenge/" + (playerInfo.Progress));
 
 					res.send(redirectURL);
 				} else {
-					var redirectURL = "http://" + (req.get('host') + "/waitingRoom");
-
-					res.send(redirectURL);
+					//se todos os jogadores ja completaram redireciona para o pódio
+					//se não, redireciona para a tela de espera
+					checkRoomProgress(playerInfo.RoomID, function (roomProgress) {
+						if (roomProgress){
+							var redirectURL = "http://" + (req.get('host') + "/winnersPodium");
+							//envia socket para o outros jogadores da sala com o a url de redirect
+							redirectWinnersPodium(playerInfo.RoomID, redirectURL);
+						} else {
+							var redirectURL = "http://" + (req.get('host') + "/waitingRoom");
+						}
+						res.send(redirectURL);
+					});					
 				}
 
 				connection.end();
@@ -195,7 +204,7 @@ module.exports = function (app){
 				updateLOG(playerInfo, next);
 
 				//atualiza painel do professor
-				updatedPlayersInfo(playerInfo.RoomID);
+				updatedPlayersInfo(playerInfo.RoomID, next);
 			});
 		});
 	});
@@ -284,6 +293,27 @@ module.exports = function (app){
 		});
 		connection.end();
    }
+   //verifica se os jogadores da sala ja completaram todos os desafios
+   function checkRoomProgress(roomID, callback) {
+
+   		var answer = false
+
+   		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);		
+
+		playerDAO.selectPlayerInfoByRoom(roomID, function(err, results){
+			if(err){
+				return next(err);
+			}			
+			for (var i = 0; i < results.length; i++) {
+				if (results[i].Progress == 5){
+					answer = true;
+				}				
+			}
+			callback(answer);
+		});
+		connection.end();
+   }
 
 	/* *******************************
    *                             *
@@ -328,6 +358,12 @@ module.exports = function (app){
 		});
 	}
 
+	//implementar no cliente na view 2048
+	function redirectWinnersPodium(roomID, redirectURL) {
+		
+		app.io.to(roomID).emit('redirectWinnersPodium', redirectURL);
+	}
+
 	function updatedGameBoard (roomID, next){
 
 		var connection = app.infra.connectionFactory();
@@ -338,8 +374,6 @@ module.exports = function (app){
 			if(err){
 				return next(err);
 			}
-			console.log(results);//correto
-			console.log(roomID);
 			app.io.to(roomID).emit('updatedGameBoard', results);
 		});
 
@@ -367,8 +401,6 @@ module.exports = function (app){
 
 			//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
 			gameSocket.emit('joinDone', player);
-
-			//this.emit('error',{message: "This room does not exist."} );
 
 			console.log((new Date).toLocaleTimeString() + " " + player[0].Name + " entrou na sala " + player[0].RoomID);
 

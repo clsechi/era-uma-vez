@@ -79,6 +79,7 @@ function init(){
 
 	IO.on('joinDone', function(data){
 		playerInfo = data[0];
+		console.log(data);
 		
 	});
 }		

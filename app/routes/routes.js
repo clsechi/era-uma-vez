@@ -97,7 +97,7 @@ module.exports = function (app){
 	app.get("/challenge/1", function (req, res){
 		//renderiza ejs
 
-		 // remover
+		connectSocket();
 
 		res.render("challenges/1");
 
@@ -190,8 +190,12 @@ module.exports = function (app){
 				}
 
 				connection.end();
+				
 				//grava LOG
 				updateLOG(playerInfo, next);
+
+				//atualiza painel do professor
+				updatedPlayersInfo(playerInfo.RoomID);
 			});
 		});
 	});
@@ -263,7 +267,7 @@ module.exports = function (app){
    //recebe informacoes do desafio atual e grava na tabela ChallengesLOG
    function updateLOG(playerInfo, next) {
 
-   		var infoLOG = {FK_PlayerID: playerInfo.PlayerID,
+		var infoLOG = {FK_PlayerID: playerInfo.PlayerID,
 			EarnedPoints: playerInfo.Points,
 			GBProgess: (playerInfo.Progress - 1),
 			ElapsedTime: playerInfo.TotalElapsedTime,
@@ -287,15 +291,15 @@ module.exports = function (app){
    *                             *
    ******************************* */
 
-   var gameSocket;
+	var gameSocket;
 
-   function connectSocket() {
-		app.io.on('connection', function(socket){
-			initConnection(socket);
-			console.log("Engines On!!!");
-		});
-		
-   } 
+	function connectSocket() {
+	app.io.on('connection', function(socket){
+		initConnection(socket);
+		console.log("Engines On!!!");
+	});
+
+	}
 	
 	function initConnection(socket){
 
@@ -309,19 +313,34 @@ module.exports = function (app){
 
 	}
 
+	function updatedPlayersInfo(roomID, next) {
+		
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+
+		playerDAO.selectPlayerInfoByRoom(roomID, function(err, results){
+			if(err){
+				return next(err);
+			}
+
+			app.io.emit('updatedPlayersInfo', results);
+
+		});
+	}
+
 	function updatedGameBoard (roomID, next){
 
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
 
 		// solicita json com localização dos players da sala no tabuleiro	
-		playerDAO.updatedGameBoard(roomID, function(err, results){
+		playerDAO.selectPlayerInfoByRoom(roomID, function(err, results){
 			if(err){
 				return next(err);
 			}
 			console.log(results);//correto
 			console.log(roomID);
-			app.io.to(roomID).emit('updatedGameBoard', results);// não ta funcionando
+			app.io.to(roomID).emit('updatedGameBoard', results);
 		});
 
 		connection.end();
@@ -339,7 +358,7 @@ module.exports = function (app){
 				return next(err);
 			}
 
-			player = results;
+			var player = results;
 
 			//insere o jogador na sala
 			gameSocket.join(player[0].RoomID);

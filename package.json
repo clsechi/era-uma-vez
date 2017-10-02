@@ -4,7 +4,8 @@
   "description": "Web application to teach programming logic",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "express-validator": "^3.2.1",
     "mysql": "^2.14.1",
     "socket.io": "^2.0.3"
+  },
+  "engines": {
+    "node": "6.11.1"
   }
 }

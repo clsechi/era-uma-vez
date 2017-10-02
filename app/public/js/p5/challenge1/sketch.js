@@ -21,7 +21,7 @@ function preload(){
 
 	targetImg = loadImage("/assets/pokemons/magikarp.png");
 
-	backgroundImg = loadImage('/assets/background/water.jpg'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/bg1.png'); //carrega imagem de fundo
 }
 
 function setup() {

@@ -5,8 +5,8 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerX = 60;
-var playerY = 60;
+var playerX = 200;
+var playerY = 200;
 var playerDirection = 0;
 
 function preload(){
@@ -56,6 +56,7 @@ function draw() {
 
 //avanca uma casa no jogo
 function setNewPosition() {
+
 
 	player.remove();
 	//soma ou subtrai 40px da posicao atual do jogador

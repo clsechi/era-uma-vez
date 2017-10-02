@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"room",
+				"roomProgress〔argument〕"
+			],
+			[
+				"re",
+				"redirect"
+			],
+			[
 				"bor",
 				"border-collapse"
 			],
@@ -68,16 +76,8 @@
 				"pl.position.x"
 			],
 			[
-				"room",
-				"roomID"
-			],
-			[
 				"update",
 				"updatedGameBoard"
-			],
-			[
-				"re",
-				"results"
 			],
 			[
 				"redire",
@@ -519,6 +519,23 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/routes/routes.js",
+			"settings":
+			{
+				"buffer_size": 17941,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/public/js/challenges/challenge1.js",
+			"settings":
+			{
+				"buffer_size": 1788,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -578,6 +595,10 @@
 	[
 		"/home/carlos/workspace/era-uma-vez",
 		"/home/carlos/workspace/era-uma-vez/app",
+		"/home/carlos/workspace/era-uma-vez/app/infra",
+		"/home/carlos/workspace/era-uma-vez/app/public",
+		"/home/carlos/workspace/era-uma-vez/app/public/js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges",
 		"/home/carlos/workspace/era-uma-vez/app/routes"
 	],
 	"file_history":
@@ -713,7 +734,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -793,8 +814,68 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/routes/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4641,
+								4641
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2531.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/public/js/challenges/challenge1.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								790,
+								790
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -837,7 +918,7 @@
 	"project": "eraumavez.sublime-project",
 	"replace":
 	{
-		"height": 69.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

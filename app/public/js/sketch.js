@@ -5,13 +5,21 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerX = 200;
-var playerY = 200;
-var playerDirection = 0;
+var playerX = 100;
+var playerY = 180;
+var playerDirection = 180;
+
+// target variables
+var targetX = 300;
+var targetY = 180;
 
 function preload(){
-	playerImg = loadAnimation("/assets/ball_001.png", "/assets/ball_002.png", "/assets/ball_003.png", "/assets/ball_004.png");
+	//captureImg = loadAnimation("/assets/ball_001.png", "/assets/ball_002.png", "/assets/ball_003.png", "/assets/ball_004.png");
 	//playerImg.frameDelay = 100;
+
+	playerImg = loadImage("/assets/mainPokeball.png")
+
+	targetImg = loadImage("/assets/charizard.png");
 
 	backgroundImg = loadImage('/assets/background.png'); //carrega imagem de fundo
 }
@@ -20,7 +28,7 @@ function setup() {
 	createCanvas(400, 400);
 
 	//deixa o jogo mais devagar
-	frameRate(1);
+	frameRate(10);
 
 	//paredes  	
 	wallTop = createSprite(width/2, -WALL_THICKNESS/2, width+WALL_THICKNESS*2, WALL_THICKNESS);
@@ -37,13 +45,19 @@ function setup() {
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 100 ,100);
-	player.addAnimation("animation", playerImg);	
+	player.addImage("animation", playerImg);
+
+	//Criando alvo
+	target = createSprite(targetX, targetY, 100, 100);
+	target.addImage("pokemon",targetImg);
 }
 
 function draw() {
 	background(backgroundImg);
 
-	player.changeAnimation("animation");  
+	player.changeAnimation("animation");
+
+	target.changeAnimation("pokemon");
 
 	// immovable não esta funcionando
 	player.collide(wallTop);
@@ -57,8 +71,8 @@ function draw() {
 //avanca uma casa no jogo
 function setNewPosition() {
 
-
 	player.remove();
+	
 	//soma ou subtrai 40px da posicao atual do jogador
 	//somente altera se a nova posicao estiver dentro dos limites do jogo
 	switch (playerDirection){
@@ -86,34 +100,67 @@ function setNewPosition() {
 
 	player = createSprite(playerX, playerY, 100 ,100);
 	player.addAnimation("animation", playerImg);
+
+	checkChallenge();
 }
 
-// define a direcao que o player ira se mover
-function setDirection(direction) {
-	
-	switch(direction){
-		case RIGHT:
-			if(playerDirection + 90 <= 270){
-				playerDirection += 90;
-			} else{
-				playerDirection = 0;
-			}	
-		break;
-		case LEFT:
-			if(playerDirection - 90 >= 0){
-				playerDirection -= 90;
-			} else {
-				playerDirection = 270;
-			}
-		break;
+//verifica se o player esta na mesma posicao do target
+function checkChallenge() {
+
+	if(playerX == targetX && playerY == targetY){
+		target.remove();
 	}
 }
 
+//verifica se o player esta na mesma posicao do target
+function checkAnswer() {
+	
+	if(playerX == targetX && playerY == targetY){
+		console.log("RESPOSTA CORRETA");
+		correctAnswer();
+	} else {
+		wrongAnswer();
+	}
+}
 
-var test = "setNewPosition();\n setDirection(LEFT);\n setNewPosition();\n setDirection(RIGHT);\n setNewPosition();"
+// define a direcao que o player ira se mover
+function setDirectionRIGHT() {
 
+	if(playerDirection + 90 <= 270){
+		playerDirection += 90;
+	} else{
+		playerDirection = 0;
+	}	
+}
 
+function setDirectionLEFT() {
 
+	if(playerDirection - 90 >= 0){
+		playerDirection -= 90;
+	} else {
+		playerDirection = 270;
+	}
+}
+
+//reinica o jogo colocando o player na posição inicial
+function resetGame() {
+	player.remove();
+
+	playerX = 100;
+	playerY = 180;
+
+	playerDirection = 180;
+
+	//desenha o player novamente
+	player = createSprite(playerX, playerY, 100 ,100);
+	player.addAnimation("animation", playerImg);
+
+	target.remove();
+
+	//desenha o alvo
+	target = createSprite(targetX, targetY, 100, 100);
+	target.addImage("pokemon",targetImg);
+}
 
 
 /*

@@ -1,26 +1,77 @@
 
-var button = document.querySelector("#atualiza-tabuleiro");
+var btnNextChallenge = document.getElementById('proximo-desafio');
 
-var btnRun = document.getElementById('executa-blocos');
+var btnRunBlocks = document.getElementById('executa-blocos');
+
+var btnReset = document.getElementById('reset-game');
 
 var playerInfo = {};
 
-//botao
-button.addEventListener("click", function (event){
+var playerTimer;
 
-postPlayerInfo();	
-
+//botoes
+btnNextChallenge.addEventListener("click", function (event){
+	//envia info para o server
+	postPlayerInfo();
 });
 
-btnRun.addEventListener("click", function (event) {
-	
-	console.log("clicado");
-})
+btnRunBlocks.addEventListener("click", function (event) {
+	//chama funcao do blockly para executar os blocos
+	runBlocks();
+});
 
-function setElapsedTime(time) {
-	playerInfo.ElapsedTime = time;
+btnReset.addEventListener("click", function (event){
+	//chama funcao do p5 que reseta o jogo
+	resetGame();
+});
+
+//resposta correta
+function correctAnswer() {
+	//para o tempo
+	playerTimer.stop();
+
+	console.log(playerTimer.getTimeValues().toString());
+
+	playerInfo.Progress += 1;
+	playerInfo.Points += possiblePoints();
+	playerInfo.ElapsedTime = 0;
+
+	console.log(playerInfo);
 }
 
+//resposta errada
+function wrongAnswer() {
+
+	playerInfo.WrongAnswers += 1;
+	console.log(playerInfo.WrongAnswers);
+}
+
+function startTimer() {
+	//inicia o tempo
+	console.log("iniciei o tempo");
+	playerTimer = new Timer();
+	playerTimer.start();
+}
+
+//define a pontuacao final conforme os erros
+function possiblePoints() {
+	var points = 0;
+	switch(playerInfo.WrongAnswers){
+		case 0:
+			points = 100;
+		break;
+		case 1:
+			points = 80;
+		break;
+		default:
+			points = 60;
+		break;
+	}
+	return points;
+}
+
+//envia as informações do usuário para o servidor
+//e recebe a url do proximo desafio
 function postPlayerInfo() {
 
 	var dados = new XMLHttpRequest();
@@ -79,7 +130,11 @@ function init(){
 
 	IO.on('joinDone', function(data){
 		playerInfo = data[0];
-		console.log(data);
+
+		//adiciona respostas erradas ao JSON
+		playerInfo.WrongAnswers = 0;
+
+		console.log(playerInfo);
 		
 	});
 }		
@@ -91,6 +146,8 @@ function joinRoom () {
 
 init();
 joinRoom();
+
+startTimer();
 
 
 

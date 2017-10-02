@@ -12,16 +12,27 @@ Blockly.Blocks['avancar'] = {
 	}
 };
 
-Blockly.Blocks['vire'] = {
+Blockly.Blocks['turnleft'] = {
 	init: function() {
 		this.appendDummyInput()
-				.appendField("vire à")
-				.appendField(new Blockly.FieldDropdown([["direita","RIGHT"], ["esquerda","LEFT"]]), "defineDirecao");
+		.appendField("vire à ESQUERDA");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour(290);
- this.setTooltip("");
- this.setHelpUrl("");
+		this.setColour(90);
+		this.setTooltip("");
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Blocks['turnright'] = {
+	init: function() {
+		this.appendDummyInput()
+		.appendField("vire à DIREITA");
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setColour(0);
+		this.setTooltip("");
+		this.setHelpUrl("");
 	}
 };
 
@@ -40,12 +51,25 @@ Blockly.JavaScript['avancar'] = function(block) {
 	return code;
 };
 
+/*
 Blockly.JavaScript['vire'] = function(block) {
 	var dropdown_definedirecao = block.getFieldValue('defineDirecao');
 	dropdown_definedirecao = dropdown_definedirecao.toString();
 	// TODO: Assemble JavaScript into code variable.
 	var code = 'setDirection(' + dropdown_definedirecao + ');\n';
 	return code;
+};*/
+
+Blockly.JavaScript['turnleft'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setDirectionLEFT();\n';
+  return code;
+};
+
+Blockly.JavaScript['turnright'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setDirectionRIGHT();\n';
+  return code;
 };
 
 // cria a toolbox com o blocos definidos acima e no XML inserido no HTML
@@ -80,6 +104,7 @@ var myInterpreter;
 function runBlocks (){
 
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
+	code += 'checkAnswer();\n';
 	console.log("this code:\n" +code);
 
 	myInterpreter = new Interpreter(code, initApi);
@@ -88,17 +113,17 @@ function runBlocks (){
 
 //define o tempo entre a execucao dos blocos
 function nextStep() {
-  if (myInterpreter.step()) {
-    window.setTimeout(nextStep, 100);
-  }
+	if (myInterpreter.step()) {
+		window.setTimeout(nextStep, 100);
+	}
 }
 
 //adiciona a funções do p5 no interpretador do Blockly
 function initApi(interpreter, scope) {
 
 
-	interpreter.setProperty(scope, 'LEFT', String(location));
-	interpreter.setProperty(scope, 'RIGHT', String(location));
+	//interpreter.setProperty(scope, 'LEFT', String(location));
+	//interpreter.setProperty(scope, 'RIGHT', String(location));
 	
 	//add setNewPosition to interpreter
 	var wrapper = function(text) {
@@ -108,13 +133,28 @@ function initApi(interpreter, scope) {
 	interpreter.setProperty(scope, 'setNewPosition',
 		interpreter.createNativeFunction(wrapper));
 
-	//add setDirection
-	var wrapper = function(dir) {
-		//text = text ? text.toString() : '';
-		//console.log(text);
-		return interpreter.createPrimitive(setDirection(dir));
+	//add setDirectionRIGHT
+	var wrapper = function(text) {
+		text = text ? text.toString() : '';
+		return interpreter.createPrimitive(setDirectionRIGHT());
 	};
-	interpreter.setProperty(scope, 'setDirection',
+	interpreter.setProperty(scope, 'setDirectionRIGHT',
+		interpreter.createNativeFunction(wrapper));
+
+	//add setDirectionLEFT
+	var wrapper = function(text) {
+		text = text ? text.toString() : '';
+		return interpreter.createPrimitive(setDirectionLEFT());
+	};
+	interpreter.setProperty(scope, 'setDirectionLEFT',
+		interpreter.createNativeFunction(wrapper));
+
+	//add checkAnswer
+	var wrapper = function(text) {
+		text = text ? text.toString() : '';
+		return interpreter.createPrimitive(checkAnswer());
+	};
+	interpreter.setProperty(scope, 'checkAnswer',
 		interpreter.createNativeFunction(wrapper));
 
 	// Add an API function for highlighting blocks.
@@ -135,15 +175,4 @@ function initApi(interpreter, scope) {
 /* Load blocks to workspace. */
 //Blockly.Xml.domToWorkspace(workspace, workspaceBlocks);
 
-
-//funcoes que ligam o blockly ao p5
-
-//colocar esse codigo dentro de uma funcao
-//chamar ela pelo evento de click no botao de executar
-
-
-
-
-
-
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#79y55r
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#akycrf

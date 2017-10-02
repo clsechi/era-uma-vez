@@ -90,9 +90,11 @@
 		</tbody>
 	</table>
 
-	<button id="atualiza-tabuleiro" class="botao bto-principal">Atualizar Tabuleiro</button>
+	<button id="proximo-desafio" class="botao bto-principal">Próximo Desafio</button>
 
-	<button id="executa-blocos" class="botao bto-principal">Executar</button>
+	<button id="executa-blocos" class="botao bto-principal"> ► Executar o programa</button>
+
+	<button id="reset-game" class="botao bto-principal">Reiniciar</button>
 
 	<!-- crating workspace of blockly -->
 
@@ -102,9 +104,8 @@
 
 	<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
 		<block type="avancar"></block>
-		<block type="vire">
-			<field name="defineDirecao">direita</field>
-		</block>
+		<block type="turnright"></block>
+		<block type="turnleft"></block>
 	</xml>
 
 	<!-- Footer 
@@ -112,6 +113,8 @@
 	    <p> <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 	</footer>-->
 
+	<!-- biblioteca que trata o tempo -->
+	<script src="/addons/easytimer.js"></script>	
 	<!-- trata a atualização do placar dos jogadores na tela -->
 	<script src="/js/scoreBoard.js"></script>
 	<!-- desenha e atualiza o tabuleiro na tela -->

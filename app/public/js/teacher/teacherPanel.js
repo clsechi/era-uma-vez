@@ -12,7 +12,7 @@ var timerSala3 = [];
 var timerSala4 = [];
 var timerSala5 = [];
 
-//cira os timers e os eventos para todas as salas
+//cria os timers e os eventos para todas as salas
 function createTimers() {					
 
 	for (var i = 0; i < 4; i++) {
@@ -105,7 +105,12 @@ function updateSala1(players) {
 			playersSala1[i].querySelector('.info-nome').textContent = players[i].Name;
 			playersSala1[i].querySelector('.info-posicao').textContent = players[i].Progress;
 			playersSala1[i].querySelector('.info-pontos').textContent = players[i].Points;
-			timerSala1[i].reset();
+			if(players[i].Progress > 10){
+				timerSala1[i].stop();
+				playersSala1[i].querySelector('.info-tempo').textContent = "CONCLUÍDO"
+			} else {
+				timerSala1[i].reset();
+			}
 		}	
 	}
 }
@@ -119,7 +124,12 @@ function updateSala2(players) {
 			playersSala2[i].querySelector('.info-nome').textContent = players[i].Name;
 			playersSala2[i].querySelector('.info-posicao').textContent = players[i].Progress;
 			playersSala2[i].querySelector('.info-pontos').textContent = players[i].Points;
-			timerSala2[i].reset();
+			if(players[i].Progress > 10){
+				timerSala2[i].stop();
+				playersSala2[i].querySelector('.info-tempo').textContent = "CONCLUÍDO"
+			} else {
+				timerSala2[i].reset();
+			}
 		}	
 	}
 }
@@ -133,7 +143,12 @@ function updateSala3(players) {
 			playersSala3[i].querySelector('.info-nome').textContent = players[i].Name;
 			playersSala3[i].querySelector('.info-posicao').textContent = players[i].Progress;
 			playersSala3[i].querySelector('.info-pontos').textContent = players[i].Points;
-			timerSala3[i].reset();
+			if(players[i].Progress > 10){
+				timerSala3[i].stop();
+				playersSala3[i].querySelector('.info-tempo').textContent = "CONCLUÍDO"
+			} else {
+				timerSala3[i].reset();
+			}
 		}	
 	}
 }
@@ -147,7 +162,12 @@ function updateSala4(players) {
 			playersSala4[i].querySelector('.info-nome').textContent = players[i].Name;
 			playersSala4[i].querySelector('.info-posicao').textContent = players[i].Progress;
 			playersSala4[i].querySelector('.info-pontos').textContent = players[i].Points;
-			timerSala4[i].reset();
+			if(players[i].Progress > 10){
+				timerSala4[i].stop();
+				playersSala4[i].querySelector('.info-tempo').textContent = "CONCLUÍDO"
+			} else {
+				timerSala4[i].reset();
+			}
 		}	
 	}
 }
@@ -161,7 +181,12 @@ function updateSala5(players) {
 			playersSala5[i].querySelector('.info-nome').textContent = players[i].Name;
 			playersSala5[i].querySelector('.info-posicao').textContent = players[i].Progress;
 			playersSala5[i].querySelector('.info-pontos').textContent = players[i].Points;
-			timerSala5[i].reset();
+			if(players[i].Progress > 10){
+				timerSala5[i].stop();
+				playersSala5[i].querySelector('.info-tempo').textContent = "CONCLUÍDO"
+			} else {
+				timerSala5[i].reset();
+			}
 		}	
 	}
 }

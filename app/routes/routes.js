@@ -30,7 +30,7 @@ module.exports = function (app){
 	//carrega video com o explicação do jogo	
 	app.get("/gameExplanation", function (req, res){
 
-		connectSocket();
+		//connectSocket();
 
 		res.render("player/gameExplanation");
 

@@ -18,8 +18,7 @@ function createDBConnection() {
 			database: "eraumavez_teste",
 		});
 	}
-
-	/*
+	
 	// heroku implementation
 	if (process.env.NODE_ENV == 'production') {
 		var url = process.env.CLEARDB_DATABASE_URL;
@@ -31,7 +30,6 @@ function createDBConnection() {
 			database: grupos[4],
 		});
 	}
-	*/
 }
 
 module.exports = function(){

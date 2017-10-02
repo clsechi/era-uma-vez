@@ -49,10 +49,10 @@ var firstChallenge = true;
 
 function drawLines() {
 
-	for (var i = 1; i <= 20; i++) {	
+	for (var i = 1; i <= 10; i++) {	
 
 		ctx.rect(canvasX, 0, 60, 50);
-		ctx.fillStyle = '#8ED6FF'; // define o preenchimento do retângulo
+		ctx.fillStyle = '#9598db'; // define o preenchimento do retângulo
 		ctx.fill(); // Preenche o retângulo
 		ctx.lineWidth = 2; // define a largura da linha do contorno
 		ctx.strokeStyle = 'black'; // define a cor do contorno
@@ -70,7 +70,7 @@ function drawText() {
 
 	textX = 30;
 
-	for (var i = 1; i <= 20; i++) {
+	for (var i = 1; i <= 10; i++) {
 		ctx.fillText(i, textX,30);
 		textX += 60;
 	}
@@ -94,8 +94,12 @@ function updatePlayersPositon(players) {
 	var finalPosition = {0:{avatar: null},1:{avatar: null},2:{avatar: null},3:{avatar: null}};
 
 	for (var i = 0; i < players.length; i++) {
-		finalPosition[i] = setPositionAvatar(players[i].Avatar, players[i].Progress, i);
-	}
+		if(players[i].Progress > 10){
+			finalPosition[i] = setPositionAvatar(players[i].Avatar, 10, i);
+		} else {
+			finalPosition[i] = setPositionAvatar(players[i].Avatar, players[i].Progress, i);
+		}
+	}	
 
 	drawAvatar(finalPosition);
 
@@ -127,14 +131,13 @@ function setPositionAvatar(avatar, progress, position) {
 	}	
 
 	if (progress != 1){
-		avatarX += (60 * (progress-1)); //pq do menos 1??
+		avatarX += (60 * (progress-1)); //menos 1 pq x = 0
 	}
 
 	return {avatarX: avatarX, avatarY: avatarY, avatar: avatar};
 }
 
 function drawAvatar(finalPosition) {
-	//fui obrigado a usar eval()
 
 	if(firstChallenge){
 
@@ -152,8 +155,6 @@ function drawAvatar(finalPosition) {
 		if(finalPosition[3].avatar != null){
 			ctx.drawImage(eval(finalPosition[3].avatar), finalPosition[3].avatarX, finalPosition[3].avatarY);
 		}
-
-		console.log("desenhei td");
 	//}
 
 	firstChallenge = false;

@@ -5,6 +5,7 @@
 	<title>EUV - Desafio 1</title>
 
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -25,7 +26,7 @@
 
 	<script src="/addons/p5/p5.play.js"></script>	
 
-	<script src="/js/sketch.js"></script>
+	<script src="/js/p5/challenge1/sketch.js"></script>
 
 	<!-- blockly libraries -->
 
@@ -43,7 +44,7 @@
 
 	<!-- CSS -->
 
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/challenges.css">
 
 	<!-- this line removes any default padding and style. you might only need one of these values set. -->
 	<style> body {padding: 0; margin: 0;} </style>
@@ -55,46 +56,52 @@
 
 	<!-- creating gameboard on screen -->
 	<div>
-		<canvas id="myCanvas" width="1200" height="50"> </canvas>
+		<canvas id="myCanvas" width="600" height="50"> </canvas>
 	</div>
+
+	<!-- position of p5 -->
+	<div id="sketch-holder"></div>
+
 	<!-- creating scoreboard on screen -->
-	<table>
-		<thead>
-			<tr>
-				<th>Avatar</th>
-				<th>Nome</th>
-				<th>Pontos</th>
-			</tr>
-		</thead>
-		<tbody id="score-board">
-			<tr class="player">
-				<td class="info-avatar"><img src=""></td>
-				<td class="info-name"> -- </td>
-				<td class="info-points"> -- </td>				
-			</tr>
-			<tr class="player">
-				<td class="info-avatar"><img src=""></td>
-				<td class="info-name"> -- </td>
-				<td class="info-points"> -- </td>				
-			</tr>
-			<tr class="player">
-				<td class="info-avatar"><img src=""></td>
-				<td class="info-name"> -- </td>
-				<td class="info-points"> -- </td>				
-			</tr>
-			<tr class="player">
-				<td class="info-avatar"><img src=""></td>
-				<td class="info-name"> -- </td>
-				<td class="info-points"> -- </td>				
-			</tr>
-		</tbody>
-	</table>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Avatar</th>
+					<th>Nome</th>
+					<th>Pontos</th>
+				</tr>
+			</thead>
+			<tbody id="score-board">
+				<tr class="player">
+					<td class="info-avatar"><img src=""></td>
+					<td class="info-name"> -- </td>
+					<td class="info-points"> -- </td>				
+				</tr>
+				<tr class="player">
+					<td class="info-avatar"><img src=""></td>
+					<td class="info-name"> -- </td>
+					<td class="info-points"> -- </td>				
+				</tr>
+				<tr class="player">
+					<td class="info-avatar"><img src=""></td>
+					<td class="info-name"> -- </td>
+					<td class="info-points"> -- </td>				
+				</tr>
+				<tr class="player">
+					<td class="info-avatar"><img src=""></td>
+					<td class="info-name"> -- </td>
+					<td class="info-points"> -- </td>				
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-	<button id="proximo-desafio" class="botao bto-principal">Próximo Desafio</button>
+	<button id="proximo-desafio" class="w3-button w3-blue w3-padding-large w3-large w3-margin-top">Próximo Desafio</button>
 
-	<button id="executa-blocos" class="botao bto-principal"> ► Executar o programa</button>
+	<button id="executa-blocos" class="w3-button w3-green w3-padding-large w3-large w3-margin-top"> ► Executar o programa</button>
 
-	<button id="reset-game" class="botao bto-principal">Reiniciar</button>
+	<button id="reset-game" class="w3-button w3-red w3-padding-large w3-large w3-margin-top">Reiniciar</button>
 
 	<!-- crating workspace of blockly -->
 
@@ -108,10 +115,10 @@
 		<block type="turnleft"></block>
 	</xml>
 
-	<!-- Footer 
+	<!-- Footer -->
 	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
 	    <p> <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-	</footer>-->
+	</footer>
 
 	<!-- biblioteca que trata o tempo -->
 	<script src="/addons/easytimer.js"></script>	

@@ -17,15 +17,17 @@ function preload(){
 	//captureImg = loadAnimation("/assets/ball_001.png", "/assets/ball_002.png", "/assets/ball_003.png", "/assets/ball_004.png");
 	//playerImg.frameDelay = 100;
 
-	playerImg = loadImage("/assets/mainPokeball.png")
+	playerImg = loadImage("/assets/pokeballs/mainPokeball.png")
 
-	targetImg = loadImage("/assets/charizard.png");
+	targetImg = loadImage("/assets/pokemons/magikarp.png");
 
-	backgroundImg = loadImage('/assets/background.png'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/water.jpg'); //carrega imagem de fundo
 }
 
 function setup() {
-	createCanvas(400, 400);
+	var canvasp5 = createCanvas(400, 400);
+
+	canvasp5.parent('sketch-holder');
 
 	//deixa o jogo mais devagar
 	frameRate(10);
@@ -116,7 +118,6 @@ function checkChallenge() {
 function checkAnswer() {
 	
 	if(playerX == targetX && playerY == targetY){
-		console.log("RESPOSTA CORRETA");
 		correctAnswer();
 	} else {
 		wrongAnswer();

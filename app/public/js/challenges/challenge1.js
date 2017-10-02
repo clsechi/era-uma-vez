@@ -7,7 +7,7 @@ var btnReset = document.getElementById('reset-game');
 
 var playerInfo = {};
 
-var playerTimer;
+var playerTimer = new Timer();
 
 //botoes
 btnNextChallenge.addEventListener("click", function (event){
@@ -27,14 +27,16 @@ btnReset.addEventListener("click", function (event){
 
 //resposta correta
 function correctAnswer() {
-	//para o tempo
-	playerTimer.stop();
 
-	console.log(playerTimer.getTimeValues().toString());
+	//para o tempo
+	playerTimer.pause();
+
+	console.log();
 
 	playerInfo.Progress += 1;
 	playerInfo.Points += possiblePoints();
-	playerInfo.ElapsedTime = 0;
+	//set o tempo total utilizado em segundos
+	playerInfo.ElapsedTime = playerTimer.getTotalTimeValues().seconds;
 
 	console.log(playerInfo);
 }
@@ -44,13 +46,6 @@ function wrongAnswer() {
 
 	playerInfo.WrongAnswers += 1;
 	console.log(playerInfo.WrongAnswers);
-}
-
-function startTimer() {
-	//inicia o tempo
-	console.log("iniciei o tempo");
-	playerTimer = new Timer();
-	playerTimer.start();
 }
 
 //define a pontuacao final conforme os erros
@@ -116,7 +111,7 @@ var IO = io.connect(); //criando conexao socket no jogador
 function init(){
 
 	IO.on('connected', function (data) {
-		console.log(data);
+		console.log(data);		
 	});
 
 	IO.on('updatedGameBoard', function(players){
@@ -147,7 +142,7 @@ function joinRoom () {
 init();
 joinRoom();
 
-startTimer();
+playerTimer.start();
 
 
 

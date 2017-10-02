@@ -36,7 +36,7 @@ Blockly.Blocks['turnright'] = {
 	}
 };
 
-/*acende os blocos
+/*acende os blocos falta implementar
 Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
 Blockly.JavaScript.addReservedWords('highlightBlock');]
 
@@ -175,4 +175,4 @@ function initApi(interpreter, scope) {
 /* Load blocks to workspace. */
 //Blockly.Xml.domToWorkspace(workspace, workspaceBlocks);
 
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#akycrf
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#w3hr7z

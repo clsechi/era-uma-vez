@@ -9,9 +9,7 @@ canvas {
 .help-messages{
 	position: relative;
 	font-size: 20px;
-	color: black;
-    
-   
+	color: black; 
     padding: 0px 5px;
 }
 

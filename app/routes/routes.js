@@ -277,10 +277,10 @@ module.exports = function (app){
    function updateLOG(playerInfo, next) {
 
 		var infoLOG = {FK_PlayerID: playerInfo.PlayerID,
-			EarnedPoints: playerInfo.Points,
-			GBProgess: (playerInfo.Progress - 1),
+			EarnedPoints: playerInfo.EarnedPoints,
+			GBProgress: (playerInfo.Progress - 1),
 			ElapsedTime: playerInfo.TotalElapsedTime,
-			WrongAnswers: playerInfo.WrongAnswers}
+			WrongAnswers: playerInfo.WrongAnswers};
 		
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);		

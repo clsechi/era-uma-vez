@@ -1,19 +1,27 @@
 
-var btnNextChallenge = document.getElementById('proximo-desafio');
-
 var btnRunBlocks = document.getElementById('executa-blocos');
 
 var btnReset = document.getElementById('reset-game');
+
+var modal = document.getElementById('myModal');
+
+var pointsFinal = document.getElementById('pontos-final');
+
+var help1 = document.getElementById('help1');
+
+var help2 = document.getElementById('help2');
 
 var playerInfo = {};
 
 var playerTimer = new Timer();
 
 //botoes
-btnNextChallenge.addEventListener("click", function (event){
-	//envia info para o server
-	postPlayerInfo();
-});
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 btnRunBlocks.addEventListener("click", function (event) {
 	//chama funcao do blockly para executar os blocos
@@ -23,20 +31,25 @@ btnRunBlocks.addEventListener("click", function (event) {
 btnReset.addEventListener("click", function (event){
 	//chama funcao do p5 que reseta o jogo
 	resetGame();
+
+	help.classList.remove('invisible');
 });
 
 //resposta correta
 function correctAnswer() {
-
-	//para o tempo
+	//pausa o tempo
 	playerTimer.pause();
 
-	console.log();
-
-	playerInfo.Progress += 1;
-	playerInfo.Points += possiblePoints();
 	//set o tempo total utilizado em segundos
 	playerInfo.ElapsedTime = playerTimer.getTotalTimeValues().seconds;
+
+	//atualiza o json
+	playerInfo.Progress += 1;	
+	playerInfo.EarnedPoints = possiblePoints();
+	playerInfo.Points += playerInfo.EarnedPoints;	
+
+	//mensagem de parabens jogador
+	showMessage();
 
 	console.log(playerInfo);
 }
@@ -46,6 +59,14 @@ function wrongAnswer() {
 
 	playerInfo.WrongAnswers += 1;
 	console.log(playerInfo.WrongAnswers);
+
+	var helpID = playerInfo.WrongAnswers;
+
+	//definir conforme numero de ajudas no desafio
+	if(helpID <= 2){
+		//mostra ajuda na tela
+		eval("help" + helpID + ".classList.remove('invisible')");
+	}
 }
 
 //define a pontuacao final conforme os erros
@@ -65,13 +86,23 @@ function possiblePoints() {
 	return points;
 }
 
+function showMessage(event){
+	//exibe o pokemon e a pontuacao ganha
+	//mudar conforme o pokemon
+	pointsFinal.textContent = "Você capturou um Magikarp e ganhou " + possiblePoints() + " pontos";
+	modal.style.display = "block";
+
+	//agurda o tempo antes de redirecionar
+	window.setTimeout(function(){
+		postPlayerInfo();
+	},2500);
+}
+
 //envia as informações do usuário para o servidor
 //e recebe a url do proximo desafio
 function postPlayerInfo() {
 
 	var dados = new XMLHttpRequest();
-
-	playerInfo.ElapsedTime = 0;
 
 	var url = location.origin + "/nextChallenge";
 

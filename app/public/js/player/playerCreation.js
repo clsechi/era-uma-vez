@@ -36,7 +36,7 @@ button.addEventListener("click", function (event){
 		postPlayerInfo();
 	} else {
 		//tratar erros <<<<
-		console.log("Informe os dados");
+		alert("Informe os dados corretamente");
 	}	
 });
 
@@ -61,15 +61,14 @@ function postPlayerInfo() {
 	dados.send(JSON.stringify(playerInfo));
 }
 
-
 //cookies
 function setCookie() {
 	document.cookie = ("PlayerID =" + playerInfo.PlayerID);
 	document.cookie = ("RoomID =" + playerInfo.RoomID);	
 }
 
-/*
+//image picker magic happens here
 $("select").imagepicker({
-		  hide_select : true,
+		  hide_select : false,
 		  show_label  : false
-		})*/
+		});

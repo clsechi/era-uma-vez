@@ -53,12 +53,19 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			//var redirectURL = dados.responseText;
-			window.location.assign(dados.responseText);
+			checkData(JSON.parse(dados.responseText));
 		}
 	}
 
 	dados.send(JSON.stringify(playerInfo));
+}
+
+function checkData(data) {
+	if(data.error == 1){
+		alert("Desculpe, a sala selecionada já esta cheia.\nPor favor selecione outra sala.");
+	} else {
+		window.location.assign(data.url);
+	}
 }
 
 //cookies

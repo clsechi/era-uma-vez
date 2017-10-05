@@ -81,7 +81,7 @@ var options = {
 	collapse : false, 
 	comments : false, 
 	disable : false, 
-	maxBlocks : Infinity, 
+	maxBlocks : 5, //define numero maximos de blocos
 	trashcan : true, 
 	horizontalLayout : false, 
 	toolboxPosition : 'start', 
@@ -95,15 +95,27 @@ var options = {
 
 /* Inject your workspace */ 
 var workspace = Blockly.inject(blocklyDiv, options);
+//define nuemro maximo de blocos no workspace
+var maxNumberBlocks = 5;
 
+//quando altera o workspace muda o numero maximo de blocos
+function onChange(event) {
+	document.getElementById('capacity').textContent = workspace.remainingCapacity();
+}
+
+//adiciona os eventos
+workspace.addChangeListener(onChange);
+onChange();
+
+// interpretracao dos blocos
 Blockly.JavaScript.addReservedWords('code');
 
 var myInterpreter;
 
 //transforma os blocos em codigo e excuta as funcoes do p5
 function runBlocks (){
-
-	var code = Blockly.JavaScript.workspaceToCode(workspace);
+	var code = 'resetGame();\n';
+	code += Blockly.JavaScript.workspaceToCode(workspace);
 	code += 'checkAnswer();\n';
 	console.log("this code:\n" +code);
 
@@ -120,7 +132,6 @@ function nextStep() {
 
 //adiciona a funções do p5 no interpretador do Blockly
 function initApi(interpreter, scope) {
-
 
 	//interpreter.setProperty(scope, 'LEFT', String(location));
 	//interpreter.setProperty(scope, 'RIGHT', String(location));
@@ -157,6 +168,14 @@ function initApi(interpreter, scope) {
 	interpreter.setProperty(scope, 'checkAnswer',
 		interpreter.createNativeFunction(wrapper));
 
+	//add resetGame
+	var wrapper = function(text) {
+		text = text ? text.toString() : '';
+		return interpreter.createPrimitive(resetGame());
+	};
+	interpreter.setProperty(scope, 'resetGame',
+		interpreter.createNativeFunction(wrapper));
+
 	// Add an API function for highlighting blocks.
 	wrapper = function(id) {
 		id = id ? id.toString() : '';
@@ -165,14 +184,5 @@ function initApi(interpreter, scope) {
 	interpreter.setProperty(scope, 'highlightBlock',
 		interpreter.createNativeFunction(wrapper));
 }
-
-
-/* Load Workspace Blocks from XML to workspace. Remove all code below if no blocks to load */
-
-/* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
-//var workspaceBlocks = document.getElementById("workspaceBlocks"); 
-
-/* Load blocks to workspace. */
-//Blockly.Xml.domToWorkspace(workspace, workspaceBlocks);
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#w3hr7z

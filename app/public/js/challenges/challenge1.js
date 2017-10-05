@@ -11,8 +11,12 @@ var help1 = document.getElementById('help1');
 
 var help2 = document.getElementById('help2');
 
-var playerInfo = {};
+var loading = document.querySelector('.loading');
 
+var p5Canvas = document.getElementById('sketch-holder');
+
+//variables
+var playerInfo = {};
 var playerTimer = new Timer();
 
 //botoes
@@ -23,16 +27,23 @@ window.onclick = function(event) {
     }
 }
 
+window.onload = function() {
+	//remove imagem de loading
+	loading.classList.add('invisible');
+}
+
 btnRunBlocks.addEventListener("click", function (event) {
 	//chama funcao do blockly para executar os blocos
+	btnRunBlocks.disabled = true;
 	runBlocks();
+	window.setTimeout(function(){
+		btnRunBlocks.disabled = false;
+	},2500);	
 });
 
 btnReset.addEventListener("click", function (event){
 	//chama funcao do p5 que reseta o jogo
 	resetGame();
-
-	help.classList.remove('invisible');
 });
 
 //resposta correta
@@ -174,7 +185,3 @@ init();
 joinRoom();
 
 playerTimer.start();
-
-
-
-

@@ -5,9 +5,13 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerX = 100;
-var playerY = 180;
-var playerDirection = 180;
+var playerInitialX = 100;
+var playerInitialY = 180;
+var playerInitialDirection = 180;
+
+var playerX = playerInitialX;
+var playerY = playerInitialY;
+var playerDirection = playerInitialDirection;
 
 // target variables
 var targetX = 300;
@@ -147,10 +151,10 @@ function setDirectionLEFT() {
 function resetGame() {
 	player.remove();
 
-	playerX = 100;
-	playerY = 180;
+	playerX = playerInitialX;
+	playerY = playerInitialY;
 
-	playerDirection = 180;
+	playerDirection = playerInitialDirection;
 
 	//desenha o player novamente
 	player = createSprite(playerX, playerY, 100 ,100);

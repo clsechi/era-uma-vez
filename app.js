@@ -4,6 +4,8 @@ var io = require('socket.io')(http);
 
 //app.set('io', io);
 
+console.log(io);
+
 app.io = io; //configura o socoket.io dentro do express
 
 var porta = process.env.PORT || 3000;

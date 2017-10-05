@@ -7,13 +7,14 @@
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 	<!-- CSS -->
-
-	<link rel="stylesheet" type="text/css" href="/css/challenges.css">
-	
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">	
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="/css/challenges.css">
+	<!-- fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<style>
 		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 		.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
@@ -22,24 +23,15 @@
 
 	<!-- p5 libraries -->
 
-	<script src="/addons/p5/p5.js"></script>
-
-	<script src="/addons/p5/p5.dom.js"></script>
-
-	<script src="/addons/p5/p5.sound.js"></script> 
-
-	<script src="/addons/p5/p5.play.js"></script>	
-
+	<script src="/addons/p5/p5.min.js"></script>
+	<script src="/addons/p5/p5.play.js"></script>
 	<script src="/js/p5/challenge1/sketch.js"></script>
 
 	<!-- blockly libraries -->
 
-	<script src="/addons/blockly/blockly_compressed.js"></script>	
-
-	<script src="/addons/blockly/msg/js/en.js"></script>
-
+	<script src="/addons/blockly/blockly_compressed.js"></script>
+	<script src="/addons/blockly/msg/js/pt-br.js"></script>
 	<script src="/addons/blockly/javascript_compressed.js"></script>
-
 	<script src="/addons/blockly/acorn_interpreter.js"></script>
 
 	<!-- socket libraries -->
@@ -52,7 +44,15 @@
 </head>
 <body>
 
-	
+	<div class="loading"></div>
+
+	<div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+		<a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+		<a href="/gameExplanation" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Tutorial</a>
+		<a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
+		<span>User Name</span>
+	</div>
+		
 
 	<!-- creating gameboard on screen -->
 	<div>
@@ -64,7 +64,7 @@
 		<span class=help-messages>Capture o pokemon com sua pokeball</span>
 	</div>
 	<div class="help-box">
-		<span class=help-messages>Use os blocos de avançar para chegar até o pokemon</span>
+		<span class=help-messages>Use o bloco de {avançar} para chegar até o pokemon</span>
 	</div>
 	<div class="invisible help-box" id="help1" >
 		<span class=help-messages>Ajuda 3</span>
@@ -78,7 +78,7 @@
 
 	<!-- creating scoreboard on screen -->
 	<div>
-		<table>
+		<table class="tabela">
 			<thead>
 				<tr>
 					<th>Avatar</th>
@@ -114,18 +114,21 @@
 	<button id="executa-blocos" class="w3-button w3-green w3-padding-large w3-large w3-margin-top"> ► Executar o programa</button>
 
 	<button id="reset-game" class="w3-button w3-red w3-padding-large w3-large w3-margin-top">Reiniciar</button>
+	<div>
+		<p><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
 
-	<!-- crating workspace of blockly -->
+		<!-- crating workspace of blockly -->
 
-	<div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+		<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black"></div>
 
-	<!-- XML com os blocos que estarao disponiveis -->
+		<!-- XML com os blocos que estarao disponiveis -->
 
-	<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-		<block type="avancar"></block>
-		<block type="turnright"></block>
-		<block type="turnleft"></block>
-	</xml>
+		<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+			<block type="avancar"></block>
+			<block type="turnright"></block>
+			<block type="turnleft"></block>
+		</xml>
+	</div>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -133,9 +136,10 @@
 		<div class="modal-body">
 			<p>Parabéns!</p>
 			<p id="pontos-final"></p>
+			<img src="/assets/pokemons/magikarp_big.png" height="400" width="400">
 		</div>
 		<div class="modal-footer">
-			<h3>Iniciando próximo desafio...</h3>
+			<h3>Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
  		</div>
 
 	</div>

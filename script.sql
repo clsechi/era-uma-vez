@@ -7,7 +7,7 @@ CREATE TABLE Players (
 	Progress TINYINT DEFAULT '1',
 	Points INT DEFAULT '0',
 	RoomID varchar(5),
-	TotalElapsedTime FLOAT(10,2) DEFAULT '0.00',
+	TotalElapsedTime FLOAT(10,2) DEFAULT '0',
 	PRIMARY KEY (PlayerID)
 );
 

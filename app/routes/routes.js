@@ -1,4 +1,7 @@
-module.exports = function (app){		
+module.exports = function (app){
+
+	//variavel que verifica o socket online
+	var socketOnline = false;
 
 	/*var player = { PlayerID: 3,
 					Name: "Carlos",
@@ -162,11 +165,7 @@ module.exports = function (app){
 				return next(err);
 			}
 			//soma o tempo do banco ao usado no desafio atual
-			console.log(results);
-
 			playerInfo.TotalElapsedTime = (results[0].TotalElapsedTime + playerInfo.ElapsedTime);
-
-			console.log(playerInfo.TotalElapsedTime);
 
 			//grava os dadso da pontuação e tempo no banco
 			playerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){
@@ -187,12 +186,13 @@ module.exports = function (app){
 					//se todos os jogadores ja completaram redireciona para o pódio
 					//se não, redireciona para a tela de espera
 					checkRoomProgress(playerInfo.RoomID, function (roomProgress) {
+						var redirectURL;
 						if (roomProgress){
-							var redirectURL = "http://" + (req.get('host') + "/winnersPodium");
+							redirectURL = "http://" + (req.get('host') + "/winnersPodium");
 							//envia socket para o outros jogadores da sala com o a url de redirect
 							redirectWinnersPodium(playerInfo.RoomID, redirectURL);
 						} else {
-							var redirectURL = "http://" + (req.get('host') + "/waitingRoom");
+							redirectURL = "http://" + (req.get('host') + "/waitingRoom");
 						}
 						res.send(redirectURL);
 					});					
@@ -210,23 +210,70 @@ module.exports = function (app){
 	});
 
 	//salva informações do usuário
+	//res = 0 -> OK
+	//res = 1 -> sala cheia
 	app.post("/savePlayerInfo", function (req, res, next) {
 		var playerInfo = req.body;
+		//json vazio que sera enviado como resposta
+		//poderia enviar comente uma string
+		var redirectURL = {};
 
 		var connection = app.infra.connectionFactory();
 		var playerDAO = new app.infra.PlayerDAO(connection);
-	
-		playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+		//verifica se o player ja esta na sala
+		playerDAO.selectPlayerAlreadyInRoom(playerInfo.RoomID, playerInfo.PlayerID ,function (err, results) {
 			if(err){
 				return next(err);
-			}			
-			//get URL do app e adiciona o redirecionamento
-			//envia esse var para o cliente q faz o redirect
-			var redirectURL = "http://" + (req.get('host') + "/gameExplanation");
+			}
 
-			res.send(redirectURL.toString());
-		});
-		connection.end();
+			if(results[0].AlreadyInRoom == 0){
+				//verifica se a sala não esta cheia
+				playerDAO.selectPlayersInRoom(playerInfo.RoomID, function (err, results) {
+					if(err){
+						return next(err);
+					}
+					//numero de jogadores menor que 4
+					if (results[0].NumberOfPlayers <= 3) {
+						//se a sala nao estiver cheia adiciona o player nela
+						playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+							if(err){
+								return next(err);
+							}			
+							//get URL do app e adiciona o redirecionamento
+							//envia esse var para o cliente q faz o redirect
+							
+							redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+
+							redirectURL.error = 0;
+
+							res.send(redirectURL);
+						});
+						//connection.end();
+					} else {
+						//se a sala estiver cheia retorna msg erro
+						redirectURL.error = 1;				
+
+						res.send(redirectURL);						
+					}			
+				});
+			} else {
+				//se o jogador ja estiver na sala somente atualiza a info
+				playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+					if(err){
+						return next(err);
+					}			
+					//get URL do app e adiciona o redirecionamento
+					//envia esse var para o cliente q faz o redirect
+					
+					redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+
+					redirectURL.error = 0;
+
+					res.send(redirectURL);
+				});
+			}
+			connection.end();	
+		});		
 	});
 
 	//envia o desafio correto para o usuario após a tela de explicação
@@ -241,11 +288,14 @@ module.exports = function (app){
 				return next(err);
 			}
 
-			var redirectURL = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);
-
+			if(results[0].Progress <= 10){
+				var redirectURL = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);				
+			} else {
+				var redirectURL = "http://" + (req.get('host') + "/waitingRoom")
+			}
 			res.send(redirectURL);
 		});
-
+		connection.end();
 	});
 
 	app.post("/winnersPodium", function (req, res, next) {
@@ -263,7 +313,6 @@ module.exports = function (app){
 
 			res.send(results);
 		});
-
 		connection.end();
 	});
 
@@ -324,12 +373,19 @@ module.exports = function (app){
 	var gameSocket;
 
 	function connectSocket() {
-	app.io.on('connection', function(socket){
-		initConnection(socket);
-		console.log("Engines On!!!");
-	});
-
+		//somente abre a conexao se ela ainda nao existir
+		if(!socketOnline){
+			console.info("Engines On!!!");
+			app.io.on('connection', function(socket){
+				initConnection(socket);				
+			});
+			socketOnline = true;
+		}
 	}
+
+	
+
+	//connectSocket();
 	
 	function initConnection(socket){
 
@@ -404,7 +460,7 @@ module.exports = function (app){
 
 			console.log((new Date).toLocaleTimeString() + " " + player[0].Name + " entrou na sala " + player[0].RoomID);
 
-			console.log(gameSocket.adapter.rooms);
+			//console.log(gameSocket.adapter.rooms);
 
 			updatedGameBoard(player[0].RoomID);
 		});

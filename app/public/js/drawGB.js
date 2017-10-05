@@ -102,8 +102,6 @@ function updatePlayersPositon(players) {
 	}	
 
 	drawAvatar(finalPosition);
-
-	console.log(finalPosition);
 }
 
 function setPositionAvatar(avatar, progress, position) {
@@ -179,97 +177,3 @@ function drawAvatar(finalPosition) {
 }
 
 initDraw();//call initial draw funcions
-
-
-
-/* *******************************
-   *                             *
-   *       GARBAGE               *
-   *                             *
-   ******************************* */
-
-
-/*setTimeout(function () {
-	updatePlayersPositon(players2);
-	updateScoreBoard(players2);	 //REMOVER <<<
-}, 5000);
-	
-
-//updateScoreBoard(players);
-
-//updatePlayersPositon(players);//REMOVER <<<
-
-//canvas 1200x50
-
-
-hulkIcon.onload = function () {
-		ctx.drawImage(hulkIcon, 0, 22);
-		ctx.drawImage(hulkIcon, 30, 22);
-		ctx.drawImage(hulkIcon, 0, -3);
-		ctx.drawImage(hulkIcon, 30, -3);
-}
-
-players =  { data: [ {      
-		PlayerID: 1,
-       Name: 'Carlos',
-       RA: '20422328',
-       Avatar: 'batmanIcon',
-       School: 'Anhembi',
-       Progress: 1,
-       Points: 10000,
-       RoomID: 1,
-       TotalElapsedTime: 0 },
-      {
-       PlayerID: 2,
-       Name: 'Esdras',
-       RA: '20478859',
-       Avatar: 'hulkIcon',
-       School: 'Anhembi',
-       Progress: 1,
-       Points: 200,
-       RoomID: 1,
-       TotalElapsedTime: 0 },
-      {
-       PlayerID: 3,
-       Name: 'Jaum',
-       RA: '20478859',
-       Avatar: 'catIcon',
-       School: 'Anhembi',
-       Progress: 1,
-       Points: 200,
-       RoomID: 1,
-       TotalElapsedTime: 0 }] 
-   }
-
-   players2 =  { data: [ {      
-		PlayerID: 1,
-       Name: 'Carlos',
-       RA: '20422328',
-       Avatar: 'batmanIcon',
-       School: 'Anhembi',
-       Progress: 1,
-       Points: 11200,
-       RoomID: 1,
-       TotalElapsedTime: 0 },
-      {
-       PlayerID: 2,
-       Name: 'Esdras',
-       RA: '20478859',
-       Avatar: 'hulkIcon',
-       School: 'Anhembi',
-       Progress: 2,
-       Points: 500,
-       RoomID: 1,
-       TotalElapsedTime: 0 },
-      {
-       PlayerID: 3,
-       Name: 'Jaum',
-       RA: '20478859',
-       Avatar: 'catIcon',
-       School: 'Anhembi',
-       Progress: 1,
-       Points: 50,
-       RoomID: 1,
-       TotalElapsedTime: 0 }] 
-   }
-*/

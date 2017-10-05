@@ -44,90 +44,92 @@
 </head>
 <body>
 
-	<div class="loading"></div>
+	<!--<div class="loading"></div>-->
 
 	<div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
 		<a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
 		<a href="/gameExplanation" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Tutorial</a>
 		<a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
-		<span>User Name</span>
+		<span id="player-name"></span>
 	</div>
 		
+	<div class="container">
+		<!-- creating gameboard on screen -->
+		<div>
+			<canvas id="myCanvas" class="gb-canvas" width="600" height="50"> </canvas>
+		</div>
 
-	<!-- creating gameboard on screen -->
-	<div>
-		<canvas id="myCanvas" width="600" height="50"> </canvas>
-	</div>
+		<!-- box mensagens de ajuda -->
+		<div class="help-box">
+			<span class=help-messages>Capture o pokemon com sua pokeball</span>
+		</div>
+		<div class="help-box">
+			<span class=help-messages>Use o bloco de {avance} para chegar até o pokemon</span>
+		</div>
+		<div class="invisible help-box" id="help1" >
+			<span class=help-messages>Ajuda 3</span>
+		</div>
+		<div class="invisible help-box" id="help2">
+			<span class=help-messages>Ajuda 4</span>
+		</div>
 
-	<!-- box mensagens de ajuda -->
-	<div class="help-box">
-		<span class=help-messages>Capture o pokemon com sua pokeball</span>
-	</div>
-	<div class="help-box">
-		<span class=help-messages>Use o bloco de {avançar} para chegar até o pokemon</span>
-	</div>
-	<div class="invisible help-box" id="help1" >
-		<span class=help-messages>Ajuda 3</span>
-	</div>
-	<div class="invisible help-box" id="help2">
-		<span class=help-messages>Ajuda 4</span>
-	</div>
+		<!-- position of p5 -->
+		<div id="sketch-holder"></div>
 
-	<!-- position of p5 -->
-	<div id="sketch-holder"></div>	
+		<button id="executa-blocos" class="w3-button w3-green w3-padding-large w3-large button"> ► Executar o programa</button>
 
-	<!-- creating scoreboard on screen -->
-	<div>
-		<table class="tabela">
-			<thead>
-				<tr>
-					<th>Avatar</th>
-					<th>Nome</th>
-					<th>Pontos</th>
-				</tr>
-			</thead>
-			<tbody id="score-board">
-				<tr class="player">
-					<td class="info-avatar"><img src=""></td>
-					<td class="info-name"> -- </td>
-					<td class="info-points"> -- </td>				
-				</tr>
-				<tr class="player">
-					<td class="info-avatar"><img src=""></td>
-					<td class="info-name"> -- </td>
-					<td class="info-points"> -- </td>				
-				</tr>
-				<tr class="player">
-					<td class="info-avatar"><img src=""></td>
-					<td class="info-name"> -- </td>
-					<td class="info-points"> -- </td>				
-				</tr>
-				<tr class="player">
-					<td class="info-avatar"><img src=""></td>
-					<td class="info-name"> -- </td>
-					<td class="info-points"> -- </td>				
-				</tr>
-			</tbody>
-		</table>
-	</div>
+		<button id="reset-game" class="w3-button w3-red w3-padding-large w3-large button">Reiniciar</button>
 
-	<button id="executa-blocos" class="w3-button w3-green w3-padding-large w3-large w3-margin-top"> ► Executar o programa</button>
+		<!-- creating scoreboard on screen -->
+		<div>
+			<table class="tabela">
+				<thead>
+					<tr>
+						<th>Avatar</th>
+						<th>Nome</th>
+						<th>Pontos</th>
+					</tr>
+				</thead>
+				<tbody id="score-board">
+					<tr class="player">
+						<td class="info-avatar"><img src=""></td>
+						<td class="info-name"> -- </td>
+						<td class="info-points"> -- </td>				
+					</tr>
+					<tr class="player">
+						<td class="info-avatar"><img src=""></td>
+						<td class="info-name"> -- </td>
+						<td class="info-points"> -- </td>				
+					</tr>
+					<tr class="player">
+						<td class="info-avatar"><img src=""></td>
+						<td class="info-name"> -- </td>
+						<td class="info-points"> -- </td>				
+					</tr>
+					<tr class="player">
+						<td class="info-avatar"><img src=""></td>
+						<td class="info-name"> -- </td>
+						<td class="info-points"> -- </td>				
+					</tr>
+				</tbody>
+			</table>
+		</div>		
+		<div class="blockly">
+			<p><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
 
-	<button id="reset-game" class="w3-button w3-red w3-padding-large w3-large w3-margin-top">Reiniciar</button>
-	<div>
-		<p><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
+			<!-- crating workspace of blockly -->
 
-		<!-- crating workspace of blockly -->
+			<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black"></div>
 
-		<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black"></div>
+			<!-- XML com os blocos que estarao disponiveis -->
 
-		<!-- XML com os blocos que estarao disponiveis -->
+			<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+				<block type="avancar"></block>
+				<block type="turnright"></block>
+				<block type="turnleft"></block>
+			</xml>
+		</div>
 
-		<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-			<block type="avancar"></block>
-			<block type="turnright"></block>
-			<block type="turnleft"></block>
-		</xml>
 	</div>
 
 	<!-- The Modal -->
@@ -141,7 +143,6 @@
 		<div class="modal-footer">
 			<h3>Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
  		</div>
-
 	</div>
 
 	<!-- Footer -->

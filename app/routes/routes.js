@@ -1,63 +1,41 @@
 module.exports = function (app){
 
-	//variavel que verifica o socket online
+	//variavel que verifica se ja esta socket online no server
 	var socketOnline = false;
+	//maximo de desfios
+	var maxChallenges = 10;
 
-	/*var player = { PlayerID: 3,
-					Name: "Carlos",
-					RA: "20422328",
-					Avatar: "batmanIcon",
-					School: "Anhembi",
-					Progress: 0,
-					Points: 200,
-					RoomID: 1,
-					ElapsedTime: 200,
-					WrongAnswers: 0};*/
-
-	var player = {	PlayerID: null,
-					Name: null,
-					Avatar: null,
-					Progress: 0,
-					Points: 0,
-					RoomID: 0,
-					ElapsedTime: 0,
-					WrongAnswers: 0 };
-
-	//home
+	//carrega home
 	app.get("/", function (req, res) {
-		
+		//renderiza ejs
 		res.render("home/index");
-
 	});
 	
 	//carrega video com o explicação do jogo	
 	app.get("/gameExplanation", function (req, res){
-
-		//connectSocket();
-
+		//renderiza ejs
 		res.render("player/gameExplanation");
-
 	});
 
+	//tela sobre
 	app.get("/about", function (req, res){
-
+		//renderiza ejs
 		res.render("admin/about");
+	});
 
+	//tela ajuda
+	app.get("/help", function(req, res){
+		//renderiza ejs
+		res.render("player/help");
 	});
 
 	//painel mostsrando o progresso de todos os alunos
 	app.get("/teacherPanel", function(req, res){
-		//connectSocket();
-
+		//abre conexao socket no servidor se necessario
+		connectSocket();
+		//renderiza ejs
 		res.render("teacher/teacherPanel");
-	})
-
-	app.get("/help", function(req, res){
-		//connectSocket();
-
-		res.render("player/help");
-	})
-
+	});	
 
 	//jogador seleciona escola, nome, avatar e sala
 	app.get("/playerCreation", function (req, res, next){
@@ -71,8 +49,7 @@ module.exports = function (app){
 				return next(err);
 			}
 			res.render("player/playerCreation", {allPlayers: results});
-		});		
-
+		});	
 		connection.end();
 	});
 
@@ -80,14 +57,12 @@ module.exports = function (app){
 	app.get("/waitingRoom", function (req, res){
 		//renderiza ejs
 		res.render("player/waitingRoom");
-
 	});
 
 	//mostra o jogadores em um podia conforme a pontuação do maior para o menor
 	app.get("/winnersPodium", function (req, res) {		
 
 		res.render("player/winnersPodium");		
-		
 	});
 
 	app.get("/deviceNotSupported", function (req, res) {
@@ -95,51 +70,58 @@ module.exports = function (app){
 		res.render("err/deviceNotSupported");
 	});
 
-	//15 challenges no maximo!
+	//10 challenges no total
 	//mostra o primeiro desafio
 	app.get("/challenge/1", function (req, res){
-		//renderiza ejs
-
+		//se necessario abre a conexao socket do servidor
 		connectSocket();
-
+		//renderiza ejs
 		res.render("challenges/1");
-
 	});
 
 	app.get("/challenge/2", function (req, res){
 		//renderiza ejs
-
-		//connectSocket();
-
 		res.render("challenges/2");
-
 	});
 
 	app.get("/challenge/3", function (req, res){
 		//renderiza ejs
-
-		//connectSocket();
-
 		res.render("challenges/3");
-
 	});
 
 	app.get("/challenge/4", function (req, res){
 		//renderiza ejs
-
-		//connectSocket();
-
 		res.render("challenges/4");
-
 	});
 
 	app.get("/challenge/5", function (req, res){
 		//renderiza ejs
-
-		//connectSocket();
-
 		res.render("challenges/5");
+	});
 
+	app.get("/challenge/6", function (req, res){
+		//renderiza ejs
+		res.render("challenges/6");
+	});
+
+	app.get("/challenge/7", function (req, res){
+		//renderiza ejs
+		res.render("challenges/7");
+	});
+
+	app.get("/challenge/8", function (req, res){
+		//renderiza ejs
+		res.render("challenges/8");
+	});
+
+	app.get("/challenge/9", function (req, res){
+		//renderiza ejs
+		res.render("challenges/9");
+	});
+
+	app.get("/challenge/10", function (req, res){
+		//renderiza ejs
+		res.render("challenges/10");
 	});
 
 	/* *******************************
@@ -178,7 +160,7 @@ module.exports = function (app){
 
 				//mudar conforme numero total de casas do tabuleiro
 				//redireciona para a view correta conforme o progresso do jogador
-				if(playerInfo.Progress <= 5){
+				if(playerInfo.Progress <= maxChallenges){
 					var redirectURL = "http://" + (req.get('host') + "/challenge/" + (playerInfo.Progress));
 
 					res.send(redirectURL);
@@ -288,7 +270,7 @@ module.exports = function (app){
 				return next(err);
 			}
 
-			if(results[0].Progress <= 10){
+			if(results[0].Progress <= maxChallenges){
 				var redirectURL = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);				
 			} else {
 				var redirectURL = "http://" + (req.get('host') + "/waitingRoom")
@@ -298,6 +280,7 @@ module.exports = function (app){
 		connection.end();
 	});
 
+	//envia json com info final de todos os jogares da sala
 	app.post("/winnersPodium", function (req, res, next) {
 
 		var sessionInfo = req.body;
@@ -344,7 +327,6 @@ module.exports = function (app){
    }
    //verifica se os jogadores da sala ja completaram todos os desafios
    function checkRoomProgress(roomID, callback) {
-
    		var answer = false
 
    		var connection = app.infra.connectionFactory();
@@ -355,14 +337,15 @@ module.exports = function (app){
 				return next(err);
 			}			
 			for (var i = 0; i < results.length; i++) {
-				if (results[i].Progress == 5){
+				//10 numero total de desafios
+				if (results[i].Progress == maxChallenges){
 					answer = true;
 				}				
 			}
 			callback(answer);
 		});
 		connection.end();
-   }
+	}
 
 	/* *******************************
    *                             *
@@ -382,10 +365,6 @@ module.exports = function (app){
 			socketOnline = true;
 		}
 	}
-
-	
-
-	//connectSocket();
 	
 	function initConnection(socket){
 
@@ -396,7 +375,6 @@ module.exports = function (app){
 		gameSocket.on('updatedGameBoard', updatedGameBoard);
 
 		gameSocket.on('joinRoom', joinRoom);
-
 	}
 
 	function updatedPlayersInfo(roomID, next) {
@@ -475,6 +453,18 @@ module.exports = function (app){
    *                             *
    ******************************* */
 
+
+
+	/*var player = { PlayerID: 3,
+					Name: "Carlos",
+					RA: "20422328",
+					Avatar: "batmanIcon",
+					School: "Anhembi",
+					Progress: 0,
+					Points: 200,
+					RoomID: 1,
+					ElapsedTime: 200,
+					WrongAnswers: 0};*/
 
 /*
 	Socket {

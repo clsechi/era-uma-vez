@@ -20,6 +20,7 @@ function createDBConnection() {
 	}
 	
 	// heroku implementation
+	/*
 	if (process.env.NODE_ENV == 'production') {
 		var url = process.env.CLEARDB_DATABASE_URL;
 		var grupos = url.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?/);
@@ -29,7 +30,7 @@ function createDBConnection() {
 			password: grupos[2],
 			database: grupos[4],
 		});
-	}
+	}*/
 }
 
 module.exports = function(){

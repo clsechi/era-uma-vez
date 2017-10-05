@@ -1,19 +1,12 @@
 
 var btnRunBlocks = document.getElementById('executa-blocos');
-
 var btnReset = document.getElementById('reset-game');
-
 var modal = document.getElementById('myModal');
-
 var pointsFinal = document.getElementById('pontos-final');
-
 var help1 = document.getElementById('help1');
-
 var help2 = document.getElementById('help2');
-
 var loading = document.querySelector('.loading');
-
-var p5Canvas = document.getElementById('sketch-holder');
+var playerNameDOM = document.getElementById('player-name');
 
 //variables
 var playerInfo = {};
@@ -173,14 +166,28 @@ function init(){
 		//adiciona respostas erradas ao JSON
 		playerInfo.WrongAnswers = 0;
 
-		console.log(playerInfo);
-		
+		playerNameDOM.textContent = "Olá " + playerInfo.Name;
+
+		console.log(playerInfo);		
 	});
 }		
 
 function joinRoom () {
 
-	IO.emit('joinRoom', readCookie("PlayerID"));	
+	var cookieInfo = readCookie("PlayerID");
+	//verifica se a configuraçaõ do player esta correta
+	if (cookieInfo != null){
+		IO.emit('joinRoom', cookieInfo);
+	} else {
+		if(confirm("PlayerID não encontrando!\nRedicionando para Configuração de Player...")){
+			window.location.assign(location.origin + "/playerCreation");
+		} else{
+			alert("Recarregando a página");
+			setTimeout(function(){
+				location.reload(true);
+			},3000);
+		}
+	}			
 }
 
 init();

@@ -27,9 +27,11 @@ window.onclick = function(event) {
     }
 }
 
-window.onload = function() {
-	//remove imagem de loading
-	loading.classList.add('invisible');
+//remove imagem de loading
+window.onload = function() {	
+	setTimeout(function () {
+		loading.classList.add('invisible');
+	},1500);//tempo até o p5 carregar o canvas	
 }
 
 btnRunBlocks.addEventListener("click", function (event) {

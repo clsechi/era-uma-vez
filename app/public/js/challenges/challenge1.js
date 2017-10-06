@@ -13,14 +13,6 @@ var blocksDOM = document.querySelector('.blockly');
 var playerInfo = {};
 var playerTimer = new Timer();
 
-//botoes
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
 //remove imagem de loading
 window.onload = function() {	
 	setTimeout(function () {
@@ -28,6 +20,7 @@ window.onload = function() {
 	},1500);//tempo até o p5 carregar o canvas	
 }
 
+//botoes
 btnRunBlocks.addEventListener("click", function (event) {
 	//chama funcao do blockly para executar os blocos
 	btnRunBlocks.disabled = true;
@@ -168,7 +161,7 @@ function init(){
 		//adiciona respostas erradas ao JSON
 		playerInfo.WrongAnswers = 0;
 
-		playerNameDOM.textContent = "Olá " + playerInfo.Name;
+		playerNameDOM.textContent = "Olá " + playerInfo.Name + " - " + playerInfo.RoomID;
 
 		console.log(playerInfo);		
 	});

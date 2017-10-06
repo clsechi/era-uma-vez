@@ -229,16 +229,22 @@ module.exports = function (app){
 							redirectURL.error = 0;
 
 							res.send(redirectURL);
+
+							connection.end();
 						});
-						//connection.end();
+						//
 					} else {
 						//se a sala estiver cheia retorna msg erro
 						redirectURL.error = 1;				
 
-						res.send(redirectURL);						
-					}			
+						res.send(redirectURL);
+
+						connection.end();						
+					}					
 				});
+				
 			} else {
+				//var connection = app.infra.connectionFactory();
 				//se o jogador ja estiver na sala somente atualiza a info
 				playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
 					if(err){
@@ -252,9 +258,10 @@ module.exports = function (app){
 					redirectURL.error = 0;
 
 					res.send(redirectURL);
+
+					connection.end();
 				});
 			}
-			connection.end();	
 		});		
 	});
 
@@ -277,7 +284,10 @@ module.exports = function (app){
 			}
 			res.send(redirectURL);
 		});
-		connection.end();
+		connection.end();;
+
+		//atualiza painel do professor
+		updatedPlayersInfo(playerInfo.RoomID, next);
 	});
 
 	//envia json com info final de todos os jogares da sala
@@ -388,7 +398,6 @@ module.exports = function (app){
 			}
 
 			app.io.emit('updatedPlayersInfo', results);
-
 		});
 	}
 

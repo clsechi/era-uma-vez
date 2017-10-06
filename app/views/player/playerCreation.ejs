@@ -3,95 +3,93 @@
 <head>
 	<title> EUV - Criação de Usuário</title>
 
-	<link rel="stylesheet" type="text/css" href="/css/playerCreation.css">
-
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="/css/playerCreation.css">	
+
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-		.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-		.fa-anchor,.fa-coffee {font-size:200px}
-	</style>
 
-
-</head>
-<body>
-
+	<!-- some js-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="/addons/image-picker.js"></script>
-
+</head>
+<body>
 	<div>
 	    <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-	      <a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+	      <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
 	      <a href="/gameExplanation" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Tutorial</a>
 	      <a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
 	    </div>
 	</div>
 
-	<h1>Vamos configurar seu usuário</h1>
-	<!--
-	<select size=2 id ="player-school">
-		<option>Anhembi</option>
-	</select>-->
+	<button id="save-player" class="w3-button w3-black w3-padding-large w3-xlarge start">Iniciar Jogo <i class="fa fa-arrow-right"></i></button>
 
-	<h2>Selecione seu nome</h2>
+	<div class="center">
 
-	<div>
-		<select size = <%= allPlayers.length %> class="required clear-select" id ="player-name">
-			<% for(var i=0; i < allPlayers.length; i++) {%>		
-				<option value=<%= allPlayers[i].PlayerID %> ><%= allPlayers[i].Name %></option>			
-			<% } %>
-		</select>
+		<h1 class="w3-center">Vamos configurar seu usuário</h1>
+		<!--
+		<select size=2 id ="player-school">
+			<option>Anhembi</option>
+		</select>-->
 
+		<h2 class="center">Qual o seu nome?</h2>
+
+		<div class="center">
+			<select size = <%= allPlayers.length %> class="required clear-select" id ="player-name">
+				<% for(var i=0; i < allPlayers.length; i++) {%>		
+					<option value=<%= allPlayers[i].PlayerID %> ><%= allPlayers[i].Name %></option>			
+				<% } %>
+			</select>
+
+		</div>
+		<hr>
+		<h2 class="center">Qual desenho abaixo você mais gosta?</h2>
+
+		<div class="avatar-selector center">
+
+			<select id ="player-avatar" class="image-picker" style="font-size: 5">
+				<option data-img-src = "/assets/batmanIcon128.png" value = "batmanIcon">Batman</option>
+				<option data-img-src = "/assets/catIcon128.png" value = "catIcon">Cat</option>
+				<option data-img-src = "/assets/hulkIcon128.png" value = "hulkIcon">Hulk</option>
+				<option data-img-src = "/assets/jokerIcon128.png" value = "jokerIcon">Joker</option>
+				<option data-img-src = "/assets/lionIcon128.png" value = "lionIcon">Lion</option>
+				<option data-img-src = "/assets/loganIcon128.png" value = "loganIcon">Logan</option>
+				<option data-img-src = "/assets/spiderIcon128.png" value = "spiderIcon">SpiderMan</option>
+				<option data-img-src = "/assets/supermanIcon128.png" value = "supermanIcon">SuperMan</option>
+			</select>
+
+		</div>
+		<hr>
+		<h2 class="center">Qual sala foi combinada?</h2>
+		
+		<div class="center">
+			<select size=5 id="player-room" class="required clear-select">
+				<option value = sala1>Sala 1</option>
+				<option value = sala2>Sala 2</option>
+				<option value = sala3>Sala 3</option>
+				<option value = sala4>Sala 4</option>
+				<option value = sala5>Sala 5</option>
+			</select>
+		</div>		
 	</div>
 
-	<h2>Selecione seu avatar</h2>
 
-	<div class="avatar-selector">
 
-		<select id ="player-avatar" class="image-picker" style="font-size: 5">
-			<option data-img-src = "/assets/batmanIcon128.png" value = "batmanIcon">Batman</option>
-			<option data-img-src = "/assets/catIcon128.png" value = "catIcon">Cat</option>
-			<option data-img-src = "/assets/hulkIcon128.png" value = "hulkIcon">Hulk</option>
-			<option data-img-src = "/assets/jokerIcon128.png" value = "jokerIcon">Joker</option>
-			<option data-img-src = "/assets/lionIcon128.png" value = "lionIcon">Lion</option>
-			<option data-img-src = "/assets/loganIcon128.png" value = "loganIcon">Logan</option>
-			<option data-img-src = "/assets/spiderIcon128.png" value = "spiderIcon">SpiderMan</option>
-			<option data-img-src = "/assets/supermanIcon128.png" value = "supermanIcon">SuperMan</option>
-		</select>
 
-	</div>
-
-	<h2>Selecione a sala combinada</h2>
-	
-	<div>
-		<select size=5 id="player-room" class="required clear-select">
-			<option value = sala1>Sala 1</option>
-			<option value = sala2>Sala 2</option>
-			<option value = sala3>Sala 3</option>
-			<option value = sala4>Sala 4</option>
-			<option value = sala5>Sala 5</option>
-		</select>
-	</div>
-
-	<button id="save-player" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Iniciar Jogo</button>
+	<!-- Footer -->
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+	    <p> Made by Carlos Sechi - <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	</footer>
 
 	<script type="text/javascript">
 		
 	var allPlayers = <%-JSON.stringify(allPlayers)%>;
 
-	//console.log(allPlayers);
-
 	</script>
-
-	<!-- Footer -->
-	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-	    <p> <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-	</footer>
 
 	<script src="/js/player/playerCreation.js"></script>
 

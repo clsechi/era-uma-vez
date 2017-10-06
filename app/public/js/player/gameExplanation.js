@@ -8,7 +8,8 @@ button.addEventListener("click", function (event){
 //redireciona para o desafio correto caso o jogador esteja continuando o jogo
 function firstChallenge() {
 
-	var playerInfo = {PlayerID: readCookie("PlayerID")};
+	var playerInfo = {PlayerID: readCookie("PlayerID"),
+						RoomID: readCookie("RoomID")};
 
 	var dados = new XMLHttpRequest();
 

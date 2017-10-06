@@ -4,6 +4,7 @@
 		<title>EUV - Explicação do Jogo</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -11,26 +12,50 @@
 		<style>
 			body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 			.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-			.fa-anchor,.fa-coffee {font-size:200px}
+
+			body{
+    		background-color: #f1f1f1;  
+			}
+			.center{
+			    margin: auto;
+			    width: 70%;
+			    padding: 10px;
+			}
+			
+			.iniciar-jogo{
+				float: top;
+				margin-left: 800px;	
+				
+			}
+			.video{
+				position: relative;
+				margin-left: 60px;				
+				padding: 10px;				
+			}
 		</style>
 
 	</head>
-
-		<body>
+	<body>
 		<!-- Navbar -->
-		 <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-		    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+		<div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+		    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
 		    <a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
+		</div>		
+
+		<div class="center">			
+		
+			<h1 class="w3-center">Vamos ver primeiro a explicação de como jogar...</h1>
+
+			<iframe width="854" height="480" src="https://www.youtube.com/embed/KbNXnxwMOqU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen class="video"></iframe>
+
+			<button id="avancar" class="w3-button w3-black w3-padding-large w3-xlarge iniciar-jogo">Iniciar Jogo <i class="fa fa-arrow-right"></i></button>		
+				
 		</div>
-			<p>video com explicação do jogo</p>
 
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/KbNXnxwMOqU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-
-			<button id="avancar" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Avançar</button>
-
+		
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-		    <p> <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+		    <p> Made by Carlos Sechi - <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 		</footer>
 
 		<script src="/js/player/gameExplanation.js"></script>

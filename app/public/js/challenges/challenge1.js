@@ -7,6 +7,7 @@ var help1 = document.getElementById('help1');
 var help2 = document.getElementById('help2');
 var loading = document.querySelector('.loading');
 var playerNameDOM = document.getElementById('player-name');
+var blocksDOM = document.querySelector('.blockly');
 
 //variables
 var playerInfo = {};
@@ -96,6 +97,7 @@ function showMessage(event){
 	//exibe o pokemon e a pontuacao ganha
 	//mudar conforme o pokemon
 	pointsFinal.textContent = "Você capturou um Magikarp e ganhou " + possiblePoints() + " pontos";
+	blocksDOM.classList.add('invisible');
 	modal.style.display = "block";
 
 	//agurda o tempo antes de redirecionar

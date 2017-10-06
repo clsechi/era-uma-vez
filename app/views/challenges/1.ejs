@@ -4,131 +4,141 @@
 
 	<title>EUV - Desafio 1</title>
 
+	<!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="/css/reset.css">	
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" type="text/css" href="/css/challenges.css">
 	<!-- fonts -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-	<style>
-		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-		.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-		.fa-anchor,.fa-coffee {font-size:200px}
-	</style>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">	
+
+	<link rel="stylesheet" type="text/css" href="/css/challenges.css">
+
+	<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<!-- p5 libraries -->
-
 	<script src="/addons/p5/p5.min.js"></script>
 	<script src="/addons/p5/p5.play.js"></script>
 	<script src="/js/p5/challenge1/sketch.js"></script>
 
 	<!-- blockly libraries -->
-
 	<script src="/addons/blockly/blockly_compressed.js"></script>
 	<script src="/addons/blockly/msg/js/pt-br.js"></script>
 	<script src="/addons/blockly/javascript_compressed.js"></script>
 	<script src="/addons/blockly/acorn_interpreter.js"></script>
 
 	<!-- socket libraries -->
-
 	<script src="/socket.io/socket.io.js"></script>	
 
 	<!-- this line removes any default padding and style. you might only need one of these values set. -->
 	<style> body {padding: 0; margin: 0;} </style>
-
 </head>
 <body>
-
-	<!--<div class="loading"></div>-->
-
-	<div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-		<a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-		<a href="/gameExplanation" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Tutorial</a>
-		<a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
-		<span id="player-name"></span>
-	</div>
-		
+	<nav class="navbar" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">EUV - Desafio 1</a>
+				<ul class="right hide-on-med-and-down">
+					<li><span id="player-name"></span></li>
+				</ul>
+				<ul class="left hide-on-med-and-down">
+					<li class="barlink"><a href="/gameExplanation">Tutorial</a></li>
+				</ul>				
+				<ul class="left hide-on-med-and-down barlink">
+					<li class="barlink"><a href="/about">Sobre</a></li>
+				</ul>
+			</div>
+		</nav>
+	<!-- tela de loading -->
+	<div class="loading"></div>
 	<div class="container">
-		<!-- creating gameboard on screen -->
-		<div>
-			<canvas id="myCanvas" class="gb-canvas" width="600" height="50"> </canvas>
-		</div>
+		<div class="row">
+			<div class="col s12">
+				<!-- creating gameboard on screen -->
+				<canvas id="myCanvas" class="gb-canvas z-depth-2" width="600" height="50"> </canvas>
+			</div>
+			<div class="col s6">
+				<!-- position of p5 -->
+				<div id="sketch-holder" class="p5-canvas z-depth-2"></div>
+				
+				<button id="executa-blocos" class="waves-effect waves-light btn #4caf50 green button"> ► Executar o programa</button>
 
-		<!-- box mensagens de ajuda -->
-		<div class="help-box">
-			<span class=help-messages>Capture o pokemon com sua pokeball</span>
-		</div>
-		<div class="help-box">
-			<span class=help-messages>Use o bloco de {avance} para chegar até o pokemon</span>
-		</div>
-		<div class="invisible help-box" id="help1" >
-			<span class=help-messages>Ajuda 3</span>
-		</div>
-		<div class="invisible help-box" id="help2">
-			<span class=help-messages>Ajuda 4</span>
-		</div>
+				<button id="reset-game" class="waves-effect waves-light btn #f44336 red button">Reiniciar</button>
 
-		<!-- position of p5 -->
-		<div id="sketch-holder"></div>
+				<!-- creating scoreboard on screen -->		
+				<table class="bordered tabela">
+					<thead>
+						<tr>
+							<th>Avatar</th>
+							<th>Nome</th>
+							<th>Pontos</th>
+						</tr>
+					</thead>
+					<tbody id="score-board">
+						<tr class="player" >
+							<td class="info-avatar"><img src=""></td>
+							<td class="info-name"> -- </td>
+							<td class="info-points"> -- </td>				
+						</tr>
+						<tr class="player">
+							<td class="info-avatar"><img src=""></td>
+							<td class="info-name"> -- </td>
+							<td class="info-points"> -- </td>				
+						</tr>
+						<tr class="player">
+							<td class="info-avatar"><img src=""></td>
+							<td class="info-name"> -- </td>
+							<td class="info-points"> -- </td>				
+						</tr>
+						<tr class="player">
+							<td class="info-avatar"><img src=""></td>
+							<td class="info-name"> -- </td>
+							<td class="info-points"> -- </td>				
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-		<button id="executa-blocos" class="w3-button w3-green w3-padding-large w3-large button"> ► Executar o programa</button>
+			<!--coluna 2-->
+			<div class="col s6">
+				<div class="box-messages">
+					<!-- box mensagens de ajuda -->
+					<div class="#aed581 light-green lighten-2 card-panel help-box">
+						<span class=help-messages>Capture o Pokémon com sua Pokeball</span>
+					</div>
+					<div class="#aed581 light-green lighten-2 card-panel help-box">
+						<span class=help-messages>Use o bloco {avance} para chegar até o pokemon</span>
+					</div>
+					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help1" >
+						<span class=help-messages>Cada bloco anda uma casa do caminho</span>
+					</div>
+					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help2">
+						<span class=help-messages>Use os 5 blocos em sequência</span>
+					</div>
+				</div>
 
-		<button id="reset-game" class="w3-button w3-red w3-padding-large w3-large button">Reiniciar</button>
+				<div class="blockly">
+					<p class="remaing"><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
 
-		<!-- creating scoreboard on screen -->
-		<div>
-			<table class="tabela">
-				<thead>
-					<tr>
-						<th>Avatar</th>
-						<th>Nome</th>
-						<th>Pontos</th>
-					</tr>
-				</thead>
-				<tbody id="score-board">
-					<tr class="player">
-						<td class="info-avatar"><img src=""></td>
-						<td class="info-name"> -- </td>
-						<td class="info-points"> -- </td>				
-					</tr>
-					<tr class="player">
-						<td class="info-avatar"><img src=""></td>
-						<td class="info-name"> -- </td>
-						<td class="info-points"> -- </td>				
-					</tr>
-					<tr class="player">
-						<td class="info-avatar"><img src=""></td>
-						<td class="info-name"> -- </td>
-						<td class="info-points"> -- </td>				
-					</tr>
-					<tr class="player">
-						<td class="info-avatar"><img src=""></td>
-						<td class="info-name"> -- </td>
-						<td class="info-points"> -- </td>				
-					</tr>
-				</tbody>
-			</table>
+					<!-- crating workspace of blockly -->
+
+					<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black"></div>
+				</div>
+			</div>
 		</div>		
-		<div class="blockly">
-			<p><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
 
-			<!-- crating workspace of blockly -->
-
-			<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black"></div>
-
-			<!-- XML com os blocos que estarao disponiveis -->
-
-			<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-				<block type="avancar"></block>
-				<block type="turnright"></block>
-				<block type="turnleft"></block>
-			</xml>
-		</div>
+		<!-- XML com os blocos que estarao disponiveis -->
+		<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+			<block type="avancar"></block>
+			<block type="turnright"></block>
+			<block type="turnleft"></block>
+		</xml>
 
 	</div>
 
@@ -139,16 +149,23 @@
 			<p>Parabéns!</p>
 			<p id="pontos-final"></p>
 			<img src="/assets/pokemons/magikarp_big.png" height="400" width="400">
+			<h3 class="modal-footer">Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
 		</div>
-		<div class="modal-footer">
-			<h3>Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
- 		</div>
-	</div>
+	</div>	
 
-	<!-- Footer -->
-	<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-		<p> <a href="https://github.com/clsechi/era-uma-vez" target="_blank">Era Uma Vez</a> - Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	<footer class="page-footer black">
+		<div class="footer-copyright">
+			<div class="container">
+				Made by Carlos Sechi - <a class="white-text text-lighten-3"href="https://github.com/clsechi/era-uma-vez">Era Uma Vez</a> - Template by <a class="white-text text-lighten-3" href="http://materializecss.com">Materialize</a></a>
+			</div>
+		</div>
 	</footer>
+
+	<!-- js do materialize nao foi utlizado
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	Compiled and minified JavaScript 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
 
 	<!-- biblioteca que trata o tempo -->
 	<script src="/addons/easytimer.js"></script>	
@@ -160,6 +177,5 @@
 	<script src="/js/challenges/challenge1.js"></script>
 
 	<script src="/js/blockly/blocksChallenge1.js"></script>
-
 </body>
 </html>

@@ -36,13 +36,13 @@ Blockly.Blocks['turnright'] = {
 	}
 };
 
-/*acende os blocos falta implementar
+//acende os blocos
 Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
-Blockly.JavaScript.addReservedWords('highlightBlock');]
+Blockly.JavaScript.addReservedWords('highlightBlock');
 
 function highlightBlock(id) {
 	workspace.highlightBlock(id);
-}*/
+}
 
 //generators
 Blockly.JavaScript['avancar'] = function(block) {

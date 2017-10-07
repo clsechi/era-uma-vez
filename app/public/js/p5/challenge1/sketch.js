@@ -18,10 +18,14 @@ var targetX = 300;
 var targetY = 180;
 
 function preload(){
-	//captureImg = loadAnimation("/assets/ball_001.png", "/assets/ball_002.png", "/assets/ball_003.png", "/assets/ball_004.png");
-	//playerImg.frameDelay = 100;
 
-	playerImg = loadImage("/assets/pokeballs/mainPokeball.png")
+	playerLeft = loadImage("/assets/pokeballs/pokeball-left.png");
+
+	playerRight = loadImage("/assets/pokeballs/pokeball-right.png");
+
+	playerTop = loadImage("/assets/pokeballs/pokeball-top.png");
+
+	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
 	targetImg = loadImage("/assets/pokemons/magikarp.png");
 
@@ -34,7 +38,7 @@ function setup() {
 	canvasp5.parent('sketch-holder');
 
 	//deixa o jogo mais devagar
-	frameRate(10);
+	frameRate(50);
 
 	//paredes  	
 	wallTop = createSprite(width/2, -WALL_THICKNESS/2, width+WALL_THICKNESS*2, WALL_THICKNESS);
@@ -47,21 +51,25 @@ function setup() {
 	wallLeft.immovable = true;
 
 	wallRight = createSprite(width+WALL_THICKNESS/2, height/2, WALL_THICKNESS, height);
-	wallRight.immovable = true;
+	wallRight.immovable = true;	
 	
 	//Criando player
-	player = createSprite(playerX, playerY, 100 ,100);
-	player.addImage("animation", playerImg);
+	player = createSprite(playerX, playerY, 40 ,40);
+	player.addAnimation("right", playerRight);
+	/*player.addAnimation("left", playerLeft);	
+	player.addAnimation("top", playerTop);
+	player.addAnimation("bottom", playerBottom);*/
 
 	//Criando alvo
-	target = createSprite(targetX, targetY, 100, 100);
-	target.addImage("pokemon",targetImg);
+	target = createSprite(targetX, targetY, 40, 40);
+	target.addImage("pokemon", targetImg);
 }
 
 function draw() {
-	background(backgroundImg);
 
-	player.changeAnimation("animation");
+	background(backgroundImg);
+	
+	player.addAnimation("right", playerRight);
 
 	target.changeAnimation("pokemon");
 
@@ -75,9 +83,7 @@ function draw() {
 }
 
 //avanca uma casa no jogo
-function setNewPosition() {
-
-	player.remove();
+function setNewPosition() {	
 	
 	//soma ou subtrai 40px da posicao atual do jogador
 	//somente altera se a nova posicao estiver dentro dos limites do jogo
@@ -104,8 +110,7 @@ function setNewPosition() {
 		break;
 	}	
 
-	player = createSprite(playerX, playerY, 100 ,100);
-	player.addAnimation("animation", playerImg);
+	setAnimation();
 
 	checkChallenge();
 }
@@ -128,22 +133,50 @@ function checkAnswer() {
 	}
 }
 
-// define a direcao que o player ira se mover
+//gira o player para a direita
 function setDirectionRIGHT() {
 
 	if(playerDirection + 90 <= 270){
 		playerDirection += 90;
 	} else{
 		playerDirection = 0;
-	}	
+	}
+	setAnimation();
 }
 
+//gira o player para a esquerda
 function setDirectionLEFT() {
 
 	if(playerDirection - 90 >= 0){
 		playerDirection -= 90;
 	} else {
 		playerDirection = 270;
+	}
+	setAnimation();
+}
+
+//altera animacao conforme a rotação do player
+function setAnimation(){
+
+	player.remove();
+	
+	switch (playerDirection){
+		case 0:
+			player = createSprite(playerX, playerY, 100 ,100);		
+			player.addAnimation("left", playerLeft);
+		break;
+		case 90:
+			player = createSprite(playerX, playerY, 100 ,100);			
+			player.addAnimation("top", playerTop);
+		break;
+		case 180:
+			player = createSprite(playerX, playerY, 100 ,100);			
+			player.addAnimation("right", playerRight);
+		break;
+		case 270:
+			player = createSprite(playerX, playerY, 100 ,100);
+			player.addAnimation("bottom", playerBottom);
+		break;
 	}
 }
 
@@ -158,7 +191,7 @@ function resetGame() {
 
 	//desenha o player novamente
 	player = createSprite(playerX, playerY, 100 ,100);
-	player.addAnimation("animation", playerImg);
+	player.addAnimation("right", playerRight);		
 
 	target.remove();
 

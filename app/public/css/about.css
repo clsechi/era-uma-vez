@@ -1,0 +1,65 @@
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar,h1,button {
+	font-family: "Montserrat", sans-serif
+}
+
+body{
+	background-color: #f1f1f1;    
+}
+.center{
+	margin: auto;
+	width: 70%;
+	padding: 10px;
+}
+hr{
+	height:2px;
+	width: 75%;
+	border:none;
+	color:#d6d8db;
+	background-color:#d6d8db;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.img-blockly{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+
+.img-node{
+	margin-left: 5px;
+}
+
+.img-materialize{
+	margin-left: 5px;
+}
+
+.img-w3css{
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+.img-p5{
+	margin-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+.img-socket{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+}
+.img-mysql{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+.img-code{
+	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-left: 30px;
+}

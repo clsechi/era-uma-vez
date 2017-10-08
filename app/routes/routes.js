@@ -8,6 +8,7 @@ module.exports = function (app){
 	//carrega home
 	app.get("/", function (req, res) {
 		//renderiza ejs
+		test();
 		res.render("home/index");
 	});
 	
@@ -399,9 +400,36 @@ module.exports = function (app){
 
 			app.io.emit('updatedPlayersInfo', results);
 		});
+
+		/*playerDAO.selectLOG(function(err, results){
+			if(err){
+				return next(err);
+			}
+
+			console.log(results);
+		});*/
+
+		connection.end();	
 	}
 
-	//implementar no cliente na view 2048
+	function test() {
+
+		var connection = app.infra.connectionFactory();
+		var playerDAO = new app.infra.PlayerDAO(connection);
+
+		playerDAO.selectAverageLOG(function(err, results){
+			if(err){
+				return next(err);
+			}
+
+			console.log(results);
+		});
+
+		connection.end();
+	}
+
+
+
 	function redirectWinnersPodium(roomID, redirectURL) {
 		
 		app.io.to(roomID).emit('redirectWinnersPodium', redirectURL);
@@ -421,7 +449,6 @@ module.exports = function (app){
 		});
 
 		connection.end();
-	
 	}
 
 	function joinRoom(playerID, next) {

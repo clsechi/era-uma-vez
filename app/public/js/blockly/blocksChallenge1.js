@@ -1,4 +1,3 @@
-		
 //propriedades dos blocos que serão utilizados na fase
 Blockly.Blocks['avancar'] = {
 	init: function() {
@@ -50,15 +49,6 @@ Blockly.JavaScript['avancar'] = function(block) {
 	var code = 'setNewPosition();\n';
 	return code;
 };
-
-/*
-Blockly.JavaScript['vire'] = function(block) {
-	var dropdown_definedirecao = block.getFieldValue('defineDirecao');
-	dropdown_definedirecao = dropdown_definedirecao.toString();
-	// TODO: Assemble JavaScript into code variable.
-	var code = 'setDirection(' + dropdown_definedirecao + ');\n';
-	return code;
-};*/
 
 Blockly.JavaScript['turnleft'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
@@ -117,7 +107,6 @@ function runBlocks (){
 	var code = 'resetGame();\n';
 	code += Blockly.JavaScript.workspaceToCode(workspace);
 	code += 'checkAnswer();\n';
-	console.log("this code:\n" +code);
 
 	myInterpreter = new Interpreter(code, initApi);
 	nextStep();

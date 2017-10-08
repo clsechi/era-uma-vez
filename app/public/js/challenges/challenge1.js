@@ -1,4 +1,3 @@
-
 var btnRunBlocks = document.getElementById('executa-blocos');
 var btnReset = document.getElementById('reset-game');
 var modal = document.getElementById('myModal');

@@ -25,7 +25,7 @@ function updateWinners(winners) {
 
 	var podium = document.querySelectorAll("#podium");
 
-	for (var i = 0; i < podium.length; i++) {
+	for (var i = 0; i < winners.length; i++) {
 		var winner = podium[i];
 		winner.textContent = [i+1] + "º Lugar: " + winners[i].Name + " com " + winners[i].Points + " pontos"; 
 	}

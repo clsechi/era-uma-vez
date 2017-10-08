@@ -44,6 +44,10 @@ PlayerDAO.prototype.selectPlayerAlreadyInRoom = function (RoomID, PlayerID, call
 	this._connection.query('SELECT COUNT(PlayerID) AS AlreadyInRoom FROM Players WHERE RoomID = ? AND PlayerID = ?;', [RoomID, PlayerID], callback);
 }
 
+PlayerDAO.prototype.selectAverageLOG = function(callback){
+	this._connection.query('SELECT AVG(WrongAnswers)as WrongAnswers, AVG(ElapsedTime) AS ElapsedTime, GBProgress FROM ChallengesLOG GROUP BY GBProgress;', callback);
+}
+
 PlayerDAO.prototype.updateLOG = function(infoLOG, callback){
 	this._connection.query('INSERT INTO ChallengesLOG SET ? ', infoLOG, callback);
 }

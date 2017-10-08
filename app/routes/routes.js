@@ -7,8 +7,6 @@ module.exports = function (app){
 
 	//carrega home
 	app.get("/", function (req, res) {
-		//se necessario abre a conexao socket do servidor
-		connectSocket();
 		//renderiza ejs
 		res.render("home/index");
 	});
@@ -57,13 +55,15 @@ module.exports = function (app){
 
 	//sala de espera para os jogadores que ja concluiram o jogo
 	app.get("/waitingRoom", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("player/waitingRoom");
 	});
 
 	//mostra o jogadores em um podia conforme a pontuação do maior para o menor
 	app.get("/winnersPodium", function (req, res) {		
-
+		//renderiza ejs
 		res.render("player/winnersPodium");		
 	});
 
@@ -89,41 +89,57 @@ module.exports = function (app){
 	});
 
 	app.get("/challenge/3", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/3");
 	});
 
 	app.get("/challenge/4", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/4");
 	});
 
 	app.get("/challenge/5", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/5");
 	});
 
 	app.get("/challenge/6", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/6");
 	});
 
 	app.get("/challenge/7", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/7");
 	});
 
 	app.get("/challenge/8", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/8");
 	});
 
 	app.get("/challenge/9", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/9");
 	});
 
 	app.get("/challenge/10", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/10");
 	});

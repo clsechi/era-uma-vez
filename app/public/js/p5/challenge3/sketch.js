@@ -5,8 +5,8 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerInitialX = 100;
-var playerInitialY = 220;
+var playerInitialX = 60;
+var playerInitialY = 180;
 var playerInitialDirection = 180;
 
 var playerX = playerInitialX;
@@ -14,8 +14,8 @@ var playerY = playerInitialY;
 var playerDirection = playerInitialDirection;
 
 // target variables
-var targetX = 260;
-var targetY = 140;
+var targetX = 340;
+var targetY = 180;
 
 function preload(){
 
@@ -27,11 +27,9 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	targetImg = loadImage("/assets/pokemons/tentacruel.png");
+	targetImg = loadImage("/assets/pokemons/alakazam.png");
 
-	shipImg = loadImage("/assets/objects/shipwreck.png");
-
-	backgroundImg = loadImage('/assets/background/bg2.png'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/bg3.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -56,9 +54,9 @@ function setup() {
 	wallRight.immovable = true;
 
 	//criando objetos na tela
-	object1 = createSprite(240, 220, 75, 85);
+	/*object1 = createSprite(240, 220, 75, 85);
 	object1.addImage("ship", shipImg);
-	object1.immovable = true;
+	object1.immovable = true;*/
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -79,8 +77,6 @@ function draw() {
 	player.addAnimation("right", playerRight);
 
 	target.changeAnimation("pokemon");
-
-	player.collide(object1);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);
@@ -130,6 +126,17 @@ function checkChallenge() {
 	if(playerX == targetX && playerY == targetY){
 		target.remove();
 	}
+}
+
+//implementado dentro do bloco WHILE
+function checkChallengeBlock() {
+	var result = false;
+	if(playerX == targetX && playerY == targetY){
+		result = false;
+	}else{
+		result = true;
+	}
+	return result;
 }
 
 //verifica se o player esta na mesma posicao do target

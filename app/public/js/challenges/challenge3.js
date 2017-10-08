@@ -88,7 +88,7 @@ function possiblePoints() {
 function showMessage(event){
 	//exibe o pokemon e a pontuacao ganha
 	//mudar conforme o pokemon
-	pointsFinal.textContent = "Você capturou um Tentacruel e ganhou " + possiblePoints() + " pontos";
+	pointsFinal.textContent = "Você capturou um Alakazam e ganhou " + possiblePoints() + " pontos";
 	blocksDOM.classList.add('invisible');
 	modal.style.display = "block";
 
@@ -112,7 +112,8 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			window.location.assign(dados.responseText);
+			//window.location.assign(dados.responseText);
+			console.log(dados.responseText);
 		}
 	}
 

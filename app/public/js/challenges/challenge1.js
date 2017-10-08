@@ -95,7 +95,7 @@ function showMessage(event){
 	//agurda o tempo antes de redirecionar
 	window.setTimeout(function(){
 		postPlayerInfo();
-	},2500);
+	},4000);
 }
 
 //envia as informações do usuário para o servidor
@@ -112,8 +112,7 @@ function postPlayerInfo() {
 
 	dados.onreadystatechange = function (){
 		if (this.readyState == 4 && this.status == 200) {
-			//window.location.assign(dados.responseText);
-			console.log(dados.responseText);
+			window.location.assign(dados.responseText);
 		}
 	}
 

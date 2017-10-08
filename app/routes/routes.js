@@ -7,8 +7,9 @@ module.exports = function (app){
 
 	//carrega home
 	app.get("/", function (req, res) {
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
-		test();
 		res.render("home/index");
 	});
 	
@@ -81,6 +82,8 @@ module.exports = function (app){
 	});
 
 	app.get("/challenge/2", function (req, res){
+		//se necessario abre a conexao socket do servidor
+		connectSocket();
 		//renderiza ejs
 		res.render("challenges/2");
 	});

@@ -6,7 +6,7 @@ var WALL_THICKNESS = 30;
 
 // player variables
 var playerInitialX = 100;
-var playerInitialY = 180;
+var playerInitialY = 220;
 var playerInitialDirection = 180;
 
 var playerX = playerInitialX;
@@ -14,8 +14,8 @@ var playerY = playerInitialY;
 var playerDirection = playerInitialDirection;
 
 // target variables
-var targetX = 300;
-var targetY = 180;
+var targetX = 260;
+var targetY = 140;
 
 function preload(){
 
@@ -27,9 +27,11 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	targetImg = loadImage("/assets/pokemons/magikarp.png");
+	targetImg = loadImage("/assets/pokemons/tentacruel.png");
 
-	backgroundImg = loadImage('/assets/background/bg1.png'); //carrega imagem de fundo
+	shipImg = loadImage("/assets/objects/shipwreck.png")
+
+	backgroundImg = loadImage('/assets/background/bg2.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -52,6 +54,11 @@ function setup() {
 
 	wallRight = createSprite(width+WALL_THICKNESS/2, height/2, WALL_THICKNESS, height);
 	wallRight.immovable = true;
+
+	//criando objetos na tela
+	object1 = createSprite(240, 220, 75, 85);
+	object1.addImage("ship", shipImg);
+	object1.immovable = true;
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -72,6 +79,8 @@ function draw() {
 	player.addAnimation("right", playerRight);
 
 	target.changeAnimation("pokemon");
+
+	player.collide(object1);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

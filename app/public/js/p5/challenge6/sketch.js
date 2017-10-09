@@ -27,11 +27,9 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	treeImg = loadImage("/assets/objects/tree.png");
+	targetImg = loadImage("/assets/pokemons/arcanine.png");
 
-	targetImg = loadImage("/assets/pokemons/snorlax.png");
-
-	backgroundImg = loadImage('/assets/background/bg5.png'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/bg6.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -57,9 +55,9 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	object1 = createSprite(210, 140, 75, 85);
+	/*object1 = createSprite(210, 140, 75, 85);
 	object1.addImage("tree", treeImg);
-	object1.immovable = true;
+	object1.immovable = true;**/
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -79,8 +77,6 @@ function draw() {
 	player.addAnimation("right", playerRight);
 
 	target.changeAnimation("pokemon");
-
-	player.collide(object1);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

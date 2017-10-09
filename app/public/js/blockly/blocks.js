@@ -239,4 +239,4 @@ function initApi(interpreter, scope) {
 		interpreter.createNativeFunction(wrapper));
 }
 
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#w3hr7z
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#z3qnfi

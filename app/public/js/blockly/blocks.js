@@ -103,7 +103,8 @@ Blockly.JavaScript['repeat'] = function(block) {
 Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'while(checkChallengeBlock()) {\n' + statements_repeticao + '}\n';
+  // @rep trata loops infinitos
+  var code = ' var rep = 15;\nwhile(checkChallengeBlock() && rep > 0) {\n rep--;\n' + statements_repeticao + '}\n';
   return code;
 };
 
@@ -157,6 +158,9 @@ var myInterpreter;
 //transforma os blocos em codigo e excuta as funcoes do p5
 function runBlocks (){
 	var code = 'resetGame();\n';
+
+
+
 	code += Blockly.JavaScript.workspaceToCode(workspace);
 	code += 'checkAnswer();\n';
 	console.log(code);

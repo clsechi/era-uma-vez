@@ -4,6 +4,206 @@
 		"selected_items":
 		[
 			[
+				"win",
+				"window.LoopTrap"
+			],
+			[
+				"tre",
+				"treeImg〔variable〕"
+			],
+			[
+				"state",
+				"statements_repeticao〔variable〕"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"text",
+				"text_numero〔variable〕"
+			],
+			[
+				"o",
+				"object1"
+			],
+			[
+				"create",
+				"createSprite"
+			],
+			[
+				"w3",
+				"w3-container"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"w3-r",
+				"w3-row"
+			],
+			[
+				"di",
+				"div"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"pla",
+				"playerDAO"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"PL",
+				"PlayerDAO"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"mart",
+				"margin-left"
+			],
+			[
+				"set",
+				"setAnimation〔function〕"
+			],
+			[
+				"add",
+				"addAnimation"
+			],
+			[
+				"bor",
+				"borderImg〔variable〕"
+			],
+			[
+				"tar",
+				"target〔variable〕"
+			],
+			[
+				"arr",
+				"arrowImg〔variable〕"
+			],
+			[
+				"move",
+				"movePlayer"
+			],
+			[
+				"po",
+				"pl.position.y"
+			],
+			[
+				"player",
+				"playerX"
+			],
+			[
+				"pos",
+				"pl.position.x"
+			],
+			[
+				"margin-t",
+				"margin-bottom"
+			],
+			[
+				"w",
+				"w3-center"
+			],
+			[
+				"w3-c",
+				"w3-container"
+			],
+			[
+				"hr",
+				"hr\tTag"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"magin",
+				"margin-bottom"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"blo",
+				"blocksDOM〔variable〕"
+			],
+			[
+				"block",
+				"blockly"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"so",
+				"socketOnline"
+			],
+			[
+				"ress",
+				"results〔argument〕"
+			],
+			[
+				"too",
+				"toolbox〔variable〕"
+			],
+			[
+				"positon",
+				"pl.position.x"
+			],
+			[
+				"connec",
+				"connectSocket"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"res",
+				"results"
+			],
+			[
 				"Po",
 				"Progress"
 			],
@@ -16,10 +216,6 @@
 				"querySelector"
 			],
 			[
-				"pla",
-				"playersSala1〔variable〕"
-			],
-			[
 				"pl",
 				"playerY"
 			],
@@ -30,10 +226,6 @@
 			[
 				"che",
 				"checkChallenge"
-			],
-			[
-				"tar",
-				"target〔variable〕"
 			],
 			[
 				"ta",
@@ -50,10 +242,6 @@
 			[
 				"load",
 				"loadImage"
-			],
-			[
-				"set",
-				"setDirectionRIGHT"
 			],
 			[
 				"setD",
@@ -74,14 +262,6 @@
 			[
 				"room",
 				"roomProgress〔argument〕"
-			],
-			[
-				"re",
-				"redirect"
-			],
-			[
-				"bor",
-				"border-collapse"
 			],
 			[
 				"select",
@@ -110,10 +290,6 @@
 			[
 				"play",
 				"playersSala1"
-			],
-			[
-				"text",
-				"textContent"
 			],
 			[
 				"info",
@@ -148,16 +324,8 @@
 				"prototype"
 			],
 			[
-				"w",
-				"wrongAnswers"
-			],
-			[
 				"T",
 				"TotalElapsedTime"
-			],
-			[
-				"player",
-				"playerInfo"
 			],
 			[
 				"Pla",
@@ -242,10 +410,6 @@
 			[
 				"fin",
 				"finalPosition〔variable〕"
-			],
-			[
-				"fun",
-				"fun\tFunction"
 			],
 			[
 				"consol",
@@ -350,170 +514,6 @@
 			[
 				"roo",
 				"roomId"
-			],
-			[
-				"p",
-				"proto\tPrototype"
-			],
-			[
-				"so",
-				"socketConnection"
-			],
-			[
-				"sc",
-				"socket"
-			],
-			[
-				"e",
-				"express"
-			],
-			[
-				"sa",
-				"salvaProduto"
-			],
-			[
-				"de",
-				"descricao"
-			],
-			[
-				"Acc",
-				"Accept"
-			],
-			[
-				"va",
-				"validationErrors"
-			],
-			[
-				"val",
-				"validationErros"
-			],
-			[
-				"expre",
-				"expressValidator〔variable〕"
-			],
-			[
-				"pr",
-				"produto"
-			],
-			[
-				"prod",
-				"produtos"
-			],
-			[
-				"po",
-				"prototype"
-			],
-			[
-				"prud",
-				"produtos"
-			],
-			[
-				"por",
-				"produtosDAO"
-			],
-			[
-				"produtos",
-				"produtosBanco"
-			],
-			[
-				"cre",
-				"createDBConnection〔function〕"
-			],
-			[
-				"res",
-				"results〔argument〕"
-			],
-			[
-				"pac",
-				"pacientes〔argument〕"
-			],
-			[
-				"ad",
-				"adicionaPacienteNaTabela"
-			],
-			[
-				"mon",
-				"montaTr"
-			],
-			[
-				"scri",
-				"script"
-			],
-			[
-				"margin",
-				"margin-bottom"
-			],
-			[
-				"al",
-				"alturEhValida"
-			],
-			[
-				"peso",
-				"pesoEhValido"
-			],
-			[
-				"pa",
-				"paciente"
-			],
-			[
-				"fu",
-				"fun\tFunction"
-			],
-			[
-				"nome",
-				"nomeTd"
-			],
-			[
-				"altura",
-				"alturaTd"
-			],
-			[
-				"noem",
-				"nomeTd"
-			],
-			[
-				"alta",
-				"alturEhValida"
-			],
-			[
-				"fo",
-				"for\tfor (…) {…}"
-			],
-			[
-				"pre",
-				"precoProd"
-			],
-			[
-				"line",
-				"line2"
-			],
-			[
-				"lis",
-				"list2"
-			],
-			[
-				"li",
-				"list1"
-			],
-			[
-				"list",
-				"list2"
-			],
-			[
-				"lsit",
-				"list1"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"me",
-				"meta\tTag"
-			],
-			[
-				"tra",
-				"tratamento"
 			]
 		]
 	},
@@ -523,73 +523,43 @@
 			"file": "app/routes/routes.js",
 			"settings":
 			{
-				"buffer_size": 17943,
+				"buffer_size": 21481,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/public/js/blockly/blocksChallenge1.js",
+			"file": "app/public/js/blockly/blocks.js",
 			"settings":
 			{
-				"buffer_size": 4958,
+				"buffer_size": 6881,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/public/js/drawGB.js",
+			"file": "app/public/js/challenges/challenge6.js",
 			"settings":
 			{
-				"buffer_size": 6043,
+				"buffer_size": 4458,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/public/js/challenges/challenge1.js",
+			"file": "app/public/js/p5/challenge6/sketch.js",
 			"settings":
 			{
-				"buffer_size": 2884,
+				"buffer_size": 4835,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/public/js/p5/challenge1/sketch.js",
+			"file": "app/views/challenges/6.ejs",
 			"settings":
 			{
-				"buffer_size": 4148,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/infra/connectionFactory.js",
-			"settings":
-			{
-				"buffer_size": 845,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "CREATE TABLE Players (\n\tPlayerID INT NOT NULL AUTO_INCREMENT,\n\tName varchar(30) NOT NULL,\n\tRA varchar(15),\n\tAvatar varchar(20),\n\tSchool varchar(30),\n\tProgress TINYINT DEFAULT '1',\n\tPoints INT DEFAULT '0',\n\tRoomID varchar(5),\n\tTotalElapsedTime FLOAT(10,2) DEFAULT '0',\n\tPRIMARY KEY (PlayerID)\n);\n\nCREATE TABLE ChallengesLOG (\n\tLogID INT NOT NULL AUTO_INCREMENT,\n\tFK_PlayerID INT NOT NULL,\n\tEarnedPoints TINYINT,\n\tGBProgress TINYINT,\n\tElapsedTime FLOAT,\n\tWrongAnswers TINYINT,\n\tPRIMARY KEY (LogID),\n\tFOREIGN KEY (FK_PlayerID) REFERENCES Players(PlayerID)\n);\n\nINSERT INTO Players (Name, RA, School) VALUES ('Carlos', '20422328', 'Anhembi');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Esdras', '20478859', 'Anhembi');\n\nINSERT INTO Players (Name, RA, School) VALUES ('João', '20478159', 'Uninove');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Fabio Lara', '20479959', 'Anhembi');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Maria Zica', '20885859', 'FMU');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Bruno', '27858859', 'USP');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Romario Viana', '20478859', 'ITA');\n\nINSERT INTO Players (Name, RA, School) VALUES ('Ana', '20778859', 'Anhembi');\n\n**********************************************************************************************************\n\nUPDATE Players SET Progress = 10, Points = 100 WHERE PlayerID = 1;\n\nINSERT INTO ChallengesLOG (FK_PlayerID, EarnedPoints, GBProgress, ElapsedTime, WrongAnswers) VALUES ();",
-			"file": "script.sql",
-			"file_size": 1493,
-			"file_write_time": 131508787219817067,
-			"settings":
-			{
-				"buffer_size": 1489,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/challenges/1.ejs",
-			"settings":
-			{
-				"buffer_size": 3983,
+				"buffer_size": 6694,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -602,10 +572,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 244.0,
-		"last_filter": "html",
+		"height": 392.0,
+		"last_filter": "css",
 		"selected_items":
 		[
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
 			[
 				"html",
 				"Set Syntax: HTML"
@@ -653,46 +627,68 @@
 	[
 		"/home/carlos/workspace/era-uma-vez",
 		"/home/carlos/workspace/era-uma-vez/app",
-		"/home/carlos/workspace/era-uma-vez/app/infra",
 		"/home/carlos/workspace/era-uma-vez/app/public",
-		"/home/carlos/workspace/era-uma-vez/app/public/addons",
-		"/home/carlos/workspace/era-uma-vez/app/public/addons/blockly",
-		"/home/carlos/workspace/era-uma-vez/app/public/css",
 		"/home/carlos/workspace/era-uma-vez/app/public/js",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/p5",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge1",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/player",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/teacher",
-		"/home/carlos/workspace/era-uma-vez/app/routes",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge6",
 		"/home/carlos/workspace/era-uma-vez/app/views",
-		"/home/carlos/workspace/era-uma-vez/app/views/challenges",
-		"/home/carlos/workspace/era-uma-vez/app/views/home",
-		"/home/carlos/workspace/era-uma-vez/app/views/teacher",
-		"/home/carlos/workspace/ALURA/casadocodigo"
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges"
 	],
 	"file_history":
 	[
-		"/home/carlos/workspace/era-uma-vez/package.json",
-		"/home/carlos/workspace/ALURA/casadocodigo/package.json",
-		"/home/carlos/workspace/era-uma-vez/app/views/home/index.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/views/teacher/teacherPanel.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/drawGB.js",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
-		"/home/carlos/workspace/era-uma-vez/app/public/css/challenges.css",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/teacher/teacherPanel.js",
-		"/home/carlos/workspace/era-uma-vez/app/views/player/gameExplanation.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/3.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge5.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/5.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge5/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge3.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge4.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge4/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/4.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge3/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/challenges/2.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/views/challenges/1.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/routes/routes.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge2/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/p5/challenge1/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/challenges.css",
+		"/home/carlos/Downloads/toolbox (3).xml",
+		"/home/carlos/Downloads/workspace (1).xml",
+		"/home/carlos/Downloads/toolbox (2).xml",
+		"/home/carlos/Downloads/starter-template/css/materialize.css",
+		"/home/carlos/Downloads/toolbox (1).xml",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly/blocksChallenge2.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge1.js",
-		"/home/carlos/workspace/era-uma-vez/app/public/css/teacherPanel.css",
-		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
-		"/home/carlos/workspace/era-uma-vez/app/views/player/waitingRoom.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly/blocksChallenge1.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/about.css",
+		"/home/carlos/workspace/era-uma-vez/app/views/admin/about.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/teacherPanel.css",
+		"/home/carlos/workspace/era-uma-vez/app/views/teacher/teacherPanel.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/player/waitingRoom.js",
+		"/home/carlos/workspace/era-uma-vez/app/infra/PlayerDAO.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/teacher/teacherPanel.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/waitingRoom.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/playerCreation.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/playerCreation.css",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player/winnersPodium.js",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/player/playerCreation.js",
+		"/home/carlos/workspace/era-uma-vez/app/public/addons/2048/style/main.css",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/gameExplanation.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/views/player/winnersPodium.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/css/winnersPodium.css",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/player/gameExplanation.js",
+		"/home/carlos/workspace/era-uma-vez/app/views/home/index.ejs",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/drawGB.js",
+		"/home/carlos/workspace/era-uma-vez/app.js",
+		"/home/carlos/workspace/era-uma-vez/app/infra/connectionFactory.js",
+		"/home/carlos/workspace/era-uma-vez/package.json",
+		"/home/carlos/Downloads/eraumavez-logs-1507143175497.txt",
+		"/home/carlos/workspace/blockly/demos/maxBlocks/index.html",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/player/playerCreation.js",
+		"/home/carlos/workspace/era-uma-vez/script.sql",
+		"/home/carlos/workspace/ALURA/casadocodigo/package.json",
+		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch.js",
+		"/home/carlos/workspace/era-uma-vez/app/routes/routes.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/home/home.js",
 		"/home/carlos/workspace/CODE SAGA/ruby-de-baunilha-arrays1/lib/arrays.rb",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/routes/produtos.js",
@@ -707,15 +703,8 @@
 		"/home/carlos/Downloads/toolbox.xml",
 		"/home/carlos/Downloads/workspace.xml",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/blockly/build.py",
-		"/home/carlos/workspace/era-uma-vez/app/views/challenges/5.ejs",
-		"/home/carlos/workspace/era-uma-vez/app.js",
-		"/home/carlos/workspace/era-uma-vez/app/public/js/challenges/challenge2.js",
-		"/home/carlos/workspace/era-uma-vez/app/views/challenges/2.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/views/player/playerCreation.ejs",
-		"/home/carlos/workspace/era-uma-vez/script.sql",
 		"/home/carlos/workspace/ALURA/curso-git/index.html",
 		"/home/carlos/workspace/era-uma-vez/app/views/player/help.ejs",
-		"/home/carlos/workspace/era-uma-vez/app/views/admin/about.ejs",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenge2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/js/challenge1.js",
 		"/home/carlos/workspace/era-uma-vez/app/views/err/deviceNotSupported.ejs",
@@ -732,7 +721,6 @@
 		"/home/carlos/workspace/era-uma-vez/app/public/js/sketch2.js",
 		"/home/carlos/workspace/era-uma-vez/app/public/css/style.css",
 		"/home/carlos/workspace/era-uma-vez/app/infra/SocketConnection.js",
-		"/home/carlos/workspace/era-uma-vez/app/infra/connectionFactory.js",
 		"/home/carlos/workspace/era-uma-vez/config/express.js",
 		"/home/carlos/workspace/era-uma-vez/app/routes/home.js",
 		"/home/carlos/workspace/ALURA/casadocodigo/app/infra/ProdutosDAO.js",
@@ -777,31 +765,7 @@
 		"/home/carlos/workspace/era-uma-vez/css/style.css",
 		"/home/carlos/Downloads/p5/p5/empty-example/index.html",
 		"/home/carlos/Downloads/p5/p5/empty-example/sketch.js",
-		"/home/carlos/Downloads/p5.play-master/examples/animation_sprite_sheet.html",
-		"/home/carlos/Downloads/snake-master/index.html",
-		"/home/carlos/workspace/Rainbow-Code/CodingChallenges/CC_71_minesweeper/sketch.js",
-		"/home/carlos/workspace/Rainbow-Code/CodingChallenges/CC_71_minesweeper/index.html",
-		"/home/carlos/workspace/Rainbow-Code/CodingChallenges/CC_71_minesweeper/cell.js",
-		"/home/carlos/workspace/Rainbow-Code/CodingChallenges/CC_71_minesweeper/README.md",
-		"/home/carlos/Downloads/p5.play-master/examples/sprite8.js",
-		"/home/carlos/Downloads/p5.play-master/examples/sprites_with_sheets.html",
-		"/home/carlos/Downloads/snake-master/sketch.js",
-		"/home/carlos/Downloads/p5/p5/p5.js",
-		"/home/carlos/Downloads/p5/p5/empty-example/.DS_Store",
-		"/home/carlos/Downloads/introducao-javascript/index.html",
-		"/home/carlos/Downloads/introducao-javascript/js/principal.js",
-		"/home/carlos/workspace/CAPPTA/src/machine.go",
-		"/home/carlos/Downloads/CalculadoraSocket/src/Cliente.java",
-		"/home/carlos/Downloads/CalculadoraSocket/src/Conexao.java",
-		"/home/carlos/Downloads/CalculadoraSocket/src/Requisicao.java",
-		"/home/carlos/Downloads/CalculadoraSocket/src/Resposta.java",
-		"/home/carlos/Downloads/CalculadoraSocket/src/Servidor.java",
-		"/home/carlos/workspace/CAPPTA/src/caixa.go",
-		"/home/carlos/workspace/CAPPTA/src/admin.go",
-		"/home/carlos/workspace/CAPPTA/src/Produtos.go",
-		"/home/carlos/workspace/CAPPTA/src/produtos.go",
-		"/home/carlos/workspace/CAPPTA/ola.go",
-		"/home/carlos/NetBeansProjects/ServidorTabuleiro/src/servidortabuleiro/Resposta.java"
+		"/home/carlos/Downloads/p5.play-master/examples/animation_sprite_sheet.html"
 	],
 	"find":
 	{
@@ -819,6 +783,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BLOCK",
+			"body",
+			"};\n",
+			"test",
+			"addImage",
+			" <",
+			"jogo",
+			"2",
+			"15",
+			"5",
+			"10",
+			"npm",
+			"console.log",
+			"Engines",
+			"fa-",
 			"node",
 			"animation",
 			"backg",
@@ -881,13 +860,13 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -896,164 +875,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17943,
+						"buffer_size": 21481,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2004,
-								2004
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1170.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/public/js/blockly/blocksChallenge1.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4958,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2664,
-								2664
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1170.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/public/js/drawGB.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6043,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2237,
-								2237
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1215.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/public/js/challenges/challenge1.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2884,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1030,
-								1030
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1170.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/public/js/p5/challenge1/sketch.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4148,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								617,
-								617
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/infra/connectionFactory.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 845,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								737,
-								737
+								5132,
+								5149
 							]
 						],
 						"settings":
@@ -1070,25 +900,88 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "script.sql",
+					"buffer": 1,
+					"file": "app/public/js/blockly/blocks.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1489,
+						"buffer_size": 6881,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								410,
-								410
+								6881,
+								6881
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SQL/SQL.sublime-syntax",
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/public/js/challenges/challenge6.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2199,
+								2199
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/public/js/p5/challenge6/sketch.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4835,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2055,
+								2055
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1099,30 +992,30 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/views/challenges/1.ejs",
+					"buffer": 4,
+					"file": "app/views/challenges/6.ejs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3983,
+						"buffer_size": 6694,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								955,
-								955
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
+							"open_with_edit": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 495.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1133,11 +1026,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 26.0
 	},
 	"input":
 	{
-		"height": 36.0
+		"height": 39.0
 	},
 	"layout":
 	{
@@ -1166,11 +1059,15 @@
 	{
 		"height": 0.0
 	},
+	"output.unsaved_changes":
+	{
+		"height": 103.0
+	},
 	"pinned_build_system": "",
 	"project": "eraumavez.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1184,12 +1081,12 @@
 	},
 	"select_project":
 	{
-		"height": 500.0,
+		"height": 744.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 380.0
+		"width": 1024.0
 	},
 	"select_symbol":
 	{
@@ -1208,7 +1105,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 227.0,
+	"side_bar_width": 263.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

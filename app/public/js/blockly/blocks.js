@@ -50,6 +50,23 @@ Blockly.Blocks['repeat'] = {
   }
 };
 
+Blockly.Blocks['repeat_until'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("repita ")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"]]), "until")
+        .appendField("vezes");
+    this.appendStatementInput("repeticao")
+        .setCheck(null)
+        .appendField("faça");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(315);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['if'] = {
   init: function() {
     this.appendDummyInput()
@@ -103,8 +120,16 @@ Blockly.JavaScript['repeat'] = function(block) {
 Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
-  // @rep trata loops infinitos
-  var code = ' var rep = 15;\nwhile(checkChallengeBlock() && rep > 0) {\n rep--;\n' + statements_repeticao + '}\n';
+  // @repMax trata loops infinitos
+  var code = ' var repMax = 15;\nwhile(checkChallengeBlock() && repMax > 0) {\n repMax--;\n' + statements_repeticao + '}\n';
+  return code;
+};
+
+Blockly.JavaScript['repeat_until'] = function(block) {
+  var dropdown_until = block.getFieldValue('until');
+  var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'for (var i = 0; i < ' + dropdown_until + '; i++) {\n' + statements_repeticao + '};\n';
   return code;
 };
 

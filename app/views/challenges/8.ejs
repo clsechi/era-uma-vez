@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>EUV - Desafio 6</title>
+	<title>EUV - Desafio 7</title>
 
 	<!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -29,7 +29,7 @@
 	<!-- p5 libraries -->
 	<script src="/addons/p5/p5.min.js"></script>
 	<script src="/addons/p5/p5.play.js"></script>
-	<script src="/js/p5/challenge6/sketch.js"></script>
+	<script src="/js/p5/challenge7/sketch.js"></script>
 
 	<!-- blockly libraries -->
 	<script src="/addons/blockly/blockly_compressed.js"></script>
@@ -45,7 +45,7 @@
 </head>
 <body>
 	<nav class="navbar" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">EUV - Desafio 6</a>
+		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">EUV - Desafio 7</a>
 			<ul class="right hide-on-med-and-down">
 				<li><span id="player-name"></span></li>
 			</ul>
@@ -112,16 +112,16 @@
 				<div class="box-messages">
 					<!-- box mensagens de ajuda -->
 					<div class="#aed581 light-green lighten-2 card-panel help-box">
-						<span class=help-messages>Nesse desafio o bloco {repetir} irá executar o numero vezes selecionado</span>
+						<span class=help-messages>Continue usando o bloco {repetir} com numero vezes selecionado</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel help-box">
-						<span class=help-messages>O número é a quantitade de casas que será percorrida</span>
+						<span class=help-messages>Lembre-se de virar a Pokebola quando necessario</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help1" >
-						<span class=help-messages>{repetir}+{avance} é utilizado 2 vezes nesse desafio</span>
+						<span class=help-messages>{repetir}+{avance} sera utilizado 3 vezes desafio</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help2">
-						<span class=help-messages>Use o bloco {esquerda} entre os blocos {repetir}</span>
+						<span class=help-messages>Use {virar} depois do bloco {repetir}</span>
 					</div>
 				</div>
 				<div class="blockly">
@@ -151,7 +151,7 @@
 		<div class="modal-body">
 			<p>Parabéns!</p>
 			<p id="pontos-final"></p>
-			<img src="/assets/pokemons/ninetales-big.png" height="406" width="444">
+			<img src="/assets/pokemons/arcanine-big.png" height="399" width="394">
 			<h3 class="modal-footer">Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
 		</div>
 	</div>	
@@ -177,11 +177,11 @@
 	<!-- desenha e atualiza o tabuleiro na tela -->
 	<script src="/js/drawGB.js"></script>
 
-	<script src="/js/challenges/challenge6.js"></script>
+	<script src="/js/challenges/challenge7.js"></script>
 
 	<script> 
 		//define o numero maximo de blocks;
-		var numberMaxBlocks = 5; 
+		var numberMaxBlocks = 11; 
 	</script>
 
 	<script src="/js/blockly/blocks.js"></script>

@@ -5,17 +5,17 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerInitialX = 340;
+var playerInitialX = 60;
 var playerInitialY = 60;
-var playerInitialDirection = 0;
+var playerInitialDirection = 270;
 
 var playerX = playerInitialX;
 var playerY = playerInitialY;
 var playerDirection = playerInitialDirection;
 
 // target variables
-var targetX = 60;
-var targetY = 260;
+var targetX = 260;
+var targetY = 220;
 
 function preload(){
 
@@ -27,11 +27,9 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	treeImg = loadImage("/assets/objects/tree.png");
+	targetImg = loadImage("/assets/pokemons/arcanine.png");
 
-	targetImg = loadImage("/assets/pokemons/ninetales.png");
-
-	backgroundImg = loadImage('/assets/background/bg6.png'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/bg7.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -57,13 +55,13 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	object1 = createSprite(145, 150, 10, 10);
+	/*object1 = createSprite(115, 230, 10, 10);
 	object1.addImage("tree", treeImg);
-	object1.immovable = true;
-
+	object1.immovable = true;*/
+	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
-	player.addAnimation("left", playerLeft);	
+	player.addAnimation("bottom", playerBottom);	
 	/*player.addAnimation("top", playerTop);
 	player.addAnimation("bottom", playerBottom);*/
 
@@ -80,7 +78,7 @@ function draw() {
 
 	target.changeAnimation("pokemon");
 
-	player.collide(object1);
+	/*player.collide(object1);*/
 
 	// immovable não esta funcionando
 	player.collide(wallTop);
@@ -118,6 +116,8 @@ function setNewPosition() {
 			}
 		break;
 	}
+
+	//console.log(playerX + '/'+ playerY);
 
 	setAnimation();
 
@@ -211,7 +211,7 @@ function resetGame() {
 
 	//desenha o player novamente
 	player = createSprite(playerX, playerY, 100 ,100);
-	player.addAnimation("left", playerLeft);		
+	player.addAnimation("bottom", playerBottom);		
 
 	target.remove();
 

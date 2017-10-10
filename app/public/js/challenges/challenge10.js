@@ -88,7 +88,7 @@ function possiblePoints() {
 function showMessage(event){
 	//exibe o pokemon e a pontuacao ganha
 	//mudar conforme o pokemon
-	pointsFinal.textContent = "Você capturou um Charlizard e ganhou " + possiblePoints() + " pontos";
+	pointsFinal.textContent = "Você capturou um Charizard e ganhou " + possiblePoints() + " pontos";
 	blocksDOM.classList.add('invisible');
 	modal.style.display = "block";
 

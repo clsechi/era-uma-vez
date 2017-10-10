@@ -5,8 +5,8 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerInitialX = 380;
-var playerInitialY = 380;
+var playerInitialX = 340;
+var playerInitialY = 340;
 var playerInitialDirection = 90;
 
 var playerX = playerInitialX;

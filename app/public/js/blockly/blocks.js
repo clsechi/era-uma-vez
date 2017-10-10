@@ -108,14 +108,6 @@ Blockly.JavaScript['turnright'] = function(block) {
   var code = 'setDirectionRIGHT();\n';
   return code;
 };
-/*
-Blockly.JavaScript['repeat'] = function(block) {
-  var text_numero = block.getFieldValue('numero');
-  var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
-  // TODO: Assemble JavaScript into code variable.
-  var code = 'for (var i = 0; i <' + text_numero  +'; i++) {\n' + statements_repeticao + '};\n';
-  return code;
-};*/
 
 Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
@@ -264,4 +256,4 @@ function initApi(interpreter, scope) {
 		interpreter.createNativeFunction(wrapper));
 }
 
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#z3qnfi
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#e5roko

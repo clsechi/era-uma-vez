@@ -5,8 +5,8 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerInitialX = 60;
-var playerInitialY = 60;
+var playerInitialX = 340;
+var playerInitialY = 260;
 var playerInitialDirection = 270;
 
 var playerX = playerInitialX;
@@ -14,8 +14,8 @@ var playerY = playerInitialY;
 var playerDirection = playerInitialDirection;
 
 // target variables
-var targetX = 260;
-var targetY = 220;
+var targetX = 220;
+var targetY = 60;
 
 function preload(){
 
@@ -27,9 +27,11 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	targetImg = loadImage("/assets/pokemons/arcanine.png");
+	shipImg = loadImage("/assets/objects/shipwreck.png")
 
-	backgroundImg = loadImage('/assets/background/bg7.png'); //carrega imagem de fundo
+	targetImg = loadImage("/assets/pokemons/gengar.png");
+
+	backgroundImg = loadImage('/assets/background/bg8.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -55,9 +57,9 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	/*object1 = createSprite(115, 230, 10, 10);
-	object1.addImage("tree", treeImg);
-	object1.immovable = true;*/
+	object1 = createSprite(190, 255, 10, 10);
+	object1.addImage("ship", shipImg);
+	object1.immovable = true;
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -78,7 +80,7 @@ function draw() {
 
 	target.changeAnimation("pokemon");
 
-	/*player.collide(object1);*/
+	player.collide(object1);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

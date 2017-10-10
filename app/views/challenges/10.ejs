@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>EUV - Desafio 8</title>
+	<title>EUV - Desafio 10</title>
 
 	<!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -29,7 +29,7 @@
 	<!-- p5 libraries -->
 	<script src="/addons/p5/p5.min.js"></script>
 	<script src="/addons/p5/p5.play.js"></script>
-	<script src="/js/p5/challenge8/sketch.js"></script>
+	<script src="/js/p5/challenge10/sketch.js"></script>
 
 	<!-- blockly libraries -->
 	<script src="/addons/blockly/blockly_compressed.js"></script>
@@ -45,7 +45,7 @@
 </head>
 <body>
 	<nav class="navbar" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">EUV - Desafio 8</a>
+		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">EUV - Desafio 10</a>
 			<ul class="right hide-on-med-and-down">
 				<li><span id="player-name"></span></li>
 			</ul>
@@ -58,7 +58,7 @@
 		</div>
 	</nav>
 	<!-- tela de loading -->
-	<div class="loading"></div>
+	<!--<div class="loading"></div>-->
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
@@ -112,23 +112,23 @@
 				<div class="box-messages">
 					<!-- box mensagens de ajuda -->
 					<div class="#aed581 light-green lighten-2 card-panel help-box">
-						<span class=help-messages>Continue usando o bloco {repetir} com numero vezes selecionado</span>
+						<span class=help-messages>Use o que você aprendeu nos desafios anteriores</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel help-box">
-						<span class=help-messages>Lembre-se de virar a Pokebola quando necessario</span>
+						<span class=help-messages>Lembre-se de usar blocos {repetir}</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help1" >
-						<span class=help-messages>{repetir}+{avance} sera utilizado 3 vezes desafio</span>
+						<span class=help-messages>Você usará X blocos {repetir} no seu código</span>
 					</div>
 					<div class="#aed581 light-green lighten-2 card-panel invisible help-box" id="help2">
-						<span class=help-messages>Use {virar} depois do bloco {repetir}</span>
+						<span class=help-messages>Esse é um desafio bem difícil, pode pedir ajuda se quiser</span>
 					</div>
 				</div>
 				<div class="blockly">
 					<p class="remaing"><b>Você possui <span id="capacity"></span> bloco(s) restantes.</b></p>
 
 					<!-- crating workspace of blockly -->
-					<div id="blocklyDiv" style="height: 480px; width: 600px; border: 5px solid black; padding: 0;"></div>	
+					<div id="blocklyDiv" style="height: 600px; width: 600px; border: 5px solid black; padding: 0;"></div>	
 				</div>
 			</div>
 		</div>
@@ -151,7 +151,7 @@
 		<div class="modal-body">
 			<p>Parabéns!</p>
 			<p id="pontos-final"></p>
-			<img src="/assets/pokemons/gengar-big.png" height="400" width="389">
+			<img src="/assets/pokemons/charizard-big.png" height="330" width="480">
 			<h3 class="modal-footer">Iniciando próximo desafio... <i class="fa fa-spinner fa-pulse"></i></h3>
 		</div>
 	</div>	
@@ -177,11 +177,11 @@
 	<!-- desenha e atualiza o tabuleiro na tela -->
 	<script src="/js/drawGB.js"></script>
 
-	<script src="/js/challenges/challenge8.js"></script>
+	<script src="/js/challenges/challenge10.js"></script>
 
 	<script> 
 		//define o numero maximo de blocks;
-		var numberMaxBlocks = 11; 
+		var numberMaxBlocks = 101; 
 	</script>
 
 	<script src="/js/blockly/blocks.js"></script>

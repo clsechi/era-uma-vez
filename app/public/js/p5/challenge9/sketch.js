@@ -5,7 +5,7 @@ var WALL_THICKNESS = 30;
 //var playerImg, backgroundImg;
 
 // player variables
-var playerInitialX = 340;
+var playerInitialX = 100;
 var playerInitialY = 60;
 var playerInitialDirection = 0;
 
@@ -14,8 +14,8 @@ var playerY = playerInitialY;
 var playerDirection = playerInitialDirection;
 
 // target variables
-var targetX = 60;
-var targetY = 260;
+var targetX = 340;
+var targetY = 60;
 
 function preload(){
 
@@ -27,11 +27,11 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	treeImg = loadImage("/assets/objects/tree.png");
+	shipImg = loadImage("/assets/objects/shipwreck.png");
 
-	targetImg = loadImage("/assets/pokemons/ninetales.png");
+	targetImg = loadImage("/assets/pokemons/blastoise.png");
 
-	backgroundImg = loadImage('/assets/background/bg6.png'); //carrega imagem de fundo
+	backgroundImg = loadImage('/assets/background/bg9.png'); //carrega imagem de fundo
 }
 
 function setup() {
@@ -57,10 +57,16 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	object1 = createSprite(145, 150, 10, 10);
-	object1.addImage("tree", treeImg);
-	object1.immovable = true;
+	/*object1 = createSprite(200, 285, 10, 10);
+	object1.addImage("ship", shipImg);
+	object1.immovable = true;*/
 
+	//segundo objeto
+	object2 = createSprite(240, 60, 10, 10);
+	object2.addImage("ship", shipImg);
+	object2.immovable = true;
+	
+	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
 	player.addAnimation("left", playerLeft);	
@@ -80,7 +86,7 @@ function draw() {
 
 	target.changeAnimation("pokemon");
 
-	player.collide(object1);
+	player.collide(object2);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

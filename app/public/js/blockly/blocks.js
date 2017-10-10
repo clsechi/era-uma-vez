@@ -121,7 +121,7 @@ Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
   // @repMax trata loops infinitos
-  var code = ' var repMax = 15;\nwhile(checkChallengeBlock() && repMax > 0) {\n repMax--;\n' + statements_repeticao + '}\n';
+  var code = ' var repMax = 10;\nwhile(checkChallengeBlock() && repMax > 0) {\n repMax--;\n' + statements_repeticao + '}\n';
   return code;
 };
 

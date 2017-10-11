@@ -40,18 +40,27 @@ module.exports = function (app){
 	//jogador seleciona escola, nome, avatar e sala
 	app.get("/playerCreation", function (req, res, next){
 		//renderiza ejs
-		var connection = app.infra.connectionFactory();
-		var playerDAO = new app.infra.PlayerDAO(connection);
-	
-		playerDAO.listAllPlayers(function(err, results){
+		//app.infra.connectionFactory(function (err, connection){
 
-			if(err){
-				return next(err);
-			}
-			res.render("player/playerCreation", {allPlayers: results});
-		});	
-		connection.end();
-	});
+			/*console.log(connection);*/
+
+			var connection = app.infra.connectionFactory();
+
+			var playerDAO = new app.infra.PlayerDAO(connection);
+
+			playerDAO.listAllPlayers(function(err, results){
+
+				if(err){
+					return next(err);
+				}
+
+				res.render("player/playerCreation", {allPlayers: results});
+				connection.release();
+			});
+		});
+	//});
+		
+		
 
 	//sala de espera para os jogadores que ja concluiram o jogo
 	app.get("/waitingRoom", function (req, res){

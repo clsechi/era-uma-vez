@@ -93,19 +93,19 @@ function highlightBlock(id) {
 //generators
 Blockly.JavaScript['avancar'] = function(block) {
 	// TODO: Assemble JavaScript into code variable.
-	var code = 'setNewPosition();\n';
+	var code = 'if(getGameStatus()){\nsetNewPosition();\n}\n';
 	return code;
 };
 
 Blockly.JavaScript['turnleft'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = 'setDirectionLEFT();\n';
+  var code = 'if(getGameStatus()){\nsetDirectionLEFT();\n}\n';
   return code;
 };
 
 Blockly.JavaScript['turnright'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = 'setDirectionRIGHT();\n';
+  var code = 'if(getGameStatus()){\nsetDirectionRIGHT();\n}\n';
   return code;
 };
 
@@ -113,7 +113,7 @@ Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
   // @repMax trata loops infinitos
-  var code = ' var repMax = 10;\nwhile(checkChallengeBlock() && repMax > 0 && getGameStatus()) {\n repMax--;\n' + statements_repeticao + '}\n';
+  var code = ' var repMax = 15;\nwhile(checkChallengeBlock() && repMax > 0 && getGameStatus()) {\n repMax--;\n' + statements_repeticao + '\n}\n';
   return code;
 };
 
@@ -121,7 +121,7 @@ Blockly.JavaScript['repeat_until'] = function(block) {
   var dropdown_until = block.getFieldValue('until');
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'for (var i = 0; i < ' + dropdown_until + '; i++) {\n if(!getGameStatus()){ i = 100;\n break; }\n' + statements_repeticao + '};\n';
+  var code = 'if(getGameStatus()){\nfor (var i = 0; i < ' + dropdown_until + '; i++) {\n' + statements_repeticao + '}\n}\n';
   return code;
 };
 
@@ -157,14 +157,19 @@ var options = {
 /* Inject your workspace */ 
 var workspace = Blockly.inject(blocklyDiv, options);
 
+//trata a execucao correta dos blocos conforme interacao do usuario
 var keepGame = true;
+
+function disableBlocks(){
+	keepGame = false;
+}
+
+function enableBlocks(){
+	keepGame = true;
+}
 
 function getGameStatus() {
 	return keepGame;
-}
-
-function resetPressed(){
-	console.log("stop all fuctions");
 }
 
 //define nuemro maximo de blocos no workspace
@@ -187,8 +192,8 @@ var myInterpreter;
 //transforma os blocos em codigo e excuta as funcoes do p5
 function runBlocks (){
 	var code = 'resetGame();\n';
-
-	code += Blockly.JavaScript.workspaceToCode(workspace);
+	code += 'enableBlocks();\n';
+	code += Blockly.JavaScript.workspaceToCode(workspace);	
 	code += 'checkAnswer();\n';
 	console.log(code);
 
@@ -199,7 +204,7 @@ function runBlocks (){
 //define o tempo entre a execucao dos blocos
 function nextStep() {
 	if (myInterpreter.step()) {
-		window.setTimeout(nextStep, 50);
+		window.setTimeout(nextStep, 30);
 	}
 }
 
@@ -265,12 +270,12 @@ function initApi(interpreter, scope) {
 	interpreter.setProperty(scope, 'getGameStatus',
 		interpreter.createNativeFunction(wrapper));
 
-	//add resetPressed
+	//add enableBlocks
 	var wrapper = function(text) {
 	text = text ? text.toString() : '';
-	return interpreter.createPrimitive(resetPressed());
+	return interpreter.createPrimitive(enableBlocks());
 	};
-	interpreter.setProperty(scope, 'resetPressed',
+	interpreter.setProperty(scope, 'enableBlocks',
 		interpreter.createNativeFunction(wrapper));
 
 	// Add an API function for highlighting blocks.

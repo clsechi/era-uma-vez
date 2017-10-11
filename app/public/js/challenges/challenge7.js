@@ -30,6 +30,8 @@ btnRunBlocks.addEventListener("click", function (event) {
 });
 
 btnReset.addEventListener("click", function (event){
+	//desebalita a execucao de todos os blocos que restam
+	disableBlocks();
 	//chama funcao do p5 que reseta o jogo
 	resetGame();
 });

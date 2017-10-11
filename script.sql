@@ -43,3 +43,5 @@ INSERT INTO Players (Name, RA, School) VALUES ('Ana', '20778859', 'Anhembi');
 UPDATE Players SET Progress = 10, Points = 100 WHERE PlayerID = 1;
 
 INSERT INTO ChallengesLOG (FK_PlayerID, EarnedPoints, GBProgress, ElapsedTime, WrongAnswers) VALUES ();
+
+mysql -h us-cdbr-iron-east-05.cleardb.net -u b5d774246163bc -p

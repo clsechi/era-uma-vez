@@ -43,25 +43,27 @@ function createPool() {
 
 createPool();
 
-var createDBConnection = pool.getConnection(function (err, connection) {
-		
-		if(err) {
-			//return callback(err);
-			console.log('Error getting mysql_pool connection: ' + err);
-			pool.end(function onEnd(error) {
-				if(error) {
-					console.log('Erro ao terminar o pool: ' + error);
-				}
-				// All connections are now closed once they have been returned with connection.release()
-				// i.e. this waits for all consumers to finish their use of the connections and ends them.
-				// Recria o pool
-				createPool();
-			});
-			return;
-		}
-		return connection;
-	
-});
+var createDBConnection = function(callback) {
+
+    return pool.getConnection(function (err, connection) {
+        if(err) {
+            //return callback(err);
+            console.log('Error getting mysql_pool connection: ' + err);
+            pool.end(function onEnd(error) {
+                if(error) {
+                    console.log('Erro ao terminar o pool: ' + error);
+                }
+                // All connections are now closed once they have been returned with connection.release()
+                // i.e. this waits for all consumers to finish their use of the connections and ends them.
+                // Recria o pool
+                createPool();
+            });
+            return;
+        }
+        return callback(null, connection);
+    });
+
+};
 
 module.exports = function(){
 	return createDBConnection; // sem parenteses pq ja esta dentro da funcao

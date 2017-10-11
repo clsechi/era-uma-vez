@@ -38,7 +38,7 @@ Blockly.Blocks['turnright'] = {
 Blockly.Blocks['repeat'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("repetir até o pokemon");
+        .appendField("repetir até o Pokémon");
     this.appendStatementInput("repeticao")
         .setCheck(null)
         .appendField("faça");
@@ -113,7 +113,7 @@ Blockly.JavaScript['repeat'] = function(block) {
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
   // @repMax trata loops infinitos
-  var code = ' var repMax = 10;\nwhile(checkChallengeBlock() && repMax > 0) {\n repMax--;\n' + statements_repeticao + '}\n';
+  var code = ' var repMax = 10;\nwhile(checkChallengeBlock() && repMax > 0 && getGameStatus()) {\n repMax--;\n' + statements_repeticao + '}\n';
   return code;
 };
 
@@ -121,10 +121,11 @@ Blockly.JavaScript['repeat_until'] = function(block) {
   var dropdown_until = block.getFieldValue('until');
   var statements_repeticao = Blockly.JavaScript.statementToCode(block, 'repeticao');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'for (var i = 0; i < ' + dropdown_until + '; i++) {\n' + statements_repeticao + '};\n';
+  var code = 'for (var i = 0; i < ' + dropdown_until + '; i++) {\n if(!getGameStatus()){ i = 100;\n break; }\n' + statements_repeticao + '};\n';
   return code;
 };
 
+//nao implementado
 Blockly.JavaScript['if'] = function(block) {
   var statements_do = Blockly.JavaScript.statementToCode(block, 'DO');
   // TODO: Assemble JavaScript into code variable.
@@ -155,6 +156,17 @@ var options = {
 
 /* Inject your workspace */ 
 var workspace = Blockly.inject(blocklyDiv, options);
+
+var keepGame = true;
+
+function getGameStatus() {
+	return keepGame;
+}
+
+function resetPressed(){
+	console.log("stop all fuctions");
+}
+
 //define nuemro maximo de blocos no workspace
 var maxNumberBlocks = 5;
 
@@ -175,8 +187,6 @@ var myInterpreter;
 //transforma os blocos em codigo e excuta as funcoes do p5
 function runBlocks (){
 	var code = 'resetGame();\n';
-
-
 
 	code += Blockly.JavaScript.workspaceToCode(workspace);
 	code += 'checkAnswer();\n';
@@ -245,6 +255,22 @@ function initApi(interpreter, scope) {
 		return interpreter.createPrimitive(checkChallengeBlock());
 	};
 	interpreter.setProperty(scope, 'checkChallengeBlock',
+		interpreter.createNativeFunction(wrapper));
+
+	//add getGameStatus
+	var wrapper = function(text) {
+	text = text ? text.toString() : '';
+	return interpreter.createPrimitive(getGameStatus());
+	};
+	interpreter.setProperty(scope, 'getGameStatus',
+		interpreter.createNativeFunction(wrapper));
+
+	//add resetPressed
+	var wrapper = function(text) {
+	text = text ? text.toString() : '';
+	return interpreter.createPrimitive(resetPressed());
+	};
+	interpreter.setProperty(scope, 'resetPressed',
 		interpreter.createNativeFunction(wrapper));
 
 	// Add an API function for highlighting blocks.

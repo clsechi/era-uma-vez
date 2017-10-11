@@ -31,6 +31,7 @@ btnRunBlocks.addEventListener("click", function (event) {
 
 btnReset.addEventListener("click", function (event){
 	//chama funcao do p5 que reseta o jogo
+	keepGame = false;
 	resetGame();
 });
 

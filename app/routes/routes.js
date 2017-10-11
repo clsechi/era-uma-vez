@@ -153,8 +153,6 @@ module.exports = function (app){
 	app.post("/nextChallenge", function (req, res, next){
 		var playerInfo = req.body;
 
-		console.log(playerInfo);
-
 		//recebe a pontuação a adicionar e renderiza o proximo desafio
 		//com tabuleiro e pontuação atualizados
 
@@ -368,7 +366,7 @@ module.exports = function (app){
 			}			
 			for (var i = 0; i < results.length; i++) {
 				//10 numero total de desafios
-				if (results[i].Progress == maxChallenges){
+				if (results[i].Progress > maxChallenges){
 					answer = true;
 				}				
 			}
@@ -430,7 +428,7 @@ module.exports = function (app){
 
 		connection.end();	
 	}
-
+	//teste com a criacao do grafico
 	function test() {
 
 		var connection = app.infra.connectionFactory();
@@ -449,8 +447,7 @@ module.exports = function (app){
 
 
 
-	function redirectWinnersPodium(roomID, redirectURL) {
-		
+	function redirectWinnersPodium(roomID, redirectURL) {	
 		app.io.to(roomID).emit('redirectWinnersPodium', redirectURL);
 	}
 

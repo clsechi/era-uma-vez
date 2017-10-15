@@ -64,6 +64,10 @@ typings/
 #add 'node_modules'
 node_modules
 
+#add sublime files
+eraumavez.sublime-workspace
+eraumavez.sublime-project
+
 .vscode/
 
 # End of https://www.gitignore.io/api/node

@@ -18,20 +18,12 @@
 			body{
     		background-color: #f1f1f1;  
 			}
-			.center{
-			    margin: auto;
-			    width: 70%;
-			    padding: 10px;
-			}
 			
 			.iniciar-jogo{
-				float: top;
-				margin-left: 800px;	
+				margin-top: 30px;	
 				
 			}
-			.video{
-				position: relative;
-				margin-left: 60px;				
+			.video{		
 				padding: 10px;
 				border: 5px solid black;				
 			}
@@ -45,14 +37,19 @@
 		    <a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sobre</a>
 		</div>		
 
-		<div class="center">			
+		<div class="w3-container">			
 		
 			<h1 class="w3-center">Vamos ver primeiro a explicação de como jogar...</h1>
 
-			<iframe width="848" height="490" src="https://www.youtube.com/embed/1tdgbvBC_p0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen class="video"></iframe>
-
-			<button id="avancar" class="w3-button w3-black w3-padding-large w3-xlarge iniciar-jogo">Iniciar Jogo <i class="fa fa-arrow-right"></i></button>		
-				
+			<div class="row">
+				<div class="w3-col s12 w3-center"">
+					<iframe width="848" height="490" src="https://www.youtube.com/embed/1tdgbvBC_p0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen class="video"></iframe>
+				</div>
+				<div class="w3-col s9"></div>
+				<div class="w3-col s3 w3-right">
+					<button id="avancar" class="w3-button w3-black w3-padding-large w3-xlarge iniciar-jogo">Iniciar Jogo <i class="fa fa-arrow-right"></i></button>
+				</div>
+			</div>				
 		</div>
 
 		

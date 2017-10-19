@@ -212,7 +212,16 @@ function updatePlayersInfo(players) {
 	}
 }
 
+//habilitando o jogo
 
+var btnEnable = document.getElementById('enable-game');
+
+btnEnable.addEventListener('click', function (){
+	enableGame();
+	btnEnable.disabled = true;
+});
+
+//grafico
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
 
@@ -268,6 +277,11 @@ function init(){
 		updatePlayersInfo(players);
 
 	});
+}
+
+function enableGame() {
+	
+	IO.emit('enableGame');
 }
 
 init();

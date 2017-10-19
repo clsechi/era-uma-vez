@@ -44,6 +44,8 @@ function correctAnswer() {
 	//set o tempo total utilizado em segundos
 	playerInfo.ElapsedTime = playerTimer.getTotalTimeValues().seconds;
 
+	playerInfo.TotalElapsedTime += playerInfo.ElapsedTime;
+
 	//atualiza o json
 	playerInfo.Progress += 1;	
 	playerInfo.EarnedPoints = possiblePoints();
@@ -90,7 +92,7 @@ function possiblePoints() {
 function showMessage(event){
 	//exibe o pokemon e a pontuacao ganha
 	//mudar conforme o pokemon
-	pointsFinal.textContent = "Você capturou um Gengar e ganhou " + possiblePoints() + " pontos";
+	pointsFinal.textContent = "Você capturou um " + pokemonName + " e ganhou " + possiblePoints() + " pontos";
 	blocksDOM.classList.add('invisible');
 	modal.style.display = "block";
 

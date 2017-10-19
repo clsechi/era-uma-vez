@@ -4,6 +4,8 @@ module.exports = function (app){
 	var socketOnline = false;
 	//maximo de desfios
 	var maxChallenges = 10;
+	//habilita botao iniciar
+	var enableStart = false;
 
 	//carrega home
 	app.get("/", function (req, res) {
@@ -53,7 +55,7 @@ module.exports = function (app){
 				res.render("player/playerCreation", {allPlayers: results});
 				connection.release();
 			});
-		});
+		});	
 	});
 		
 		
@@ -164,53 +166,44 @@ module.exports = function (app){
 		app.infra.connectionFactory(function (err, connection){
 			var playerDAO = new app.infra.PlayerDAO(connection);
 
-			//solicita o tempo ja gravado no banco		
-			playerDAO.selectTotalElapsedTime(playerInfo.PlayerID, function(err, results){
+			//grava os dadso da pontuação e tempo no banco
+			playerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){
 				if(err){
 					return next(err);
 				}
-				//soma o tempo do banco ao usado no desafio atual
-				playerInfo.TotalElapsedTime = (results[0].TotalElapsedTime + playerInfo.ElapsedTime);
 
-				//grava os dadso da pontuação e tempo no banco
-				playerDAO.updatePlayerProgessPointsTime(playerInfo, function(err, results){
-					if(err){
-						return next(err);
-					}
+				//envia tabuleiro atualizado para os outros jogadores
+				updatedGameBoard(playerInfo.RoomID);
 
-					//envia tabuleiro atualizado para os outros jogadores
-					updatedGameBoard(playerInfo.RoomID);
+				//mudar conforme numero total de casas do tabuleiro
+				//redireciona para a view correta conforme o progresso do jogador
+				if(playerInfo.Progress <= maxChallenges){
+					var redirectURL = "http://" + (req.get('host') + "/challenge/" + (playerInfo.Progress));
 
-					//mudar conforme numero total de casas do tabuleiro
-					//redireciona para a view correta conforme o progresso do jogador
-					if(playerInfo.Progress <= maxChallenges){
-						var redirectURL = "http://" + (req.get('host') + "/challenge/" + (playerInfo.Progress));
-
+					res.send(redirectURL);
+				} else {
+					//se todos os jogadores ja completaram redireciona para o pódio
+					//se não, redireciona para a tela de espera
+					checkRoomProgress(playerInfo.RoomID, function (roomProgress) {
+						var redirectURL;
+						if (roomProgress){
+							redirectURL = "http://" + (req.get('host') + "/winnersPodium");
+							//envia socket para o outros jogadores da sala com o a url de redirect
+							redirectWinnersPodium(playerInfo.RoomID, redirectURL);
+						} else {
+							redirectURL = "http://" + (req.get('host') + "/waitingRoom");
+						}
 						res.send(redirectURL);
-					} else {
-						//se todos os jogadores ja completaram redireciona para o pódio
-						//se não, redireciona para a tela de espera
-						checkRoomProgress(playerInfo.RoomID, function (roomProgress) {
-							var redirectURL;
-							if (roomProgress){
-								redirectURL = "http://" + (req.get('host') + "/winnersPodium");
-								//envia socket para o outros jogadores da sala com o a url de redirect
-								redirectWinnersPodium(playerInfo.RoomID, redirectURL);
-							} else {
-								redirectURL = "http://" + (req.get('host') + "/waitingRoom");
-							}
-							res.send(redirectURL);
-						});					
-					}
+					});					
+				}
 
-					connection.release();
-					
-					//grava LOG
-					updateLOG(playerInfo, next);
+				connection.release();
+				
+				//grava LOG
+				updateLOG(playerInfo, next);
 
-					//atualiza painel do professor
-					updatedPlayersInfo(playerInfo.RoomID, next);
-				});
+				//atualiza painel do professor
+				updatedPlayersInfo(playerInfo.RoomID, next);
 			});
 		});
 	});
@@ -219,75 +212,79 @@ module.exports = function (app){
 	//res = 0 -> OK
 	//res = 1 -> sala cheia
 	app.post("/savePlayerInfo", function (req, res, next) {
-		var playerInfo = req.body;
-		//json vazio que sera enviado como resposta
-		//poderia enviar somente uma string
-		var redirectURL = {};
+		if (enableStart) {
+			var playerInfo = req.body;
+			//json vazio que sera enviado como resposta
+			//poderia enviar somente uma string
+			var redirectURL = {};
 
-		app.infra.connectionFactory(function (err, connection){
-			var playerDAO = new app.infra.PlayerDAO(connection);
-			//verifica se o player ja esta na sala
-			playerDAO.selectPlayerAlreadyInRoom(playerInfo.RoomID, playerInfo.PlayerID ,function (err, results) {
-				if(err){
-					return next(err);
-				}
+			app.infra.connectionFactory(function (err, connection){
+				var playerDAO = new app.infra.PlayerDAO(connection);
+				//verifica se o player ja esta na sala
+				playerDAO.selectPlayerAlreadyInRoom(playerInfo.RoomID, playerInfo.PlayerID ,function (err, results) {
+					if(err){
+						return next(err);
+					}
 
-				if(results[0].AlreadyInRoom == 0){
-					//verifica se a sala não esta cheia
-					playerDAO.selectPlayersInRoom(playerInfo.RoomID, function (err, results) {
-						if(err){
-							return next(err);
-						}
-						//numero de jogadores menor que 4
-						if (results[0].NumberOfPlayers <= 3) {
-							//se a sala nao estiver cheia adiciona o player nela
-							playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
-								if(err){
-									return next(err);
-								}			
-								//get URL do app e adiciona o redirecionamento
-								//envia esse var para o cliente q faz o redirect
-								
-								redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+					if(results[0].AlreadyInRoom == 0){
+						//verifica se a sala não esta cheia
+						playerDAO.selectPlayersInRoom(playerInfo.RoomID, function (err, results) {
+							if(err){
+								return next(err);
+							}
+							//numero de jogadores menor que 4
+							if (results[0].NumberOfPlayers <= 3) {
+								//se a sala nao estiver cheia adiciona o player nela
+								playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+									if(err){
+										return next(err);
+									}			
+									//get URL do app e adiciona o redirecionamento
+									//envia esse var para o cliente q faz o redirect
+									
+									redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
 
-								redirectURL.error = 0;
+									redirectURL.error = 0;
+
+									res.send(redirectURL);
+
+									connection.release();
+								});
+								//
+							} else {
+								//se a sala estiver cheia retorna msg erro
+								redirectURL.error = 1;				
 
 								res.send(redirectURL);
 
-								connection.release();
-							});
-							//
-						} else {
-							//se a sala estiver cheia retorna msg erro
-							redirectURL.error = 1;				
+								connection.release();						
+							}					
+						});
+						
+					} else {
+						//var connection = app.infra.connectionFactory();
+						//se o jogador ja estiver na sala somente atualiza a info
+						playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
+							if(err){
+								return next(err);
+							}			
+							//get URL do app e adiciona o redirecionamento
+							//envia esse var para o cliente q faz o redirect
+							
+							redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+
+							redirectURL.error = 0;
 
 							res.send(redirectURL);
 
-							connection.release();						
-						}					
-					});
-					
-				} else {
-					//var connection = app.infra.connectionFactory();
-					//se o jogador ja estiver na sala somente atualiza a info
-					playerDAO.updatePlayerRoomIDAndAvatar(playerInfo, function(err, results){
-						if(err){
-							return next(err);
-						}			
-						//get URL do app e adiciona o redirecionamento
-						//envia esse var para o cliente q faz o redirect
-						
-						redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
-
-						redirectURL.error = 0;
-
-						res.send(redirectURL);
-
-						connection.release();
-					});
-				}
+							connection.release();
+						});
+					}
+				});
 			});
-		});	
+		} else {
+			res.send({error: 2});
+		}	
 	});
 
 	//envia o desafio correto para o usuario após a tela de explicação
@@ -378,7 +375,9 @@ module.exports = function (app){
 					//10 numero total de desafios
 					if (results[i].Progress > maxChallenges){
 						answer = true;
-					}				
+					} else {
+						answer = false;
+					}			
 				}
 				callback(answer);
 			});
@@ -414,6 +413,13 @@ module.exports = function (app){
 		gameSocket.on('updatedGameBoard', updatedGameBoard);
 
 		gameSocket.on('joinRoom', joinRoom);
+
+		gameSocket.on('enableGame', enableGame);
+	}
+	//habilita o post savePlayerInfo()
+	function enableGame() {
+		console.log("Jogo Habilitado");
+		enableStart = true;
 	}
 
 	function updatedPlayersInfo(roomID, next) {

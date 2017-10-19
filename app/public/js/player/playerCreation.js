@@ -61,10 +61,17 @@ function postPlayerInfo() {
 }
 
 function checkData(data) {
-	if(data.error == 1){
-		alert("Desculpe, a sala selecionada já esta cheia.\nPor favor selecione outra sala.");
-	} else {
-		window.location.assign(data.url);
+
+	switch (data.error){
+		case 1:
+			alert("Desculpe, a sala selecionada já esta cheia.\nPor favor selecione outra sala.");
+		break;
+		case 2:
+			alert("Aguarde!");
+		break;
+		case 0:
+			window.location.assign(data.url);
+		break;
 	}
 }
 

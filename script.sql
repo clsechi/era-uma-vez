@@ -44,6 +44,8 @@ UPDATE Players SET Progress = 10, Points = 100 WHERE PlayerID = 1;
 
 INSERT INTO ChallengesLOG (FK_PlayerID, EarnedPoints, GBProgress, ElapsedTime, WrongAnswers) VALUES ();
 
+select ChallengesLOG.ElapsedTime, Players.Name, ChallengesLOG.WrongAnswers, ChallengesLOG.GBProgress  from ChallengesLOG inner join Players on ChallengesLOG.FK_PlayerID = Players.PlayerID;
+
 mysql -h us-cdbr-iron-east-05.cleardb.net -u b5d774246163bc -p
 
 Truncate table XXX

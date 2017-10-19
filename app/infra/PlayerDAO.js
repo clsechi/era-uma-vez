@@ -17,7 +17,7 @@ PlayerDAO.prototype.selectTotalElapsedTime = function (playerID, callback) {
 }
 
 PlayerDAO.prototype.selectPlayerInfoByRoom = function(RoomID, callback) {
-	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar, RoomID FROM Players WHERE RoomID = ? ORDER BY PlayerID', [RoomID], callback);
+	this._connection.query('SELECT PlayerID, Name, Progress, Points, Avatar, RoomID FROM Players WHERE RoomID = ? ORDER BY Progress DESC', [RoomID], callback);
 }
 
 PlayerDAO.prototype.selectPlayerInfo = function (playerID, callback) {

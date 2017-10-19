@@ -67,7 +67,7 @@ function checkData(data) {
 			alert("Desculpe, a sala selecionada já esta cheia.\nPor favor selecione outra sala.");
 		break;
 		case 2:
-			alert("Aguarde!");
+			alert("Aguarde !");
 		break;
 		case 0:
 			window.location.assign(data.url);

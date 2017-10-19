@@ -56,9 +56,7 @@ module.exports = function (app){
 				connection.release();
 			});
 		});	
-	});
-		
-		
+	});		
 
 	//sala de espera para os jogadores que ja concluiram o jogo
 	app.get("/waitingRoom", function (req, res){
@@ -211,6 +209,7 @@ module.exports = function (app){
 	//salva informações do usuário
 	//res = 0 -> OK
 	//res = 1 -> sala cheia
+	//res = 2 -> jogo desabilitado
 	app.post("/savePlayerInfo", function (req, res, next) {
 		if (enableStart) {
 			var playerInfo = req.body;
@@ -503,9 +502,6 @@ module.exports = function (app){
 				//insere o jogador na sala
 				gameSocket.join(player[0].RoomID);
 
-				gameSocket.nickname = player[0].Name;
-
-				//envia para todos os jogadores na sala VERIFICAR PARA SOMENTE O JOGADOR QUE LOGOU
 				gameSocket.emit('joinDone', player);
 
 				console.log((new Date).toLocaleTimeString() + " " + player[0].Name + " entrou na sala " + player[0].RoomID);

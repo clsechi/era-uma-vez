@@ -18,6 +18,7 @@ CREATE TABLE ChallengesLOG (
 	GBProgress TINYINT,
 	ElapsedTime FLOAT,
 	WrongAnswers TINYINT,
+	Code TEXT,
 	PRIMARY KEY (LogID),
 	FOREIGN KEY (FK_PlayerID) REFERENCES Players(PlayerID)
 );
@@ -49,3 +50,5 @@ select ChallengesLOG.ElapsedTime, Players.Name, ChallengesLOG.WrongAnswers, Chal
 mysql -h us-cdbr-iron-east-05.cleardb.net -u b5d774246163bc -p
 
 Truncate table XXX
+
+ALTER TABLE ChallengesLOG ADD COLUMN Code TEXT;

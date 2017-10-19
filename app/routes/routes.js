@@ -346,7 +346,8 @@ module.exports = function (app){
 			EarnedPoints: playerInfo.EarnedPoints,
 			GBProgress: (playerInfo.Progress - 1),
 			ElapsedTime: playerInfo.TotalElapsedTime,
-			WrongAnswers: playerInfo.WrongAnswers};
+			WrongAnswers: playerInfo.WrongAnswers,
+			Code: playerInfo.Code};
 		
 		app.infra.connectionFactory(function (err, connection){
 			var playerDAO = new app.infra.PlayerDAO(connection);		

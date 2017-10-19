@@ -197,6 +197,10 @@ function runBlocks (){
 	code += 'checkAnswer();\n';
 	console.log(code);
 
+	//salva o codigo do usario no json
+	//o codigo correto sera enviado para o banco
+	playerInfo.Code = code;
+
 	myInterpreter = new Interpreter(code, initApi);
 	nextStep();
 }

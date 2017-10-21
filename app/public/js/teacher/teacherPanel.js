@@ -212,16 +212,83 @@ function updatePlayersInfo(players) {
 	}
 }
 
-//habilitando o jogo
+/* *******************************
+   *                             *
+   *       HABILITA O JOGO       *
+   *                             *
+   ******************************* */
 
 var btnEnable = document.getElementById('enable-game');
+var btnDisable = document.getElementById('disable-game');
+var gameStatus = document.getElementById('game-status');
 
 btnEnable.addEventListener('click', function (){
-	enableGame();
-	btnEnable.disabled = true;
+	sendGameStatus(true);
 });
 
-//grafico
+btnDisable.addEventListener('click', function (){
+	sendGameStatus(false);
+});
+
+
+//altera o status visivel do jogo na tela
+function changeGameStatus(status) {
+	if(status){
+		gameStatus.textContent = "Habilitado";
+		gameStatus.classList.remove('w3-text-red');
+		gameStatus.classList.add('w3-text-green');
+	} else {
+		gameStatus.textContent = "Desabilitado";
+		gameStatus.classList.remove('w3-text-green');
+		gameStatus.classList.add('w3-text-red');
+	}
+}
+
+
+/* *******************************
+   *                             *
+   *       SOCKET FUNCTIONS      *
+   *                             *
+   ******************************* */
+
+var IO = io.connect(); //criando conexao socket
+
+function init(){
+
+	IO.on('connected', function (data) {
+		console.log(data);
+	});
+
+	IO.on('updatedPlayersInfo', function(players){
+		
+		console.log(players);
+
+		updatePlayersInfo(players);
+
+	});
+
+	IO.on('gameStatus', function(data){
+		changeGameStatus(data);
+	});
+}
+
+function sendGameStatus(status) {	
+	IO.emit('sendGameStatus', status);
+}
+
+function getGameStatus(){
+	IO.emit('getGameStatus');
+}
+
+init();
+getGameStatus();
+
+/* *******************************
+   *                             *
+   *           GRAFICOS          *
+   *                             *
+   ******************************* */
+
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
 
@@ -254,34 +321,3 @@ function drawChart() {
 	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 	chart.draw(data, options);
 }
-
-
-/* *******************************
-   *                             *
-   *       SOCKET FUNCTIONS      *
-   *                             *
-   ******************************* */
-
-var IO = io.connect(); //criando conexao socket
-
-function init(){
-
-	IO.on('connected', function (data) {
-		console.log(data);
-	});
-
-	IO.on('updatedPlayersInfo', function(players){
-		
-		console.log(players);
-
-		updatePlayersInfo(players);
-
-	});
-}
-
-function enableGame() {
-	
-	IO.emit('enableGame');
-}
-
-init();

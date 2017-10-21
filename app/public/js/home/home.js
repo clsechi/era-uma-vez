@@ -22,6 +22,6 @@ btnStart.addEventListener("click", function (event){
 	if (window.mobileAndTabletcheck()){		
 		window.location.assign(location.origin + "/deviceNotSupported");
 	} else{    
-		window.location.assign(location.origin + "/playerCreation");
+		window.location.assign(location.origin + "/gameExplanation");
 	}
 });

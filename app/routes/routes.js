@@ -5,7 +5,7 @@ module.exports = function (app){
 	//maximo de desfios
 	var maxChallenges = 10;
 	//habilita botao iniciar
-	var enableStart = false;
+	var gameStatus = false;
 
 	//carrega home
 	app.get("/", function (req, res) {
@@ -211,7 +211,7 @@ module.exports = function (app){
 	//res = 1 -> sala cheia
 	//res = 2 -> jogo desabilitado
 	app.post("/savePlayerInfo", function (req, res, next) {
-		if (enableStart) {
+		if (gameStatus) {
 			var playerInfo = req.body;
 			//json vazio que sera enviado como resposta
 			//poderia enviar somente uma string
@@ -238,18 +238,26 @@ module.exports = function (app){
 									if(err){
 										return next(err);
 									}			
-									//get URL do app e adiciona o redirecionamento
-									//envia esse var para o cliente q faz o redirect
-									
-									redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+									//envia usuario para a challenge que ele parou ou para waitingRoom
+									playerDAO.selectPlayerProgress(playerInfo.PlayerID, function (err, results) {
+										if(err){
+											return next(err);
+										}
 
-									redirectURL.error = 0;
+										if(results[0].Progress <= maxChallenges){
+											redirectURL.url = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);				
+										} else {
+											redirectURL.url = "http://" + (req.get('host') + "/waitingRoom")
+										}
 
-									res.send(redirectURL);
+										redirectURL.error = 0;
 
-									connection.release();
+										res.send(redirectURL);
+
+										connection.release();
+									});
 								});
-								//
+								
 							} else {
 								//se a sala estiver cheia retorna msg erro
 								redirectURL.error = 1;				
@@ -267,17 +275,25 @@ module.exports = function (app){
 							if(err){
 								return next(err);
 							}			
-							//get URL do app e adiciona o redirecionamento
-							//envia esse var para o cliente q faz o redirect
 							
-							redirectURL.url = "http://" + (req.get('host') + "/gameExplanation");
+							playerDAO.selectPlayerProgress(playerInfo.PlayerID, function (err, results) {
+								if(err){
+									return next(err);
+								}
 
-							redirectURL.error = 0;
+								if(results[0].Progress <= maxChallenges){
+									redirectURL.url = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);				
+								} else {
+									redirectURL.url = "http://" + (req.get('host') + "/waitingRoom")
+								}
 
-							res.send(redirectURL);
+								redirectURL.error = 0;
 
-							connection.release();
-						});
+								res.send(redirectURL);
+
+								connection.release();
+							});
+						});		
 					}
 				});
 			});
@@ -286,33 +302,22 @@ module.exports = function (app){
 		}	
 	});
 
-	//envia o desafio correto para o usuario após a tela de explicação
+	/*envia o desafio correto para o usuario após a tela de explicação
 	app.post("/firstChallenge", function (req, res, next) {
 		var playerInfo = req.body;
 
 		app.infra.connectionFactory(function (err, connection){
 			var playerDAO = new app.infra.PlayerDAO(connection);
 
-			playerDAO.selectPlayerProgress(playerInfo.PlayerID, function (err, results) {
-				if(err){
-					return next(err);
-				}
-
-				if(results[0].Progress <= maxChallenges){
-					var redirectURL = "http://" + (req.get('host')) + "/challenge/" + (results[0].Progress);				
-				} else {
-					var redirectURL = "http://" + (req.get('host') + "/waitingRoom")
-				}
-				res.send(redirectURL);
-			});
+			
 			connection.release();;
 
 			//atualiza painel do professor
 			updatedPlayersInfo(playerInfo.RoomID, next);
 		});
-	});
+	});*/
 
-	//envia json com info final de todos os jogares da sala
+	//envia json com info final de todos os jogadores da sala
 	app.post("/winnersPodium", function (req, res, next) {
 
 		var sessionInfo = req.body;
@@ -414,12 +419,29 @@ module.exports = function (app){
 
 		gameSocket.on('joinRoom', joinRoom);
 
-		gameSocket.on('enableGame', enableGame);
+		gameSocket.on('sendGameStatus', changeGameStatus);
+
+		gameSocket.on('getGameStatus', sendGameStatus);
 	}
+
 	//habilita o post savePlayerInfo()
-	function enableGame() {
-		console.log("Jogo Habilitado");
-		enableStart = true;
+	function changeGameStatus(status) {
+		if (status){
+			console.log("Jogo Habilitado");
+			gameStatus = true;
+		} else {
+			console.log("Jogo Desabilitado");
+			gameStatus = false;
+		}
+		sendGameStatus();
+	}
+
+	function sendGameStatus() {
+		if(gameStatus){
+			app.io.emit('gameStatus', true);
+		} else{
+			app.io.emit('gameStatus', false);
+		}
 	}
 
 	function updatedPlayersInfo(roomID, next) {
@@ -446,6 +468,7 @@ module.exports = function (app){
 			connection.release();
 		});	
 	}
+
 	//teste com a criacao do grafico
 	function test() {
 
@@ -462,8 +485,6 @@ module.exports = function (app){
 
 		connection.end();
 	}
-
-
 
 	function redirectWinnersPodium(roomID, redirectURL) {	
 		app.io.to(roomID).emit('redirectWinnersPodium', redirectURL);

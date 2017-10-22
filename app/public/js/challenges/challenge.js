@@ -176,7 +176,7 @@ function joinRoom () {
 	if (cookieInfo != null){
 		IO.emit('joinRoom', cookieInfo);
 	} else {
-		if(confirm("PlayerID não encontrando!\nRedicionando para Configuração de Player...")){
+		if(confirm("PlayerID não encontrando!\nRedirecionando para Configuração de Player...")){
 			window.location.assign(location.origin + "/playerCreation");
 		} else{
 			alert("Recarregando a página");

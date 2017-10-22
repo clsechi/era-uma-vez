@@ -5,7 +5,7 @@ module.exports = function (app){
 	//maximo de desfios
 	var maxChallenges = 10;
 	//habilita botao iniciar
-	var gameStatus = false;
+	var gameStatus = true; //MUDAR
 
 	//carrega home
 	app.get("/", function (req, res) {
@@ -207,9 +207,9 @@ module.exports = function (app){
 	});
 
 	//salva informações do usuário
-	//res = 0 -> OK
-	//res = 1 -> sala cheia
-	//res = 2 -> jogo desabilitado
+	//err = 0 -> OK
+	//err = 1 -> sala cheia
+	//err = 2 -> jogo desabilitado
 	app.post("/savePlayerInfo", function (req, res, next) {
 		if (gameStatus) {
 			var playerInfo = req.body;
@@ -301,21 +301,6 @@ module.exports = function (app){
 			res.send({error: 2});
 		}	
 	});
-
-	/*envia o desafio correto para o usuario após a tela de explicação
-	app.post("/firstChallenge", function (req, res, next) {
-		var playerInfo = req.body;
-
-		app.infra.connectionFactory(function (err, connection){
-			var playerDAO = new app.infra.PlayerDAO(connection);
-
-			
-			connection.release();;
-
-			//atualiza painel do professor
-			updatedPlayersInfo(playerInfo.RoomID, next);
-		});
-	});*/
 
 	//envia json com info final de todos os jogadores da sala
 	app.post("/winnersPodium", function (req, res, next) {
@@ -522,7 +507,7 @@ module.exports = function (app){
 
 				//insere o jogador na sala
 				gameSocket.join(player[0].RoomID);
-
+				//envia dados do jogador para o cliente
 				gameSocket.emit('joinDone', player);
 
 				console.log((new Date).toLocaleTimeString() + " " + player[0].Name + " entrou na sala " + player[0].RoomID);

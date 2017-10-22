@@ -27,8 +27,6 @@ function preload(){
 
 	playerBottom = loadImage("/assets/pokeballs/pokeball-bottom.png");
 
-	shipImg = loadImage("/assets/objects/shipwreck.png")
-
 	targetImg = loadImage("/assets/pokemons/charizard.png");
 
 	backgroundImg = loadImage('/assets/background/bg10.png'); //carrega imagem de fundo
@@ -57,9 +55,11 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	object1 = createSprite(220, 370, 10, 10);
-	object1.addImage("ship", shipImg);
+	object1 = createSprite(220, 340, 110, 100);
 	object1.immovable = true;
+	//segundo objeto
+	object2 = createSprite(120,200,70,230);
+	object2.immovable = true;
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -75,12 +75,17 @@ function setup() {
 function draw() {
 
 	background(backgroundImg);
-	
+
 	player.addAnimation("right", playerRight);
 
 	target.changeAnimation("pokemon");
 
+	//desenha os objetos transparentes
+	object1.draw = function(){}
+	object2.draw = function(){}
+
 	player.collide(object1);
+	player.collide(object2);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

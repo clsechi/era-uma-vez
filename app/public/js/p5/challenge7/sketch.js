@@ -55,9 +55,8 @@ function setup() {
 
 	//criando objetos na tela
 	//primeiro objeto
-	/*object1 = createSprite(115, 230, 10, 10);
-	object1.addImage("tree", treeImg);
-	object1.immovable = true;*/
+	object1 = createSprite(120, 180, 65, 265);
+	object1.immovable = true;
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -78,9 +77,11 @@ function draw() {
 
 	target.changeAnimation("pokemon");
 
-	/*player.collide(object1);*/
+	//desenha os objetos transparentes
+	object1.draw = function(){}
 
-	// immovable não esta funcionando
+	player.collide(object1);
+
 	player.collide(wallTop);
 	player.collide(wallBottom);
 	player.collide(wallRight);

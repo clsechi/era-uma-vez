@@ -60,6 +60,14 @@ function setup() {
 	object1 = createSprite(190, 255, 10, 10);
 	object1.addImage("ship", shipImg);
 	object1.immovable = true;
+
+	//segundo objeto
+	object2 = createSprite(320, 190, 145, 65);
+	object2.immovable = true;
+
+	//terceiro objeto
+	object3 = createSprite(140, 120, 105, 65);
+	object3.immovable = true;
 	
 	//Criando player
 	player = createSprite(playerX, playerY, 40 ,40);
@@ -80,7 +88,13 @@ function draw() {
 
 	target.changeAnimation("pokemon");
 
+	//desenha os objetos transparentes
+	object2.draw = function(){}
+	object3.draw = function(){}
+
 	player.collide(object1);
+	player.collide(object2);
+	player.collide(object3);
 
 	// immovable não esta funcionando
 	player.collide(wallTop);

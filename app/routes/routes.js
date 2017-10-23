@@ -5,7 +5,7 @@ module.exports = function (app){
 	//maximo de desfios
 	var maxChallenges = 10;
 	//habilita botao iniciar
-	var gameStatus = true; //MUDAR
+	var gameStatus = false;
 
 	//carrega home
 	app.get("/", function (req, res) {
@@ -296,6 +296,8 @@ module.exports = function (app){
 						});		
 					}
 				});
+				//atualiza painel do professor
+				updatedPlayersInfo(playerInfo.RoomID, next);
 			});
 		} else {
 			res.send({error: 2});
